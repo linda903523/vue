@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1>goods list</h1>
+		<h1>foods list</h1>
 		<datagrid api="select" cols=""></datagrid>
 	</div>
 </template>

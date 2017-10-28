@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1>goods form</h1>
+		<h1>foods form</h1>
 	</div>
 </template>
 

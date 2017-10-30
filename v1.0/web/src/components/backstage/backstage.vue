@@ -7,7 +7,7 @@
         <div id="main" >
             <div class="menu">
                 <ul>
-                <li @click="lic1">顾客点餐
+                <li @click="lic">顾客点餐
                     
                 </li>
                 <li @click="lic">

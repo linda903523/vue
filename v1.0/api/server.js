@@ -17,27 +17,28 @@ app.all('*', function(req, res, next) {
     }
 });
 
-app.post("/insert",_data,function(request, response){
-    db.insert('insert into foods set' + _data,function(result){
-        response.send(result);            
-    })
-})
+// app.post("/insert",_data,function(request, response){
+//     db.insert('insert into foods set' + _data,function(result){
+//         response.send(result);            
+//     })
+// })
 
 app.get('/select', function(request, response){
 	db.select('select * from foods', function(rows){
+        console.log(rows)
 		response.send(rows);
 	})	
 })
 
-app.post("/delete",_data,function(request, response){
-    db.delete('delete from foods where id=' + _data.id,function(result){
-        response.send(result);
-    })
-})
-app.post("/update",_data,function(request, response){
-    db.update('update foods set '+ _data +' where id=' + _data.id,function(result){
-        response.send(result);            
-    })
-})
+// app.post("/delete",_data,function(request, response){
+//     db.delete('delete from foods where id=' + _data.id,function(result){
+//         response.send(result);
+//     })
+// })
+// app.post("/update",_data,function(request, response){
+//     db.update('update foods set '+ _data +' where id=' + _data.id,function(result){
+//         response.send(result);            
+//     })
+// })
 
 app.listen(88);

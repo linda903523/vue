@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	import datagrid from '../datagrid/datagird.vue'
 	//generate three buttons
-	//$prent
+	//$parent
 	export default {
 		components: {
 			datagrid

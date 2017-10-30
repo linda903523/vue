@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<h1>datagrid</h1>
-		<!-- <table>
+	<div id="datagrid">
+		<!-- <h1>datagrid</h1>
+		<table>
 			<thead>
 				<tr>
 					<th v-for="(value, key) in dataset[0]" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{key}}</th>
@@ -13,10 +13,10 @@
 				</tr>
 			</tbody>
 		</table> -->
-		<ul>
+		<ul style="overflow:hidden">
 			<li v-for="(obj, index) in dataset">
+				<!-- <img src="../../img/green.jpg" alt=""> -->
 				<p v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</p>
-				<img src=obj.img alt="">
 			</li>
 		</ul>
 		<loading v-show="loadingShow"></loading>
@@ -53,4 +53,5 @@
 <style>
 	ul,li{list-style:none;}
 	li{float:left;margin:10px;}
+	#datagrid p{color:#000;margin:0;}
 </style>

@@ -7,7 +7,6 @@ var filterUrl = function(url){
 	}
 	return baseUrl + url;
 }
-
 export default {
 	get: (opts) => new Promise((resolve, reject) => {
 		if(opts.vm){

@@ -6,6 +6,7 @@ import HomeComponent from '../components/home/home.vue'
 import FoodsListComponent from '../components/foodslist/foodslist.vue'
 import FoodsFormComponent from '../components/foodsform/foodsform.vue'
 import ListComponent from '../components/list/list.vue'
+import BackstageComponent from '../components/backstage/backstage.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ var router = new VueRouter({
 			path:'/list',
 			name:'list',
 			component:ListComponent
+		},
+		{
+			path:'/backstage',
+			name:'backstage',
+			component:BackstageComponent
 		}
 	]
 })

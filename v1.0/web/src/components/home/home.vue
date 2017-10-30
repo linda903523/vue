@@ -2,10 +2,7 @@
 	<div class="container">
 		<!-- <div class="toolbar">
 			<input type="button" value="添加商品">
-		</div> -->
-		<div>
-			<router-view></router-view>
-		</div>
+		</div> -->		
 		<header>
 			<div>
 				<i class="ci-1"></i>
@@ -40,6 +37,7 @@
 				</li>
 			</ul>
 		</div>
+		<router-view></router-view>
 		<footer>
 			<ul class="home-c">
 				<li><i class="ci-4"></i><span>点菜</span></li>

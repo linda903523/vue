@@ -51,7 +51,13 @@
 	}
 </script>
 <style>
-	ul,li{list-style:none;}
+	body,html{width: 100%;}
+	body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
+	ol,ul{margin:0; padding:0;}
+	ul,ol,li{list-style:none;}
+	input{outline:none;}
+	body{height: 100%;}
+	ul{overflow: hidden;}
 	li{float:left;margin:10px;}
 	#datagrid p{color:#000;margin:0;}
 </style>

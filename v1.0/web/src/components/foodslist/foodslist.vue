@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- <h1>foods list</h1> -->
-		<datagrid api="select" cols="id,name,price,decorations"></datagrid>
+		<datagrid api="select" cols=""></datagrid>
 	</div>
 </template>
 

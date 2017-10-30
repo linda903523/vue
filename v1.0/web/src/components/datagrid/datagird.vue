@@ -13,10 +13,13 @@
 				</tr>
 			</tbody>
 		</table> -->
-		<ul style="overflow:hidden">
+		<ul>
 			<li v-for="(obj, index) in dataset">
-				<!-- <img src="../../img/green.jpg" alt=""> -->
-				<p v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</p>
+				<!-- <p v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</p> -->
+				<img src="img[index]" alt="">
+				<p>{{name[index]}}</p>
+				<p>{{decorations[index]}}</p>
+				<p>{{price[index]}}</p>
 			</li>
 		</ul>
 		<loading v-show="loadingShow"></loading>
@@ -33,7 +36,11 @@
 			return {
 				dataset: [],
 				loadingShow: false,
-				colsArray
+				colsArray,
+				name:[],
+				price:[],
+				img:[],
+				decorations:[]
 			}
 		},
 		props: ['api', 'cols'],
@@ -51,12 +58,12 @@
 	}
 </script>
 <style>
-	body,html{width: 100%;}
+	body,html,img{width: 100%;}
 	body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
 	ol,ul{margin:0; padding:0;}
 	ul,ol,li{list-style:none;}
 	input{outline:none;}
-	body{height: 100%;}
+	body{height: 100%;font-size:10px;}
 	ul{overflow: hidden;}
 	li{float:left;margin:10px;}
 	#datagrid p{color:#000;margin:0;}

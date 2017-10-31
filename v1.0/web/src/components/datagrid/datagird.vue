@@ -1,21 +1,10 @@
 <template>
 	<div id="datagrid">
-		<!-- <h1>datagrid</h1>
-		<table>
-			<thead>
-				<tr>
-					<th v-for="(value, key) in dataset[0]" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{key}}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(obj, index) in dataset">
-					<td v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</td>
-				</tr>
-			</tbody>
-		</table> -->
+		<div class="fl-toolbar fl-grid-toolbar" :id="toolbar_id" v-if="toolbar">
+            <a href="javascript:" class="btn btn-primary btn-sm" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
+        </div>
 		<ul>
 			<li v-for="(obj, index) in dataset">
-				<!-- <p v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</p> -->
 				<img src="img[index]" alt="">
 				<p>{{name[index]}}</p>
 				<p>{{decorations[index]}}</p>
@@ -29,6 +18,8 @@
 <script type="text/javascript">
 	import http from '../../utils/httpClient.js'
 	import loading from '../loading/loading.vue'
+	import './datagird.scss'
+	import $ from 'jquery'
 
 	export default {
 		data: function(){
@@ -40,10 +31,12 @@
 				name:[],
 				price:[],
 				img:[],
-				decorations:[]
+				decorations:[],
+				toolList: null,
+                toolbar_id: 'toobar_' + parseInt(Math.random() * 10000)
 			}
 		},
-		props: ['api', 'cols'],
+		props: ['api', 'cols','toolbar','tools'],
 		mounted: function(){
 			var self = this;
 			http.get({
@@ -52,19 +45,17 @@
 				self.dataset = res.data
 			})
 		},
+		created(){
+			if(this.tools){
+                if(this.toolbar){
+                    this.toolList = this.tools
+                } else {
+                    this.$parent.$parent.addTool(this.tools)
+                }
+            } 
+		},
 		components: {
 			loading
 		}
 	}
 </script>
-<style>
-	body,html,img{width: 100%;}
-	body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
-	ol,ul{margin:0; padding:0;}
-	ul,ol,li{list-style:none;}
-	input{outline:none;}
-	body{height: 100%;font-size:10px;}
-	ul{overflow: hidden;}
-	li{float:left;margin:10px;}
-	#datagrid p{color:#000;margin:0;}
-</style>

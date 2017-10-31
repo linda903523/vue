@@ -1,21 +1,14 @@
 <template>
     <div id="btn" >
         <div id="header">  
-            <h1>X X X 餐厅----后厨</h1>
-           
+            <h1>X X X 餐厅----后厨</h1>           
         </div>
         <div id="main" >
             <div class="menu">
                 <ul>
-                <li @click="lic">顾客点餐
-                    
-                </li>
-                <li @click="lic">
-                    添加菜单
-                </li>
-                <li @click="lic">
-                    管理菜单
-                </li>
+                <li @click="lic">顾客点餐</li>
+                <li @click="lic">添加菜单</li>
+                <li @click="lic">管理菜单</li>
                 </ul>
             </div>
             <div class="bill">
@@ -43,7 +36,6 @@
             <p><input type="text" placeholder="m"></p>  
             <p><input type="text" placeholder="id"></p> 
         </div>
-
         <router-view></router-view>
     </div>
 </template>
@@ -53,27 +45,15 @@
     import router from '../../router'
     //import './backstage.js';
     import './backstage.scss';
-    export default {
-        
-        
+    export default {        
         methods: {
             lic1:function(){
                 router.push({name:'home'})
             },
             lic: function(){
-                console.log(this)
-                
+                console.log(this)                
             }
         },
-        mounted: function(){
-            
-            
-            
-        }
-        
-        
-    }
-        
-
-    
+        mounted: function(){}        
+    }    
 </script>

@@ -1,8 +1,8 @@
 <template>
 	<div class="container">
-		<!-- <div class="toolbar">
-			<input type="button" value="添加商品">
-		</div> -->		
+		<div class="fl-toolbar" style="background: #fff;">
+			<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
+		</div>	
 		<header>
 			<div>
 				<i class="ci-1"></i>
@@ -58,14 +58,20 @@
 	export default {
 		data : function(){
 			return {
-			time:'12:00',
-			zhuohao:'A区36号',
-			diancai:'点菜'
+				time:'12:00',
+				zhuohao:'A区36号',
+				diancai:'点菜',
+				toolList: null
 			}
 		},
 		methods: {
-			generateToolBar: function(obj){
-				//动态生成按钮
+			addTool(arg){
+				this.toolList = arg
+			},
+			click(arg){
+				if(arg.event){
+					arg.event()
+				}
 			},
 			cgoodlist:function(){
 				router.push({name:'list'})

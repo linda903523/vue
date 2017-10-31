@@ -1,18 +1,28 @@
 <template>
-	<div>
-		<datagrid api="select" cols="" @abc="aa"></datagrid>
-	</div>
+	<datagrid api="select" cols="" @abc="aa" :tools="tools"></datagrid>
 </template>
 <script type="text/javascript">
 	import datagrid from '../datagrid/datagird.vue'
+
+    import router from '../../router'
+	//generate three buttons
+	//$parent
 	export default {
 		components: {
 			datagrid
 		},
-		data:function(){
+		data(){
 			return {
-				carlist:[]
-			}
+				carlist:[],
+                tools: {
+                    add: {
+                        text: '添加',
+                        event: function(){
+                            router.push({name: 'foodsform'})
+                        }
+                    }
+                }
+            }
 		},
 		methods:{
 			aa:function(a){

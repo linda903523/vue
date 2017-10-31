@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginComponent from '../components/login/login.vue'
@@ -7,9 +6,9 @@ import FoodsListComponent from '../components/foodslist/foodslist.vue'
 import FoodsFormComponent from '../components/foodsform/foodsform.vue'
 import ListComponent from '../components/list/list.vue'
 import BackstageComponent from '../components/backstage/backstage.vue'
-import Backstage_OrdFood from '../components/backstage_Ord/backstage_Ord.vue'
-import Backstage_AddFood from '../components/backstage_Add/backstage_Add.vue'
-import Backstage_AdmFood from '../components/backstage_Adm/backstage_Adm.vue'
+import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
+import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
+import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
 import LiangComponent from '../components/liangcai/liangcai.vue'
 import RecaiComponent from '../components/recai/recai.vue'
 import TiandianComponent from '../components/tiandian/tiandian.vue'
@@ -25,11 +24,8 @@ var router = new VueRouter({
 				path: '/foodslist',
 				name: 'foodslist',
 				component: FoodsListComponent
-			},{
-				path: '/foodsform',
-				name: 'foodsform',
-				component: FoodsFormComponent
-			},{
+			},
+            {
                 path:'liangcai',
                 name:'liangcai',
                 component:LiangComponent
@@ -50,6 +46,11 @@ var router = new VueRouter({
 
             }]
 		},
+        {
+            path: '/foodsform',
+            name: 'foodsform',
+            component: FoodsFormComponent
+        },
 		{
 			path: '/login',
 			name: 'login',
@@ -81,5 +82,4 @@ var router = new VueRouter({
 		}
 	]
 })
-
 export default router

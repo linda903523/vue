@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<!-- <div class="fl-toolbar" style="background: #fff;">
+			<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
+		</div> -->
 		<header>
 			<div>
 				<i class="ci-1"></i>
@@ -12,9 +15,7 @@
 						<span>{{zhuohao}}</span>
 					</li>
 					<li><span>{{diancai}}</span></li>
-					<li>
-						<i class="ci-3"></i>
-					</li>
+					<li><i class="ci-3"></i></li>
 				</ul> 
 			</div>
 		</header>
@@ -31,7 +32,7 @@
 		</div>
 		<footer>
 			<ul class="home-c">
-				<li><i class="ci-4"></i><span>点菜</span></li>
+				<li><i class="ci-4"></i><span @click="fl_order">点菜</span></li>
 				<li><i class="ci-5"></i><span>大家</span></li>
 				<li><i class="ci-6"></i><span @click="cgoodlist">订单</span></li>
 				<li><i class="ci-7"></i><span>我的</span></li>
@@ -46,12 +47,13 @@
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
 	export default {
-		data : function(){
+		data(){
 			return {
-			time:'12:00',
+			time:'',
 			zhuohao:'A区36号',
 			diancai:'点菜',
-			canshu:''
+			canshu:'',
+			toolList: null
 			}
 		},
 		created: function () {
@@ -63,8 +65,16 @@
 			this.time = hour + ':' + min;
 		 },
 		methods: {
-			generateToolBar: function(obj){
-				//动态生成按钮
+			// addTool(arg){
+			// 	this.toolList = arg
+			// },
+			// click(arg){
+			// 	if(arg.event){
+			// 		arg.event()
+			// 	}
+			// },
+			cgoodlist(){
+				router.push({name:'list'})				
 			},
 			cgoodlist:function(){
 				router.push({name:'list', params: {canshu: this.canshu}})
@@ -89,6 +99,9 @@
 			tongxing:function(a){
 				this.$emit('liang',a);
 				this.canshu=JSON.stringify(a);
+			},
+			fl_order(){
+				router.push({name:'foodsform'})
 			}
 		},
 		components:{

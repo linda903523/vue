@@ -34,7 +34,7 @@
 		<footer>
 			<ul class="home-c">
 				<li><i class="ci-4"></i><span @click="fl_order">点菜</span></li>
-				<li><i class="ci-5"></i><span>大家</span></li>
+				<li><i class="ci-5"></i><span>购物车</span></li>
 				<li><i class="ci-6"></i><span @click="cgoodlist">订单</span></li>
 				<li><i class="ci-7"></i><span>我的</span></li>
 			</ul>

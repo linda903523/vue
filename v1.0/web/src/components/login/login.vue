@@ -4,7 +4,7 @@
 		<form>
 			<label>帐号：</label><input type="text" v-model="username"><br>
 			<label>密码：</label><input type="password" v-model="password"><br>
-			<input type="button" value="Login" @click="loginHandler">
+			<input type="button" class="btn btn-primary pull-center m-t-n-xs" value="登录" @click="loginHandler">
 			<loading v-show="loadingShow"></loading>
 		</form>
 	</div>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import LoginComponent from '../components/login/login.vue'
 import HomeComponent from '../components/home/home.vue'
 import FoodsListComponent from '../components/foodslist/foodslist.vue'
@@ -10,9 +9,11 @@ import BackstageComponent from '../components/backstage/backstage.vue'
 import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
 import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
 import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
-
+import LiangComponent from '../components/liangcai/liangcai.vue'
+import RecaiComponent from '../components/recai/recai.vue'
+import TiandianComponent from '../components/tiandian/tiandian.vue'
+import YingpingComponent from '../components/yingping/yingping.vue'
 Vue.use(VueRouter)
-
 var router = new VueRouter({
 	routes: [
 		{
@@ -23,20 +24,40 @@ var router = new VueRouter({
 				path: '/foodslist',
 				name: 'foodslist',
 				component: FoodsListComponent
-			}]
+			},
+            {
+                path:'liangcai',
+                name:'liangcai',
+                component:LiangComponent
+
+            },{
+                path:'recai',
+                name:'recai',
+                component:RecaiComponent
+
+            },{
+                path:'tiandian',
+                name:'tiandian',
+                component:TiandianComponent
+            },{
+                path:'yingping',
+                name:'yingping',
+                component:YingpingComponent
+
+            }]
 		},
-		{
-			path: '/foodsform',
-			name: 'foodsform',
-			component: FoodsFormComponent
-		},
+        {
+            path: '/foodsform',
+            name: 'foodsform',
+            component: FoodsFormComponent
+        },
 		{
 			path: '/login',
 			name: 'login',
 			component: LoginComponent
 		},
 		{
-			path:'/list',
+			path:'/list/:canshu',
 			name:'list',
 			component:ListComponent
 		},
@@ -61,5 +82,4 @@ var router = new VueRouter({
 		}
 	]
 })
-
 export default router

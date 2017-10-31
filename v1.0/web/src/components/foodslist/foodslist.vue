@@ -1,12 +1,9 @@
 <template>
-	<div>
-		<!-- <h1>foods list</h1> -->
-		<datagrid api="select" cols="" :tools="tools"></datagrid>
-	</div>
+	<datagrid api="select" cols="" @abc="aa" :tools="tools"></datagrid>
 </template>
-
 <script type="text/javascript">
 	import datagrid from '../datagrid/datagird.vue'
+
     import router from '../../router'
 	//generate three buttons
 	//$parent
@@ -16,6 +13,7 @@
 		},
 		data(){
 			return {
+				carlist:[],
                 tools: {
                     add: {
                         text: '添加',
@@ -25,6 +23,13 @@
                     }
                 }
             }
+		},
+		methods:{
+			aa:function(a){
+				this.carlist.push(a);
+				a = this.carlist
+				this.$emit('tong',a);
+			}
 		}
 	}
 </script>

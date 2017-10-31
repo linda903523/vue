@@ -21,12 +21,13 @@
 		<div class="body">
 			<img src="../../img/timg.jpg" class="ctimg-1"/>
 			<ul class="c-ul1">
-				<li @click="foodslist">推荐</li>
+				<li >推荐</li>
 				<li @click="recai">热菜</li>
 				<li @click="liangcai">冷菜</li>
 				<li @click="tiandian">甜品</li>
 				<li @click="yingping">饮料</li>
 			</ul>
+			<foodslist class="foodslist-c"></foodslist>
 			<router-view></router-view>
 		</div>
 		<footer>
@@ -44,7 +45,6 @@
 	 import router from '../../router'
 	 import foodslist from '../foodslist/foodslist.vue'
 	export default {
-
 		data : function(){
 			return {
 			time:'',
@@ -72,9 +72,11 @@
 				router.push({name:'liangcai'})
 
 			},recai:function(){
+			
 				router.push({name:'recai'})
 			},
 			foodslist:function(){
+
 				router.push({name:'foodslist'})
 			},
 			tiandian:function(){
@@ -82,6 +84,9 @@
 			},
 			yingping:function(){
 				router.push({name:'yingping'})
+			},
+			gundong:function(){
+				
 			}
 		},
 		components:{

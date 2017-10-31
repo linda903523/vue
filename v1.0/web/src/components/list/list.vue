@@ -13,19 +13,22 @@
                 </li>
                 <li>
                     <div><span>冷菜</span><span></span></div>
+                    
+                    
                 </li>
                 <li>
                     <div><span>甜品</span><span></span></div>
+                   
                 </li>
                 <li>
                     <div><span>饮料</span><span></span></div>
+                    <router-view></router-view>
                 </li>
             </ul>
         </div>
         <footer>
             <div>
             <ul class="list-ul">
-               
                     <li><span @click="number">加菜</span></li>
                     <li><span></span></li>
                     <li><span>确认菜单</span></li>
@@ -37,17 +40,15 @@
 <script>
 import './list.scss'
 import router from '../../router'
+import foodslist from '../foodslist/foodslist.vue'
     export default {
         data:function(){
          return {
          time:''
-
          }
-
         },
         methods:{
             number:function(){
-                
             },
             qian:function(){
                 router.push({name:'home'})
@@ -61,5 +62,11 @@ import router from '../../router'
             min = min<10 ? '0'+min : min;
             this.time = hour + ':' + min;
          },
+         components:{
+            foodslist
+
+         }
+
+
     }
 </script>

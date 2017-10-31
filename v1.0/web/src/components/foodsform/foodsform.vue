@@ -1,5 +1,8 @@
 <template>
     <div class="fl-form">
+        <div class="fl-toolbar">
+            <a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
+        </div>
         <form ref="foodsForm" role="form" class="form-horizontal ng-pristine ng-valid">
             <div class="form-group">
                 <div class="col-sm-1">
@@ -19,16 +22,6 @@
                     </div>
                 </div>
                 <div class="col-sm-1">
-                    <span class="col-sm-12 control-label">描述</span>
-                </div>
-                <div class="col-sm-2">
-                    <div class="fl-form-element">
-                        <input type="text" name="decorations" v-model="dataform.decorations" class="form-control required">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-1">
                     <span class="col-sm-12 control-label">类型</span>
                 </div>
                 <div class="col-sm-2">
@@ -39,16 +32,30 @@
             </div>
         </form>
     </div>
-</template>datepicker
+</template>
 <script type="text/javascript">
     import router from '../../router'
     import http from '../../utils/HttpClient'
     import $ from 'jquery'
+    import './foodsform.scss'
 	
     export default {
         data(){
             return {
                 dataform: {},
+                toolList: null,
+                // toolbar_id: 'toobar_' + parseInt(Math.random() * 10000)
+            }
+        },
+        props: ['toolbar','tools'],
+        methods: {
+            addTool(arg){
+                this.toolList = arg
+            },
+            click(arg){
+                if(arg.event){
+                    arg.event()
+                }
             }
         },
         created(){
@@ -81,7 +88,7 @@
                     }
                 }
             }
-            this.$parent.addTool(tools);
+            this.addTool(tools);
         }
     }
 </script>

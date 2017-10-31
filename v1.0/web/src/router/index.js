@@ -7,9 +7,9 @@ import FoodsListComponent from '../components/foodslist/foodslist.vue'
 import FoodsFormComponent from '../components/foodsform/foodsform.vue'
 import ListComponent from '../components/list/list.vue'
 import BackstageComponent from '../components/backstage/backstage.vue'
-import Backstage_OrdFood from '../components/backstage_Ord/backstage_Ord.vue'
-import Backstage_AddFood from '../components/backstage_Add/backstage_Add.vue'
-import Backstage_AdmFood from '../components/backstage_Adm/backstage_Adm.vue'
+import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
+import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
+import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
 
 Vue.use(VueRouter)
 
@@ -23,11 +23,12 @@ var router = new VueRouter({
 				path: '/foodslist',
 				name: 'foodslist',
 				component: FoodsListComponent
-			},{
-				path: '/foodsform',
-				name: 'foodsform',
-				component: FoodsFormComponent
 			}]
+		},
+		{
+			path: '/foodsform',
+			name: 'foodsform',
+			component: FoodsFormComponent
 		},
 		{
 			path: '/login',

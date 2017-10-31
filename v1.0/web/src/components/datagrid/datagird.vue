@@ -1,8 +1,5 @@
 <template>
 	<div id="datagrid">
-		<div class="fl-toolbar fl-grid-toolbar" :id="toolbar_id" v-if="toolbar">
-            <a href="javascript:" class="btn btn-primary btn-sm" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
-        </div>
 		<ul>
 			<li v-for="(obj, index) in dataset">
 				<img src="img[index]" alt="">
@@ -22,7 +19,7 @@
 	import $ from 'jquery'
 
 	export default {
-		data: function(){
+		data(){
 			var colsArray = this.cols ? this.cols.split(',') : [];
 			return {
 				dataset: [],
@@ -37,7 +34,7 @@
 			}
 		},
 		props: ['api', 'cols','toolbar','tools'],
-		mounted: function(){
+		mounted(){
 			var self = this;
 			http.get({
 				url: this.api
@@ -45,15 +42,15 @@
 				self.dataset = res.data
 			})
 		},
-		created(){
-			if(this.tools){
-                if(this.toolbar){
-                    this.toolList = this.tools
-                } else {
-                    this.$parent.$parent.addTool(this.tools)
-                }
-            } 
-		},
+		// created(){
+		// 	if(this.tools){
+  // 		       if(this.toolbar){
+  // 		           this.toolList = this.tools
+  // 		       } else {
+  // 		           this.$parent.$parent.addTool(this.tools)
+  // 		       }
+  // 		   } 
+		// },
 		components: {
 			loading
 		}

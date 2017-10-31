@@ -21,9 +21,9 @@
     import Vue from 'vue';
     import VueRouter from 'vue-router'
     import router from '../../router'
-    import backstage_Ord from '../backstage_Ord/backstage_Ord.vue'
-    import backstage_Add from '../backstage_Add/backstage_Add.vue'
-    import backstage_Adm from '../backstage_Adm/backstage_Adm.vue'
+    import backstage_Ord from './backstage_Ord.vue'
+    import backstage_Add from './backstage_Add.vue'
+    import backstage_Adm from './backstage_Adm.vue'
     //import './backstage.js'
     import './backstage.scss'
     

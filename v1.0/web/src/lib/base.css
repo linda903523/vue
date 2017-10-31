@@ -1,0 +1,11 @@
+﻿/*重置样式表*/
+/*==========样式重置===========*/
+body,html{width: 100%;}
+body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
+ol,ul{margin:0; padding:0;}
+ul,ol,li{list-style:none;}
+ul{overflow: hidden;}
+li{float:left;margin:10px;}
+input{outline:none;}
+body{font-family:"微软雅黑";height: 100%;font-size:10px;}
+a{text-decoration:none;display:block;}

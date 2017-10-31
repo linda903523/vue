@@ -18,17 +18,16 @@
 				</ul> 
 			</div>
 		</header>
-		<div class="body">
+		<div  id="box" class="body"  v-private>
 			<img src="../../img/timg.jpg" class="ctimg-1"/>
 			<ul class="c-ul1">
-				<li >推荐</li>
+				<li @click="foodslist">推荐</li>
 				<li @click="recai">热菜</li>
 				<li @click="liangcai">冷菜</li>
 				<li @click="tiandian">甜品</li>
 				<li @click="yingping">饮料</li>
 			</ul>
-			<foodslist class="foodslist-c"></foodslist>
-			<router-view></router-view>
+			<router-view @tong="tongxing"></router-view>
 		</div>
 		<footer>
 			<ul class="home-c">
@@ -41,15 +40,18 @@
 	</div>
 </template>
 <script type="text/javascript">
-	 import './home.scss'
-	 import router from '../../router'
-	 import foodslist from '../foodslist/foodslist.vue'
+	//$children
+	import Vue from 'vue'
+	import './home.scss'
+	import router from '../../router'
+	import foodslist from '../foodslist/foodslist.vue'
 	export default {
 		data : function(){
 			return {
-			time:'',
+			time:'12:00',
 			zhuohao:'A区36号',
-			diancai:'点菜'
+			diancai:'点菜',
+			canshu:''
 			}
 		},
 		created: function () {
@@ -65,18 +67,15 @@
 				//动态生成按钮
 			},
 			cgoodlist:function(){
-				router.push({name:'list'})
-				
+				router.push({name:'list', params: {canshu: this.canshu}})
 			},
 			liangcai:function(){
 				router.push({name:'liangcai'})
-
 			},recai:function(){
 			
 				router.push({name:'recai'})
 			},
 			foodslist:function(){
-
 				router.push({name:'foodslist'})
 			},
 			tiandian:function(){
@@ -86,12 +85,32 @@
 				router.push({name:'yingping'})
 			},
 			gundong:function(){
-				
+			},
+			tongxing:function(a){
+				this.$emit('liang',a);
+				this.canshu=JSON.stringify(a);
 			}
 		},
 		components:{
 			foodslist,
 		},
-
+		directives: {
+			//注册一个局布指令 v-private
+			private: function(element){
+				// var container = document.getElementById('box');
+				// console.log(container);
+				// var ul = document.getElementByClassName('c-ul1');
+				// if(window.scrollY>=100){
+				// 	ul.className = 'fixed';
+				// 	container.style.marginTop = '60px';
+				// }else{
+				// 	ul.className = '';
+				// 	container.style.marginTop = 0;
+				// }
+			}
+		}
 	}
+		
+
+	
 </script>

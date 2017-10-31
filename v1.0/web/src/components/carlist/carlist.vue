@@ -1,15 +1,38 @@
 <template>
     <div>
-        <datagrid api="insert" cols=""></datagrid>
+      <router-link :to="'/list/' + $route.params.canshu" v-aa>
+        <ul v-for="(obj,index) in can">
+            <li>
+                <img :src="obj.img"/>
+                <span>{{obj.name}}</span>
+                <span>{{obj.jiage}}</span>
+                <span>{{obj.age}}</span>
+                <span>{{obj.miaoshu}}</span>
+            </li>
+        </ul>
+      </router-link>
+      
     </div>
 </template>
 <script type="text/javascript">
- 
-    //generate three buttons
-    //$parent
     export default {
+        data:function(){
+            return {
+                can:''
+            }
+        },
         components: {
-            datagrid
+            
+        },
+        directives:{
+            aa:function(){
+            }
+        },
+        mounted:function(){
+            this.can=JSON.parse(this.$route.params.canshu);
+            console.log(this.can);
+            
         }
+
     }
 </script>

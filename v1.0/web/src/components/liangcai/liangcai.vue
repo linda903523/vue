@@ -2,4 +2,6 @@
     <h1>凉菜</h1>
 </template>
 
-export default {}
+export default {
+   
+}

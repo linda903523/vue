@@ -9,8 +9,8 @@
         <div class="body">
             <h2 class="h1-1">菜单</h2>
             <carlist></carlist>
-        </div>
-        <footer>
+        </div>        
+        <footer class="fl_footer">
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
@@ -18,6 +18,12 @@
                     <li><span>确认菜单</span></li>
                 </ul>
             </div>
+            <ul class="home-c">
+                <li><i class="ci-4"></i><span @click="foodslist">点菜</span></li>
+                <li class="active"><i class="ci-5"></i><span>购物车</span></li>
+                <li><i class="ci-6"></i><span>订单</span></li>
+                <li><i class="ci-7"></i><span>我的</span></li>
+            </ul>
         </footer>
     </div>
 </template>
@@ -36,6 +42,9 @@
         },
         methods:{
             qian:function(){
+                router.push({name:'foodslist'})
+            },
+            foodslist:function(){
                 router.push({name:'foodslist'})
             }
         },

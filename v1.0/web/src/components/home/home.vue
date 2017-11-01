@@ -19,7 +19,7 @@
 		<div  id="box" class="body"  v-private>
 			<img src="../../img/timg.jpg" class="ctimg-1"/>
 			<ul class="c-ul1">
-				<li @click="foodslist">推荐</li>
+				<li @click="foodslist" class="active">推荐</li>
 				<li @click="recai">热菜</li>
 				<li @click="liangcai">凉菜</li>
 				<li @click="tiandian">甜品</li>
@@ -29,9 +29,9 @@
 		</div>
 		<footer>
 			<ul class="home-c">
-				<li><i class="ci-4"></i><span>点菜</span></li>
-				<li><i class="ci-5"></i><span>购物车</span></li>
-				<li><i class="ci-6"></i><span @click="cgoodlist">订单</span></li>
+				<li class="active"><i class="ci-4"></i><span>点菜</span></li>
+				<li><i class="ci-5"></i><span @click="cgoodlist">购物车</span></li>
+				<li><i class="ci-6"></i><span>订单</span></li>
 				<li><i class="ci-7"></i><span>我的</span></li>
 			</ul>
 		</footer>
@@ -43,6 +43,7 @@
 	import './home.scss'
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
+	import $ from 'jquery'
 
 	export default {
 		data(){
@@ -71,19 +72,23 @@
 			},
 			liangcai:function(){
 				router.push({name:'liangcai'})
-				console.log(this)
+				$('.c-ul1').children().eq(2).addClass('active').siblings().removeClass('active')
 			},
 			recai:function(){
 				router.push({name:'recai'})
+				$('.c-ul1').children().eq(1).addClass('active').siblings().removeClass('active')
 			},
 			foodslist:function(){
 				router.push({name:'foodslist'})
+				$('.c-ul1').children().eq(0).addClass('active').siblings().removeClass('active')
 			},
 			tiandian:function(){
 				router.push({name:'tiandian'})
+				$('.c-ul1').children().eq(3).addClass('active').siblings().removeClass('active')
 			},
 			yingping:function(){
 				router.push({name:'yingping'})
+				$('.c-ul1').children().eq(4).addClass('active').siblings().removeClass('active')
 			},
 			gundong:function(){
 			},

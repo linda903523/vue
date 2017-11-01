@@ -17,13 +17,53 @@ app.all('*', function(req, res, next) {
     }
 });
 
-// app.post("/insert",_data,function(request, response){
-//     db.insert('insert into foods set' + _data,function(result){
+app.post('/insert', function(request, response){
+    var newData = request.body;
+    console.log(newData)
+    var sql = `insert into dishname (name, classify, number, picture, price, time, creatDate, status) values ('${newData.name}', '${newData.classify}','${newData.number}','${newData.picture}','${newData.price}','${newData.time}','${newData.creatDate}','${newData.status}')`;
+    db.insert(sql, function(data){
+        response.send(data);
+    })  
+})
+
+// app.post("/insert",'_data',function(request, response){
+//     console.log(121)
+//     db.insert('insert into goods set' + '_data',function(result){
 //         response.send(result);            
 //     })
 // })
-
+app.post("/insert",function(request, response){
+    var data = JSON.parse(request.body.cc)
+    var string='';
+    var name='';
+    var id='';
+    for(var key in data){
+        if(key!=='id'){
+            string+='"'+data[key]+'"'+','
+        }
+        if(key=='name'){
+            name=data[key];
+        }if(key=='id'){
+            id=data[key];
+        }
+    }
+    db.select(`select * from menu where name like '%${name}%'`,function(rows){
+        if(rows.length>0){
+             var number = rows[0].number+1;
+             var idd = rows[0].id;
+            db.insert(`update menu set number= ${number} where id=${idd}`,function(result){
+            response.send(result);
+        })
+        }else {
+            aa=string.substring(0,string.length-1);
+            db.insert(`insert into menu (name,img,price,type) values (${aa}) `,function(result){
+                    response.send(result);
+                })
+        }
+    })
+})
 app.get('/select', function(request, response){
+    // console.log(request)
 	db.select('select * from goods', function(rows){
 		response.send(rows);
 	})	

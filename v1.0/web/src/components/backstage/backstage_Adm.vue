@@ -7,9 +7,10 @@
         </thead>
         <tbody>
             <tr v-for="(obj, index) in dataset">
-                <td><img src="../../img/timg.jpg"></td>
+                <td><img :src="obj.img" /></td>
                 <td v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</td>
-                <td><button type="button" class="btn btn-danger">删除</button></td>
+                <td><button type="button" class="btn btn-danger">删除</button><button type="button" class="btn btn-danger">停售</button></td>
+                
             </tr>
             
         </tbody>

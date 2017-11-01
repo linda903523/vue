@@ -1,4 +1,6 @@
 import axios from 'axios'
+import qs from 'qs'
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 var baseUrl = 'http://localhost:88/';
 var filterUrl = function(url){
@@ -25,19 +27,25 @@ export default {
 		})
 	}),
 	post: (opts) => new Promise((resolve, reject) => {
-		if(opts.vm){
-			opts.vm[opts.loading || 'loadingShow'] = true;
-		}
-		axios.post(filterUrl(opts.url), opts.params).then(function(response){
-			if(opts.vm){
-				opts.vm[opts.loading || 'loadingShow'] = false;
-			}
-			resolve(response);
-		}).catch(function(error){
-			if(opts.vm){
-				opts.vm[opts.loading || 'loadingShow'] = false;
-			}			
-			reject(error);
-		})
-	})
+        if(opts.vm){
+            opts.vm[opts.loading || 'loadingShow'] = true;
+        }
+        axios({
+            method: 'POST',
+            url: filterUrl(opts.url),
+            data: qs.stringify(opts.params),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function(result){
+            if(opts.vm){
+                opts.vm[opts.loading || 'loadingShow'] = false;
+            }
+            resolve(result);
+        }).catch(function(error){
+            if(opts.vm){
+                opts.vm[opts.loading || 'loadingShow'] = false;
+            }           
+            reject(error);
+        })
+    })
+
 }

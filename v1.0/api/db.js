@@ -11,10 +11,10 @@ var pool = mysql.createPool({
 
 
 module.exports = {
-    insert:function(tsql,data,callback){
+    insert:function(tsql,_data,callback){
         pool.query(tsql,function(error, rows){
             if(error) throw error;
-            console.log(66)
+            console.log(rows);
             callback(rows);
         })
     },

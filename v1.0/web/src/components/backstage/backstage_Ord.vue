@@ -1,15 +1,15 @@
 <template>
     <div class="bill_6">
         <h3 class="bill_h3"> 桌号22<span class="bill_span">关闭</span></h3>
-        <ul  v-for="(value, key) in dataset[0]" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">
+        <ul>
             <li  v-for="(obj, index) in dataset">
-                <img src="../../img/timg.jpg"  alt="" />
-                
-                <span>菜名:{{obj.name}}</span>
+                <img :src="obj.img"  alt="" />
+                <span>菜名:{{obj.name}}{{obj.state}}</span>
                 <p>备注:<i>空{{obj.decorations}}</i></p>
-                <input type="button" value="等待" />
-                <input type="button" value="准备" />
-                <input type="button" value="完成" />
+
+                <input type="button" value="等待" @click="wait" v-if="obj.state==1" style="color:red;"/>
+                <input type="button" value="准备" @click="plan" v-if="obj.state==2 || obj.state==1" />
+                <input type="button" value="完成" @click="complete" />
             </li>
             <h2 class="bill_h2">收起</h2>
         </ul>
@@ -20,7 +20,7 @@
   import loading from '../loading/loading.vue'
     export default {
 
-        data: function(){
+      data: function(){
       var colsArray = this.cols ? this.cols.split(',') : [];
       return {
         dataset: [],
@@ -29,7 +29,8 @@
         name:[],
         price:[],
         img:[],
-        decorations:[]
+        decorations:[],
+        shu:'',
       }
     },
     props: ['api', 'cols'],
@@ -41,9 +42,28 @@
         self.dataset = res.data
       })
     },
-    components: {
+    methods: {
+      wait: function(e){
+        $(e.target).css({color:'red'})
+        console.log(this.shu)  
+      },
+      plan: function(e){
+        this.shu=2
+        $(e.target).css({color:'red'})
+        $(e.target).prev('input').css({display:'none'})
+        $(e.target).prev('input').css({color:''})
+        console.log(this.shu)
       
+      },
+      complete: function(e){
+        this.shu=3
+        $(e.target).css({color:'red'})
+        $(e.target).prev('input').css({display:'none'})
+        console.log(this.shu)
+      }
+    },
+    components: {
       loading
     }
-    }
+  }
 </script>

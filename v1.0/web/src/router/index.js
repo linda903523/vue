@@ -13,7 +13,9 @@ import LiangComponent from '../components/foodstype/liangcai.vue'
 import RecaiComponent from '../components/foodstype/recai.vue'
 import TiandianComponent from '../components/foodstype/tiandian.vue'
 import YingpingComponent from '../components/foodstype/yingping.vue'
+
 Vue.use(VueRouter)
+
 var router = new VueRouter({
 	routes: [
 		{
@@ -57,7 +59,7 @@ var router = new VueRouter({
 			component: LoginComponent
 		},
 		{
-			path:'/list/:canshu',
+			path:'/list',
 			name:'list',
 			component:ListComponent
 		},

@@ -1,5 +1,5 @@
 <template>
-    <datagrid api="re_select" cols="" @abc="aa"></datagrid>
+    <datagrid aa="insert" api="re_select" cols="" @abc="aa"></datagrid>
 </template>
 <script type="text/javascript">
     import datagrid from '../datagrid/datagird.vue'

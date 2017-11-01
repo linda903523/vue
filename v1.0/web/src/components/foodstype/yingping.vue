@@ -1,5 +1,5 @@
 <template>
-    <datagrid api="ying_select" cols="" @abc="aa"></datagrid>
+    <datagrid aa="insert" api="ying_select" cols="" @abc="aa"></datagrid>
 </template>
 <script type="text/javascript">
     import datagrid from '../datagrid/datagird.vue'

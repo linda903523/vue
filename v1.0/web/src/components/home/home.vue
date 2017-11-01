@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<header>
-			<div>
+			<div class="home-div">
 				<i class="ci-1"></i>
 				<span class="ctime" >{{time}}</span>
 			</div>
@@ -29,7 +29,7 @@
 		</div>
 		<footer>
 			<ul class="home-c">
-				<li><i class="ci-4"></i><span @click="fl_order">点菜</span></li>
+				<li><i class="ci-4"></i><span>点菜</span></li>
 				<li><i class="ci-5"></i><span>购物车</span></li>
 				<li><i class="ci-6"></i><span @click="cgoodlist">订单</span></li>
 				<li><i class="ci-7"></i><span>我的</span></li>
@@ -71,6 +71,7 @@
 			},
 			liangcai:function(){
 				router.push({name:'liangcai'})
+				console.log(this)
 			},
 			recai:function(){
 				router.push({name:'recai'})
@@ -89,9 +90,6 @@
 			tongxing:function(a){
 				this.$emit('liang',a);
 				this.canshu=JSON.stringify(a);
-			},
-			fl_order(){
-				router.push({name:'foodsform'})
 			}
 		},
 		components:{

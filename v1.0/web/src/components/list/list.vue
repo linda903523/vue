@@ -7,28 +7,14 @@
             <p>已点列表</p>
         </header>
         <div class="body">
-            <ul class="list-ul-c">
-                <li>
-                    <div><span>热菜</span><span></span></div>
-                    <carlist></carlist>
-                </li>
-                <li>
-                    <div><span>冷菜</span><span></span></div>
-                </li>
-                <li>
-                    <div><span>甜品</span><span></span></div>
-                </li>
-                <li>
-                    <div><span>饮料</span><span></span></div>
-                    <router-view></router-view>
-                </li>
-            </ul>
+            <h2 class="h1-1">菜单</h2>
+            <carlist></carlist>
         </div>
         <footer>
             <div>
                 <ul class="list-ul">
-                    <li><span >加菜</span></li>
-                    <li><span></span></li>
+                    <li><span @click="qian">加菜</span></li>
+                    <li class="list-money"><span></span></li>
                     <li><span>确认菜单</span></li>
                 </ul>
             </div>

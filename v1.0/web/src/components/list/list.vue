@@ -27,9 +27,9 @@
         <footer>
             <div>
                 <ul class="list-ul">
-                        <li><span >加菜</span></li>
-                        <li><span></span></li>
-                        <li><span>确认菜单</span></li>
+                    <li><span >加菜</span></li>
+                    <li><span></span></li>
+                    <li><span>确认菜单</span></li>
                 </ul>
             </div>
         </footer>

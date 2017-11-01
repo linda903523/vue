@@ -46,6 +46,7 @@
 	import './home.scss'
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
+
 	export default {
 		data(){
 			return {
@@ -122,8 +123,5 @@
 				// }
 			}
 		}
-	}
-		
-
-	
+	}	
 </script>

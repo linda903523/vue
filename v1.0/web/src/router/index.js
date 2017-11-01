@@ -91,21 +91,21 @@ var router = new VueRouter({
 				component: FoodsListComponent
 			},
             {
-                path:'liangcai',
+                path:'/liangcai',
                 name:'liangcai',
                 component:LiangComponent
 
             },{
-                path:'recai',
+                path:'/recai',
                 name:'recai',
                 component:RecaiComponent
 
             },{
-                path:'tiandian',
+                path:'/tiandian',
                 name:'tiandian',
                 component:TiandianComponent
             },{
-                path:'yingping',
+                path:'/yingping',
                 name:'yingping',
                 component:YingpingComponent
 

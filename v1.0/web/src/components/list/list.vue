@@ -21,15 +21,15 @@
                 <li>
                     <div><span>饮料</span><span></span></div>
                     <router-view></router-view>
-                </li>              
+                </li>
             </ul>
         </div>
         <footer>
             <div>
                 <ul class="list-ul">
-                    <li><span>加菜</span></li>
+                    <li><span >加菜</span></li>
                     <li><span></span></li>
-                    <li><span>确认菜单</span></li>               
+                    <li><span>确认菜单</span></li>
                 </ul>
             </div>
         </footer>
@@ -52,7 +52,6 @@
             qian:function(){
                 router.push({name:'home'})
             }
-
         },
         created: function () {
             var now = new Date();

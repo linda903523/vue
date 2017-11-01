@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Element from 'element-ui'
 
 import LoginComponent from '../components/login/login.vue'
 import HomeComponent from '../components/home/home.vue'

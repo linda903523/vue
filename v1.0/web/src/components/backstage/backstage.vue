@@ -8,14 +8,14 @@
             
             <div class="menu">
                 <ul>
-                <li @click="lic">
+                <li>
                     <router-link to="/OrdFood">顾客点餐</router-link> 
                 </li>
-                <li @click="lic">
+                <li>
                     <router-link to="/AddFood">添加菜单</router-link> 
                     
                 </li>
-                <li @click="lic">
+                <li>
                     <router-link to="/AdmFood">管理菜单</router-link>
                 </li>
                 </ul>
@@ -37,25 +37,10 @@
     import backstage_Ord from '../backstage_Ord/backstage_Ord.vue'
     import backstage_Add from '../backstage_Add/backstage_Add.vue'
     import backstage_Adm from '../backstage_Adm/backstage_Adm.vue'
-    //import './backstage.js';
+    import './backstage.js';
     import './backstage.scss';
     export default {
         
-        methods: {
-            lic1:function(){
-                router.push({name:'home'})
-            },
-            lic: function(){
-                
-                
-            },
-            inc: function(){
-                console.log(22)
-            }
-        },
-        components: {
-            'gc':{template: ``}
-        }
         
         
     }

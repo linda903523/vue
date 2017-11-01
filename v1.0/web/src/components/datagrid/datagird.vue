@@ -29,7 +29,7 @@
 <script type="text/javascript">
 	import http from '../../utils/httpClient.js'
 	import loading from '../loading/loading.vue'
-
+	console.log(333)
 	export default {
 		data: function(){
 			var colsArray = this.cols ? this.cols.split(',') : [];

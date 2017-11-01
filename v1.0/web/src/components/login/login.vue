@@ -14,7 +14,6 @@
 	import loading from '../loading/loading.vue'
 	import http from '../../utils/httpClient.js'
 	import router from '../../router/'
-	import './login.scss'
 
 	export default {
 		data(){

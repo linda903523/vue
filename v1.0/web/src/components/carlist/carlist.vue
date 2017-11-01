@@ -5,9 +5,9 @@
             <li>
                 <img :src="obj.img"/>
                 <span>{{obj.name}}</span>
-                <span>{{obj.jiage}}</span>
-                <span>{{obj.age}}</span>
-                <span>{{obj.miaoshu}}</span>
+                <span>{{obj.price}}</span>
+                <span>{{obj.type}}</span>
+                <span>{{obj.decorations}}</span>
             </li>
         </ul>
       </router-link>

@@ -1,5 +1,4 @@
 <template>
-
 <div class="Adm">
     <table class="table table-hover">  
         <thead>

@@ -1,41 +1,3 @@
-body,html{width: 100%;}
-body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
-ol,ul{margin:0; padding:0;}
-ul,ol,li{list-style:none;}
-img{
-    display:block;
-    border:0 none;}
-input{
-    outline:none;}
-body{
-    font-family:"微软雅黑";
-    height: 100%;
-}
-a{
-    text-decoration:none;
-    display:block;
-}
-/*版心容器的样式*/
-.con{
-    width: 985px;
-    margin:0 auto;
-    height: 100%;
-}
-/*左浮动*/
-.fl{float:left;}
-/*右浮动*/
-.fr{float:right;}
-/* 清除浮动 */
-.clear{
-    display:block;
-    content:"";
-    height: 0;
-    clear:both;
-    overflow:hidden;
-    visibility:hidden;
-    zoom:1;
-}
-
 #header{background:url('../../img/h1.jpg') no-repeat ; background-size:100%; 
     h1{color:red; text-align:center;}
     >span{float:right;
@@ -58,7 +20,7 @@ a{
 }
 
 .menu{padding:0 50px; background:skyblue; float:left; height:600px;
-    li{line-height:50px; border-radius:5px 5px; width:100px; text-align:center; 
+    li{line-height:50px; border-radius:5px 5px; width:100px; text-align:center; float:none;
         p{height:0px; background:skyblue; display:none;
             &:hover{background:#fff; border-radius:5px 5px;}
         }
@@ -68,4 +30,3 @@ a{
 }
 
 .form_row{float:left;}
-

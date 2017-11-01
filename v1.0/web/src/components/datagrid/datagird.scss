@@ -1,0 +1,22 @@
+/* --------重置样式------- */
+body,html{width: 100%;height:100%;}
+body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
+ol,ul{margin:0; padding:0;}
+ul,ol,li{list-style:none;}
+ul{overflow: hidden;}
+img{width:100%;}
+li{float:left;margin:10px;}
+input{outline:none;}
+body{font-family:"微软雅黑";height: 100%;font-size:10px;}
+a{text-decoration:none;display:block;}
+
+/* --------datagrid------- */
+#datagrid p{color:#000;margin:0;}
+.name-c{font-size:45px;}
+.foodlist-c li{position:relative;}
+.foodlist-c img{width:100%;}
+.tianjia-c{width: 80px;height: 80px;background-image: url("../../img/1.png");background-size:1500px;position:absolute;background-position:1504px 212px;bottom: -15px;right: 70px;}
+.jiage-c{position:absolute;right:40px;color:#F76D2F;}
+.fl-toolbar{ background: #fff;text-align:right;}
+.btn-goback{background-color: #e6674a;border-color: #e6674a}
+.form-horizontal{margin-top:10px;}

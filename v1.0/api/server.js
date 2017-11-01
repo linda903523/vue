@@ -24,7 +24,7 @@ app.all('*', function(req, res, next) {
 // })
 
 app.get('/select', function(request, response){
-	db.select('select * from foods', function(rows){
+	db.select('select * from goods', function(rows){
 		response.send(rows);
 	})	
 })

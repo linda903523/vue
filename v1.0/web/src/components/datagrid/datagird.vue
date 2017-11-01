@@ -14,6 +14,7 @@
 		<loading v-show="loadingShow"></loading>
 	</div>
 </template>
+
 <script type="text/javascript">
 	import http from '../../utils/httpClient.js'
 	import loading from '../loading/loading.vue'

@@ -16,12 +16,12 @@
                     <div><span>冷菜</span><span></span></div>
                 </li>
                 <li>
-                    <div><span>甜品</span><span></span></div>                   
+                    <div><span>甜品</span><span></span></div>
                 </li>
                 <li>
                     <div><span>饮料</span><span></span></div>
                     <router-view></router-view>
-                </li>               
+                </li>
             </ul>
         </div>
         <footer>
@@ -36,10 +36,11 @@
     </div>
 </template>
 <script>
-import './list.scss'
-import router from '../../router'
-import foodslist from '../foodslist/foodslist.vue'
-import carlist from '../carlist/carlist.vue'
+    import './list.scss'
+    import router from '../../router'
+    import foodslist from '../foodslist/foodslist.vue'
+    import carlist from '../carlist/carlist.vue'
+
     export default {
         data:function(){
             return {

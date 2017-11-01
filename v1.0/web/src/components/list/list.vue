@@ -50,7 +50,7 @@
         },
         methods:{
             qian:function(){
-                router.push({name:'home'})
+                router.push({name:'foodslist'})
             }
         },
         created: function () {

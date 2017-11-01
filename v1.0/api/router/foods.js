@@ -14,6 +14,26 @@ module.exports = {
                 response.send(rows);
             })  
         })
+        app.get('/re_select', function(request, response){
+            db.select('select * from foods where type=1', function(rows){
+                response.send(rows);
+            })  
+        })
+        app.get('/liang_select', function(request, response){
+            db.select('select * from foods where type=2', function(rows){
+                response.send(rows);
+            })  
+        })
+        app.get('/tian_select', function(request, response){
+            db.select('select * from foods where type=3', function(rows){
+                response.send(rows);
+            })  
+        })
+        app.get('/ying_select', function(request, response){
+            db.select('select * from foods where type=4', function(rows){
+                response.send(rows);
+            })  
+        })
         app.post("/delete",urlencode,function(request, response){
             db.delete('delete from foods where id=' + request.body.id,function(result){
                 response.send(result);

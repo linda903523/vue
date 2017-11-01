@@ -24,7 +24,7 @@
 			<ul class="c-ul1">
 				<li @click="foodslist">推荐</li>
 				<li @click="recai">热菜</li>
-				<li @click="liangcai">冷菜</li>
+				<li @click="liangcai">凉菜</li>
 				<li @click="tiandian">甜品</li>
 				<li @click="yingping">饮料</li>
 			</ul>
@@ -82,8 +82,8 @@
 			},
 			liangcai:function(){
 				router.push({name:'liangcai'})
-			},recai:function(){
-			
+			},
+			recai:function(){
 				router.push({name:'recai'})
 			},
 			foodslist:function(){

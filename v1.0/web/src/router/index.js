@@ -9,10 +9,10 @@ import BackstageComponent from '../components/backstage/backstage.vue'
 import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
 import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
 import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
-import LiangComponent from '../components/liangcai/liangcai.vue'
-import RecaiComponent from '../components/recai/recai.vue'
-import TiandianComponent from '../components/tiandian/tiandian.vue'
-import YingpingComponent from '../components/yingping/yingping.vue'
+import LiangComponent from '../components/foodstype/liangcai.vue'
+import RecaiComponent from '../components/foodstype/recai.vue'
+import TiandianComponent from '../components/foodstype/tiandian.vue'
+import YingpingComponent from '../components/foodstype/yingping.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
 	routes: [
@@ -26,7 +26,7 @@ var router = new VueRouter({
 				component: FoodsListComponent
 			},
             {
-                path:'/liangcai',
+                path:'/liangcai/:type',
                 name:'liangcai',
                 component:LiangComponent
 

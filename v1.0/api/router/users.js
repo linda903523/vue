@@ -23,11 +23,6 @@ module.exports = {
             db.update('update users set '+ request.body +' where id=' + request.body.id,function(result){
                 response.send(result);            
             })
-        })
-        app.get("/user_search", function(request, response){
-            db.select("select * from users",function(result){
-                response.send(result);
-            })
-        })  
+        }) 
     }    
 };

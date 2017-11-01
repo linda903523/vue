@@ -6,12 +6,10 @@
                 <img :src="obj.img"/>
                 <span>{{obj.name}}</span>
                 <span>{{obj.price}}</span>
-                <span>{{obj.type}}</span>
                 <span>{{obj.decorations}}</span>
             </li>
         </ul>
-      </router-link>
-      
+      </router-link>      
     </div>
 </template>
 <script type="text/javascript">
@@ -29,10 +27,7 @@
             }
         },
         mounted:function(){
-            this.can=JSON.parse(this.$route.params.canshu);
-            console.log(this.can);
-            
+            this.can=JSON.parse(this.$route.params.canshu);            
         }
-
     }
 </script>

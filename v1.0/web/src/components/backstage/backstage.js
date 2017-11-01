@@ -1,6 +1,5 @@
-import $ from 'jquery';
+import $ from 'jquery'
 $(document).on('click',function(e){
-    console.log(e.target.className)
     if(e.target.className.toLowerCase()=='bill_h3'){
         $(e.target).next('ul').css({display:'block'})
         $(e.target).find('span').css({display:'block'})

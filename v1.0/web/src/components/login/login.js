@@ -9,7 +9,7 @@ const mutations = {
 	login: (data, formData) => {
 		formData.grant_type = 'password'
 		http.get('/login', formData).then(response => {
-			router.push({name: 'home'})
+			router.push({name: 'foodslist'})
 		})
 	}
 }

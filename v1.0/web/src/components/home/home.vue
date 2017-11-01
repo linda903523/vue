@@ -1,8 +1,5 @@
 <template>
 	<div class="container">
-		<!-- <div class="fl-toolbar" style="background: #fff;">
-			<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
-		</div> -->
 		<header>
 			<div>
 				<i class="ci-1"></i>
@@ -66,14 +63,6 @@
 			this.time = hour + ':' + min;
 		 },
 		methods: {
-			// addTool(arg){
-			// 	this.toolList = arg
-			// },
-			// click(arg){
-			// 	if(arg.event){
-			// 		arg.event()
-			// 	}
-			// },
 			cgoodlist(){
 				router.push({name:'list'})				
 			},

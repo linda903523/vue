@@ -1,5 +1,5 @@
 <template>
-    <datagrid api="ying_select" cols="" @abc="aa" :tools="tools"></datagrid>
+    <datagrid api="ying_select" cols="" @abc="aa"></datagrid>
 </template>
 <script type="text/javascript">
     import datagrid from '../datagrid/datagird.vue'
@@ -11,15 +11,7 @@
         },
         data(){
             return {
-                carlist:[],
-                tools: {
-                    add: {
-                        text: '添加',
-                        event: function(){
-                            router.push({name: 'foodsform'})
-                        }
-                    }
-                }
+                carlist:[]
             }
         },
         methods:{

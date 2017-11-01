@@ -34,7 +34,7 @@
 		},
 		methods: {
 			login: function(event){
-				if($('form').valid()){
+				if($('form').valid){
 					this.$store.dispatch('login', {username: this.username, password: this.password})
 				}
 			}

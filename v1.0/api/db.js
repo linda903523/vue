@@ -14,7 +14,6 @@ module.exports = {
     insert:function(tsql,data,callback){
         pool.query(tsql,function(error, rows){
             if(error) throw error;
-            console.log(66)
             callback(rows);
         })
     },

@@ -1,8 +1,5 @@
 <template>
 	<div class="container">
-		<!-- <div class="fl-toolbar" style="background: #fff;">
-			<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
-		</div> -->
 		<header>
 			<div class="home-div">
 				<i class="ci-1"></i>
@@ -20,12 +17,12 @@
 				</ul> 
 			</div>
 		</header>
-		<div  id="box" class="body"  v-private>
+		<div  id="box" class="body"  @scroll="scroll">
 			<img src="../../img/timg.jpg" class="ctimg-1"/>
 			<ul class="c-ul1">
-				<li @click="foodslist">推荐</li>
+				<li @click="foodslist" class="active">推荐</li>
 				<li @click="recai">热菜</li>
-				<li @click="liangcai">冷菜</li>
+				<li @click="liangcai">凉菜</li>
 				<li @click="tiandian">甜品</li>
 				<li @click="yingping">饮料</li>
 			</ul>
@@ -33,7 +30,15 @@
 			<router-view v-if = "show"></router-view>
 		</div>
 		<footer>
-			<dibu></dibu>
+
+			<!-- <dibu></dibu> -->
+
+			<ul class="home-c">
+				<li class="active"><i class="ci-4"></i><span>点菜</span></li>
+				<li><i class="ci-5"></i><span @click="carlist">购物车</span></li>
+				<li><i class="ci-6"></i><span>订单</span></li>
+				<li><i class="ci-7"></i><span>我的</span></li>
+			</ul>
 		</footer>
 	</div>
 </template>
@@ -43,8 +48,13 @@
 	import './home.scss'
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
-	import footer from '../footer/footer.vue'
+
+	// import footer from '../footer/footer.vue'
 	import http from '../../utils/httpClient.js'
+
+	import $ from 'jquery'
+
+
 	export default {
 		data(){
 			return {
@@ -68,31 +78,41 @@
 			this.time = hour + ':' + min;
 		 },
 		methods: {
+
+			carlist:function(){
+				router.push({name:'carlist'})				
+			},
+
 			liangcai:function(){
 				this.showw=false;
 				this.show=true;
 				router.push({name:'liangcai'})
-			},recai:function(){
+				$('.c-ul1').children().eq(2).addClass('active').siblings().removeClass('active')
+
+			},
+			recai:function(){
 				this.showw=false;
 				this.show=true;
 				router.push({name:'recai'})
+				$('.c-ul1').children().eq(1).addClass('active').siblings().removeClass('active')
 			},
 			foodslist:function(){
 				this.showw=false;
 				this.show=true;
 				router.push({name:'foodslist'})
+				$('.c-ul1').children().eq(0).addClass('active').siblings().removeClass('active')
 			},
 			tiandian:function(){
 				this.showw=false;
 				this.show=true;
 				router.push({name:'tiandian'})
+				$('.c-ul1').children().eq(3).addClass('active').siblings().removeClass('active')
 			},
 			yingping:function(){
 				this.showw=false;
 				this.show=true;
 				router.push({name:'yingping'})
-			},
-			gundong:function(){
+				$('.c-ul1').children().eq(4).addClass('active').siblings().removeClass('active')
 			},
 			tongxing:function(a){
 
@@ -114,10 +134,19 @@
 	            this.showw=false;
 	            this.show=true;
 	        })
+			scroll:function(){
+				if($('.c-ul1').offset().top <= $('#box').scrollTop()){
+					$('.c-ul1').addClass('fixed');
+					$('#datagrid').css({marginTop:'150px'});
+				}else{
+					$('.c-ul1').removeClass('fixed');
+					$('#datagrid').css({marginTop:'0px'});
+				}
 			}
 			
 		},
 		components:{
+
 			foodslist,
 			dibu:footer
 		},
@@ -126,8 +155,5 @@
 			private: function(element){
 			}
 		}
-	}
-		
-
-	
+	}	
 </script>

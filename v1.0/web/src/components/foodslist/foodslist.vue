@@ -1,5 +1,6 @@
 <template>
-	<datagrid  aa="insert"  api="select" cols="" @abc="aa" :tools="tools"></datagrid>
+
+	<datagrid aa="car_insert" api="select" cols="" @abc="aa" :tools="tools"></datagrid>
 </template>
 <script type="text/javascript">
 	import datagrid from '../datagrid/datagird.vue'

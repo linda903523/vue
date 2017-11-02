@@ -1,7 +1,6 @@
-
 .container header{position:relative;}
 .container header .list-qian{
-     width: 80px;
+    width: 80px;
     height: 80px;
     background-image: url("../../img/2.png");
     background-size:1500px;
@@ -10,6 +9,7 @@
     top: 117px;
     right: 851px;
    }
+<<<<<<< HEAD
 // .container .list-ul-c div{padding-left:30px;line-height:100px;background-color:#ECF5F0;}
 .container .body{overflow:auto;}
 .container .list-ul-c .list-div{padding-left:30px;line-height:100px;}
@@ -24,3 +24,17 @@
 .container .list-ul li{flex:1;background-color:#F2753D;color:#ffffff;line-height:150px;}
 .container #list-money{background-color:#ffffff;color:#F2753D;}
 
+=======
+.container .body{overflow:auto;}
+.container .list-span{display:block;float:left;}
+.container p{color:#ffffff;text-align:center;margin-top:120px;}
+.container .list-ul li{margin-top:0px;float:left}
+.h1-1{text-align:center;line-height:80px;font-weight:600;font-size:40px;}
+.container .list-ul span{display:block;float:left;width:200px;height:100px;background:#FC673C;color:#ffffff;line-height:100px;}
+.container .list-ul span{display:block;float:left;width:200px;height:100px;background:#FC673C;color:#ffffff;line-height:100px;}
+.container .fl_footer{
+    height:260px;
+    .ci-4{background-image: url("../../img/1.png");background-color:#fff;}
+    .ci-5{background-image: url("../../img/2.png");background-color:#F76D2F;}
+}
+>>>>>>> 516ae67daed5932ac0e77c1bf5e3763f16ed9a36

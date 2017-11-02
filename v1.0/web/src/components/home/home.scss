@@ -1,12 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-img{
-    border:0;
-}
-ol, ul ,li{list-style: none;} 
-body,html{height:100%;width:100%;}
 #app{height:100%;}
 .container{font-size:40px;}
 .container{height:100%;display:flex;flex-direction:column;width:100%;}
@@ -52,14 +43,13 @@ body,html{height:100%;width:100%;}
 }
 .container .body .ctimg-1{width:100%;}
 .container .body .c-ul1{line-height:100px;}
-.container .body .c-ul1 li:nth-child(1){color:#F76D2F;}
-.container footer{height:150px;border-sizing:border-box;}
+.active{color:#F76D2F;}
+.container footer{height:170px;border-top:1px solid #ccc;}
 .container .body .c-ul1,.container footer .home-c{
     display:flex;
     justify-content: space-around;
     height:150px;
-   
-   
+
 }
 .container footer ul li{
     margin-top:50px;
@@ -69,41 +59,40 @@ body,html{height:100%;width:100%;}
     text-align:center;
 }
 .container .ci-4{
-     width: 60px;
-    height: 60px;
-    background-image: url("../../img/1.png");
+    width: 44px;
+    height: 44px;
+    background-image: url("../../img/2.png");
     background-size:1300px;
-    background-position:1045px -200px;
+    background-position:1038px -200px;
     margin:0 auto;
-   
+    background-color:#F76D2F;
 }
 .container .ci-5{
-     width: 60px;
-    height: 60px;
+     width: 44px;
+    height: 44px;
     background-image: url("../../img/1.png");
     background-size:1300px;
     margin:0 auto;
-    background-position:1045px -330px;
+    background-position:1036px -330px;
     
 }
 .container .ci-6{
-    width: 60px;
-    height: 60px;
+    width: 44px;
+    height: 44px;
     background-image: url("../../img/1.png");
     background-size:1300px;
     margin:0 auto;
-    background-position:1877px -510px;
+    background-position:1869px -506px;
 }
 .container .ci-7{
-     width: 60px;
-    height: 60px;
+     width: 44px;
+    height: 44px;
     background-image: url("../../img/1.png");
     background-size:1300px;
     margin:0 auto;
-    background-position:-453px -3px;
-   
+    background-position:-463px -3px;  
 }
-// .fixed{position:fixed;top:0;left:0;right:0;}
-// .c-ul1{background:#fc5000;color:#fff;}
+
+.fixed{position:fixed;top:190px;left:0;z-index:999;background: #fff;width:100%;}
 .fl-toolbar{width: 100%;height: 50px;padding: 10px 20px;border-bottom: solid 1px #ccc;}
 

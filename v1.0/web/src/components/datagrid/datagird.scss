@@ -1,11 +1,13 @@
 #datagrid p{color:#000;margin:0;}
-// body,html{width: 100%;}
-// body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
-// ol,ul{margin:0; padding:0;}
-// ul,ol,li{list-style:none;}
-// ul{overflow: hidden;}
-// img{width:100%;}
-// li{float:left;margin:10px;}
-// input{outline:none;}
-// body{font-family:"微软雅黑";height: 100%;font-size:10px;}
-// a{text-decoration:none;display:block;}
+.name-c{font-weight:bold;}
+.foodlist-c li{
+    position:relative;width:100%;padding:0 10px;float:none;
+    >span{font-size:25px;}
+    img{width:100%;height:500px;}
+}
+.tianjia-c{width: 45px;height: 68px;background-image: url("../../img/1.png");background-size:1500px;position:absolute;background-position:1500px 212px;bottom:37px;right: 37px;}
+.jiage-c{color:#F76D2F;font-weight:bold;}
+.fl-toolbar{ background: #fff;text-align:right;}
+.btn-goback{background-color: #e6674a;border-color: #e6674a}
+.form-horizontal{margin-top:10px;}
+

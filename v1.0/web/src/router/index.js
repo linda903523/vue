@@ -4,17 +4,17 @@ import LoginComponent from '../components/login/login.vue'
 import HomeComponent from '../components/home/home.vue'
 import FoodsListComponent from '../components/foodslist/foodslist.vue'
 import FoodsFormComponent from '../components/foodsform/foodsform.vue'
-import ListComponent from '../components/list/list.vue'
+import CarListComponent from '../components/carlist/carlist.vue'
 import BackstageComponent from '../components/backstage/backstage.vue'
 import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
 import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
 import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
-import LiangComponent from '../components/liangcai/liangcai.vue'
-import RecaiComponent from '../components/recai/recai.vue'
-import TiandianComponent from '../components/tiandian/tiandian.vue'
-import YingpingComponent from '../components/yingping/yingping.vue'
 import SerachComponent from '../components/serach/serach.vue'
 import MyComponent from '../components/my/my.vue'
+import LiangComponent from '../components/foodstype/liangcai.vue'
+import RecaiComponent from '../components/foodstype/recai.vue'
+import TiandianComponent from '../components/foodstype/tiandian.vue'
+import YingpingComponent from '../components/foodstype/yingping.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
 	routes: [
@@ -28,20 +28,20 @@ var router = new VueRouter({
 				component: FoodsListComponent
 			},
             {
-                path:'liangcai',
+                path:'/liangcai',
                 name:'liangcai',
                 component:LiangComponent
             },{
-                path:'recai',
+                path:'/recai',
                 name:'recai',
                 component:RecaiComponent
 
             },{
-                path:'tiandian',
+                path:'/tiandian',
                 name:'tiandian',
                 component:TiandianComponent
             },{
-                path:'yingping',
+                path:'/yingping',
                 name:'yingping',
                 component:YingpingComponent
 
@@ -61,10 +61,15 @@ var router = new VueRouter({
 			name: 'login',
 			component: LoginComponent
 		},
+        {
+            path:'/list',
+            name:'list',
+            component:ListComponent  
+        },
 		{
-			path:'/list',
-			name:'list',
-			component:ListComponent
+			path:'/carlist',
+			name:'carlist',
+			component:CarListComponent
 		},
         {
             path:'/my',
@@ -87,8 +92,7 @@ var router = new VueRouter({
 				path: '/AdmFood',
 				name: 'AdmFood',
 				component:Backstage_AdmFood
-			}
-			]
+			}]
 		}
 	]
 })

@@ -30,13 +30,11 @@
 			<router-view v-if = "show"></router-view>
 		</div>
 		<footer>
-			<!-- <dibu></dibu> -->
-
 			<ul class="home-c">
 				<li class="active"><i class="ci-4"></i><span>点菜</span></li>
-				<li><i class="ci-5"></i><span @click="carlist">购物车</span></li>
-				<li><i class="ci-6"></i><span>订单</span></li>
-				<li><i class="ci-7"></i><span>我的</span></li>
+				<li @click="carlist"><i class="ci-5"></i><span>购物车</span></li>
+				<li @click="list"><i class="ci-6"></i><span>订单</span></li>
+				<li @click="my"><i class="ci-7"></i><span>我的</span></li>
 			</ul>
 		</footer>
 	</div>
@@ -47,11 +45,8 @@
 	import './home.scss'
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
-	import footer from '../footer/footer.vue'
 	import http from '../../utils/httpClient.js'
-
 	import $ from 'jquery'
-
 
 	export default {
 		data(){
@@ -74,19 +69,22 @@
 			hour = hour<10 ? '0'+hour : hour;
 			min = min<10 ? '0'+min : min;
 			this.time = hour + ':' + min;
-		 },
+		},
 		methods: {
-
 			carlist:function(){
 				router.push({name:'carlist'})				
 			},
-
+			list:function(){
+				router.push({name:'list'})				
+			},
+			my:function(){
+				router.push({name:'my'})
+			},
 			liangcai:function(){
 				this.showw=false;
 				this.show=true;
 				router.push({name:'liangcai'})
 				$('.c-ul1').children().eq(2).addClass('active').siblings().removeClass('active')
-
 			},
 			recai:function(){
 				this.showw=false;
@@ -140,18 +138,10 @@
 					$('.c-ul1').removeClass('fixed');
 					$('#datagrid').css({marginTop:'0px'});
 				}
-			}
-			
+			}			
 		},
 		components:{
-
 			foodslist,
-			dibu:footer
-		},
-		directives: {
-			//注册一个局布指令 v-private
-			private: function(element){
-			}
 		}
 	}	
 </script>

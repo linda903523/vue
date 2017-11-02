@@ -13,6 +13,8 @@ import LiangComponent from '../components/liangcai/liangcai.vue'
 import RecaiComponent from '../components/recai/recai.vue'
 import TiandianComponent from '../components/tiandian/tiandian.vue'
 import YingpingComponent from '../components/yingping/yingping.vue'
+import SerachComponent from '../components/serach/serach.vue'
+import MyComponent from '../components/my/my.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
 	routes: [
@@ -29,7 +31,6 @@ var router = new VueRouter({
                 path:'liangcai',
                 name:'liangcai',
                 component:LiangComponent
-
             },{
                 path:'recai',
                 name:'recai',
@@ -44,6 +45,10 @@ var router = new VueRouter({
                 name:'yingping',
                 component:YingpingComponent
 
+            },{
+                path:'serach',
+                name:'serach',
+                component:SerachComponent
             }]
 		},
         {
@@ -57,10 +62,15 @@ var router = new VueRouter({
 			component: LoginComponent
 		},
 		{
-			path:'/list/:canshu',
+			path:'/list',
 			name:'list',
 			component:ListComponent
 		},
+        {
+            path:'/my',
+            name:'my',
+            component:MyComponent
+        },
 		{
 			path:'/backstage',
 			name:'backstage',

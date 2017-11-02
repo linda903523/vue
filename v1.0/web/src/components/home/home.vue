@@ -4,7 +4,7 @@
 			<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
 		</div> -->
 		<header>
-			<div>
+			<div class="home-div">
 				<i class="ci-1"></i>
 				<span class="ctime" >{{time}}</span>
 			</div>
@@ -15,7 +15,8 @@
 						<span>{{zhuohao}}</span>
 					</li>
 					<li><span>{{diancai}}</span></li>
-					<li><i class="ci-3"></i></li>
+					<input type="text" v-model="message" />
+					<li><i class="ci-3" @click="serach"></i></li>
 				</ul> 
 			</div>
 		</header>
@@ -28,15 +29,11 @@
 				<li @click="tiandian">甜品</li>
 				<li @click="yingping">饮料</li>
 			</ul>
-			<router-view @tong="tongxing"></router-view>
+			<foodslist v-if="showw"></foodslist>
+			<router-view v-if = "show"></router-view>
 		</div>
 		<footer>
-			<ul class="home-c">
-				<li><i class="ci-4"></i><span @click="fl_order">点菜</span></li>
-				<li><i class="ci-5"></i><span>大家</span></li>
-				<li><i class="ci-6"></i><span @click="cgoodlist">订单</span></li>
-				<li><i class="ci-7"></i><span>我的</span></li>
-			</ul>
+			<dibu></dibu>
 		</footer>
 	</div>
 </template>
@@ -46,6 +43,8 @@
 	import './home.scss'
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
+	import footer from '../footer/footer.vue'
+	import http from '../../utils/httpClient.js'
 	export default {
 		data(){
 			return {
@@ -53,7 +52,11 @@
 			zhuohao:'A区36号',
 			diancai:'点菜',
 			canshu:'',
-			toolList: null
+			toolList: null,
+			message:'',
+			showw:true,
+			show:false,
+			 serachnumber:[]
 			}
 		},
 		created: function () {
@@ -65,61 +68,62 @@
 			this.time = hour + ':' + min;
 		 },
 		methods: {
-			// addTool(arg){
-			// 	this.toolList = arg
-			// },
-			// click(arg){
-			// 	if(arg.event){
-			// 		arg.event()
-			// 	}
-			// },
-			cgoodlist(){
-				router.push({name:'list'})				
-			},
-			cgoodlist:function(){
-				router.push({name:'list', params: {canshu: this.canshu}})
-			},
 			liangcai:function(){
+				this.showw=false;
+				this.show=true;
 				router.push({name:'liangcai'})
 			},recai:function(){
-			
+				this.showw=false;
+				this.show=true;
 				router.push({name:'recai'})
 			},
 			foodslist:function(){
+				this.showw=false;
+				this.show=true;
 				router.push({name:'foodslist'})
 			},
 			tiandian:function(){
+				this.showw=false;
+				this.show=true;
 				router.push({name:'tiandian'})
 			},
 			yingping:function(){
+				this.showw=false;
+				this.show=true;
 				router.push({name:'yingping'})
 			},
 			gundong:function(){
 			},
 			tongxing:function(a){
+
 				this.$emit('liang',a);
 				this.canshu=JSON.stringify(a);
 			},
-			fl_order(){
-				router.push({name:'foodsform'})
+			serach:function(){
+				this.showw=false;
+				this.show=false;
+				router.push({name:'serach'})
+				var self = this
+				http.post({
+	            url:'serach',
+	            params:{
+	                name:self.message
+	            }
+	        }).then(res=>{
+	            this.serachnumber=res.data;
+	            this.showw=false;
+	            this.show=true;
+	        })
 			}
+			
 		},
 		components:{
 			foodslist,
+			dibu:footer
 		},
 		directives: {
 			//注册一个局布指令 v-private
 			private: function(element){
-				// var container = document.getElementById('box');
-				// console.log(container);
-				// var ul = document.getElementByClassName('c-ul1');
-				// if(window.scrollY>=100){
-				// 	ul.className = 'fixed';
-				// 	container.style.marginTop = '60px';
-				// }else{
-				// 	ul.className = '';
-				// 	container.style.marginTop = 0;
-				// }
 			}
 		}
 	}

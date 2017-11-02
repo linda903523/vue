@@ -9,37 +9,18 @@
         <div class="body">
             <ul class="list-ul-c">
                 <li>
-                    <div><span>热菜</span><span></span></div>
-                    <carlist></carlist>
+                   <h1 class="h1-1">热菜</h1>
+                    <carlist v-if=""></carlist>
                 </li>
-                <li>
-                    <div><span>冷菜</span><span></span></div>
-                </li>
-                <li>
-                    <div><span>甜品</span><span></span></div>
-                   
-                </li>
-                <li>
-                    <div><span>饮料</span><span></span></div>
-                    <router-view></router-view>
-
-                </li>
-               
             </ul>
         </div>
         <footer>
             <div>
             <ul class="list-ul">
-                    <li><span >加菜</span></li>
-                    <li><span></span></li>
-                    <li><span>确认菜单</span></li>
+                    <li ><span @click="qian">加菜</span></li>
+                    <li id="list-money" ><span>{{zongshu}}份<span class="list-cspan">共{{zongjia}}元</span></span><span></span></li>
+                    <li  @click="cmoney"><span>确认菜单</span></li>
             </ul>
-
-                <ul class="list-ul">
-                    <li><span>加菜</span></li>
-                    <li><span></span></li>
-                    <li><span>确认菜单</span></li>               
-                </ul>
             </div>
         </footer>
     </div>
@@ -53,14 +34,28 @@ import carlist from '../carlist/carlist.vue'
         data:function(){
             return {
                 time:'',
-                carnumber:''
+                carnumber:'',
+                zongshu:'',
+                zongjia:'',
+                show:false,
             }
         },
         methods:{
             qian:function(){
-                router.push({name:'home'})
-            }
-
+                this.show=true;
+                router.push({name:'foodslist'})
+            },
+            cmoney:function(){
+                var shuliang = this.$children[0].carlist;
+                var cshu=0;
+                var titole=0;
+                for(var i=0;i<shuliang.length;i++){
+                    cshu+=shuliang[i].number;
+                    titole+=shuliang[i].number*shuliang[i].jiage;
+                }
+                this.zongshu=cshu;
+                this.zongjia=titole;
+            },
         },
         created: function () {
             var now = new Date();
@@ -70,11 +65,18 @@ import carlist from '../carlist/carlist.vue'
             min = min<10 ? '0'+min : min;
             this.time = hour + ':' + min;
          },
+         mounted:function(){
+         },
          components:{
             foodslist,
             carlist,
-
-         }
-
+         },
+         directives: {
+            //注册一个局布指令 v-private
+            cmoney: function(element){
+                
+                
+            }
+        }
     }
 </script>

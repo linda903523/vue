@@ -9,7 +9,7 @@
 				</div>
 					<span>{{obj.miaoshu}}</span>
 					<span>{{obj.age}}</span>
-				<i class="tianjia-c" @click="tianjia(index)"></i>
+				<i class="tianjia-c"  @click="jiaru(index)"></i>
 			</li>
 		</ul>
 		<loading v-show="loadingShow"></loading>
@@ -20,7 +20,6 @@
 	import loading from '../loading/loading.vue'
 	import './datagird.scss'
 	import $ from 'jquery'
-
 	export default {
 		data(){
 			var colsArray = this.cols ? this.cols.split(',') : [];
@@ -30,14 +29,26 @@
 				colsArray,
 			}
 		},
-		props: ['api', 'cols'],
+		props: ['api', 'cols','toolbar','tools','aa'],
 		methods:{
 			tianjia:function(index){
 				var bb= this.dataset[index];
 				this.$emit('abc',bb)
-			}
+			},
+			jiaru:function(index){
+					var cc =JSON.stringify(this.dataset[index]);
+					var self = this;
+					console.log(self.aa);
+					http.post({
+						url:self.aa,
+						params:{
+							cc:cc
+						}
+					}).then(res=>{
+						console.log(res);
+					})
+			 }
 		},
-		props: ['api', 'cols','toolbar','tools'],
 		mounted(){
 			var self = this;
 			http.get({
@@ -62,7 +73,6 @@
 </script>
 <style>
 	ul,li{list-style:none;}
-	li{margin:10px;}
 	.name-c{font-size:45px;}
 	.foodlist-c li{position:relative;}
 	.foodlist-c img{width:100%;}

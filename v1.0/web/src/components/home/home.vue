@@ -30,7 +30,6 @@
 			<router-view v-if = "show"></router-view>
 		</div>
 		<footer>
-
 			<!-- <dibu></dibu> -->
 
 			<ul class="home-c">
@@ -48,8 +47,7 @@
 	import './home.scss'
 	import router from '../../router'
 	import foodslist from '../foodslist/foodslist.vue'
-
-	// import footer from '../footer/footer.vue'
+	import footer from '../footer/footer.vue'
 	import http from '../../utils/httpClient.js'
 
 	import $ from 'jquery'
@@ -115,7 +113,6 @@
 				$('.c-ul1').children().eq(4).addClass('active').siblings().removeClass('active')
 			},
 			tongxing:function(a){
-
 				this.$emit('liang',a);
 				this.canshu=JSON.stringify(a);
 			},
@@ -125,15 +122,16 @@
 				router.push({name:'serach'})
 				var self = this
 				http.post({
-	            url:'serach',
-	            params:{
-	                name:self.message
-	            }
-	        }).then(res=>{
-	            this.serachnumber=res.data;
-	            this.showw=false;
-	            this.show=true;
-	        })
+	            	url:'serach',
+		            params:{
+		                name:self.message
+		            }
+		        }).then(res=>{
+		            this.serachnumber=res.data;
+		            this.showw=false;
+		            this.show=true;
+		        })
+	    	},
 			scroll:function(){
 				if($('.c-ul1').offset().top <= $('#box').scrollTop()){
 					$('.c-ul1').addClass('fixed');

@@ -7,9 +7,6 @@
 					<span class="name-c">{{obj.name}}</span>
 					<span class="jiage-c">{{obj.price}}元</span>
 				</div>
-					<!-- <span>{{obj.miaoshu}}</span> -->
-					<!-- <span>{{obj.age}}</span> -->
-				<!-- <i class="tianjia-c"  @click="jiaru(index)"></i> -->
 				<span>{{obj.decorations}}</span>
 				<i class="tianjia-c" @click="jiaru(index)"></i>
 			</li>

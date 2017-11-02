@@ -1,28 +1,5 @@
 
 <template>
-
-    <!-- <div>
-        <ul v-for="(obj,index) in carlist" class="carlist-ul">
-            <li>
-                <img :src="obj.img" class="img-carlist" />
-                <div class="carlist-div1 ">
-                    <div>{{obj.nianling}}</div>
-                    <div>{{obj.miaoshu}}</div>
-                </div>
-                <div class="carlist-div2 ">
-                    <span class="carlist-money">{{obj.jiage}}元</span>
-                    <i class="carlist-i1" @click="cjian(index)"></i>
-                    <span class="cc-span" ref="one"  >{{obj.number}}</span>
-                    <i class="carlist-i2" @click="cjia(index)"></i>
-                </div>
-            </li>
-        </ul>
-    </div>
-    </template>
-    <script type="text/javascript">
-    import http from '../../utils/httpClient.js'
-    import './carlist.scss'
-     -->
     <div class="container">
         <header>
             <i class="ci-1"></i>
@@ -38,12 +15,12 @@
                     <div class="carlist-div1 ">
                         <span>{{obj.name}}</span>
                         <span class="carlist-money">{{obj.price}}元</span>
-                        <i class="carlist-i1"></i>
                     </div>
                     <div class="carlist-div2 ">
                         <span>{{obj.decorations}}</span>
                         <span class="cc-span">{{obj.number}}</span>
-                        <i class="carlist-i2"></i>
+                        <i class="carlist-i1" @click="cjian(index)"></i>
+                        <i class="carlist-i2" @click="cjia(index)"></i>
                         <i class="carlist-i3" @click="car_delete(index)"></i>
                     </div>
                 </li>
@@ -53,8 +30,8 @@
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
-                    <li><span class="list-money"></span></li>
-                    <li><span>确认菜单</span></li>
+                    <li><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
+                    <li><span @click="cmoney">确认菜单</span></li>
                 </ul>
             </div>
             <ul class="home-c">
@@ -72,15 +49,15 @@
     import router from '../../router'
     import foodslist from '../foodslist/foodslist.vue'
     import $ from 'jquery'
-    
-
     export default {
         data:function(){
             return {
                 carlist:[],
                 can:'',
                 time:'',      
-                carnumber:''
+                carnumber:'',
+                zongshu:0,
+                zongjia:0,
 
                 // number:obj.number
             }
@@ -109,14 +86,18 @@
                 }).then(res => {
                    console.log(res);
                 })
-
+            },
+             cmoney:function(){
+                for (var i=0;i<this.carlist.length;i++){
+                    this.zongshu+=this.carlist[i].number;
+                    this.zongjia+=this.carlist[i].number*this.carlist[i].price;
+                };
             },
              tanchuang() {
                 this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
                   dangerouslyUseHTMLString: true
                 });
             },
-       
             qian:function(){
                 router.push({name:'foodslist'})
             },

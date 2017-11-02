@@ -52,8 +52,8 @@
             return {
                 time:'',
                 carnumber:'',
-                zongshu:'',
-                zongjia:'',
+                // zongshu:'',
+                // zongjia:'',
                 show:false,
             }
         },
@@ -63,17 +63,17 @@
                 this.show=true;
                 router.push({name:'foodslist'})
             },
-            cmoney:function(){
-                var shuliang = this.$children[0].carlist;
-                var cshu=0;
-                var titole=0;
-                for(var i=0;i<shuliang.length;i++){
-                    cshu+=shuliang[i].number;
-                    titole+=shuliang[i].number*shuliang[i].jiage;
-                }
-                this.zongshu=cshu;
-                this.zongjia=titole;
-            },
+            // cmoney:function(){
+            //     var shuliang = this.$children[0].carlist;
+            //     var cshu=0;
+            //     var titole=0;
+            //     for(var i=0;i<shuliang.length;i++){
+            //         cshu+=shuliang[i].number;
+            //         titole+=shuliang[i].number*shuliang[i].jiage;
+            //     }
+            //     this.zongshu=cshu;
+            //     this.zongjia=titole;
+            // },
             foodslist:function(){
                 router.push({name:'foodslist'})
             }

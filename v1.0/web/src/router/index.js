@@ -15,6 +15,7 @@ import LiangComponent from '../components/foodstype/liangcai.vue'
 import RecaiComponent from '../components/foodstype/recai.vue'
 import TiandianComponent from '../components/foodstype/tiandian.vue'
 import YingpingComponent from '../components/foodstype/yingping.vue'
+import ListComponent from '../components/list/list.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
 	routes: [

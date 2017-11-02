@@ -44,17 +44,19 @@
     methods: {
       wait: function(e){
         $(e.target).css({color:'red'})
-        console.log(this.shu)  
+        console.log(this.$store.state.backstage.incrementTotal('准备'))  
       },
       plan: function(e){
         $(e.target).css({color:'red'})
         $(e.target).prev('input').css({display:'none'})
         $(e.target).prev('input').css({color:''})
+        this.$store.state.backstage.incrementTotal('准备')
       },
       complete: function(e){
         this.shu=3
         $(e.target).css({color:'red'})
         $(e.target).prev('input').css({display:'none'})
+        this.$store.state.backstage.incrementTotal('完成')
       }
     },
     components: {

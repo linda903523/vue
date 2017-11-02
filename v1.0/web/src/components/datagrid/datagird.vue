@@ -20,7 +20,6 @@
 	import loading from '../loading/loading.vue'
 	import './datagird.scss'
 	import $ from 'jquery'
-
 	export default {
 		data(){
 			var colsArray = this.cols ? this.cols.split(',') : [];
@@ -37,17 +36,19 @@
 				this.$emit('abc',bb)
 			},
 			jiaru:function(index){
-				var cc =JSON.stringify(this.dataset[index]);
-				var self = this;
-				http.post({
-					url:self.aa,
-					params:{
-						cc:cc
-					}
-				}).then(res=>{
-					console.log(res);
-				})
-			}
+
+					var cc =JSON.stringify(this.dataset[index]);
+					var self = this;
+					console.log(self.aa);
+					http.post({
+						url:self.aa,
+						params:{
+							cc:cc
+						}
+					}).then(res=>{
+						console.log(res);
+					})
+			 }
 		},
 		mounted(){
 			var self = this;
@@ -57,17 +58,12 @@
 				self.dataset = res.data
 			})
 		},
-		// created(){
-		// 	if(this.tools){
-  // 		       if(this.toolbar){
-  // 		           this.toolList = this.tools
-  // 		       } else {
-  // 		           this.$parent.$parent.addTool(this.tools)
-  // 		       }
-  // 		   } 
-		// },
 		components: {
 			loading
 		}
 	}
+
 </script>
+
+
+

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 var baseUrl = 'http://localhost:88/';
 var filterUrl = function(url){
 	if(url.startsWith('http')){

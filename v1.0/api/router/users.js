@@ -13,8 +13,6 @@ module.exports = {
             db.insert('insert into users set' + request.body,function(result){
                 response.send(result);            
             })
-        })
-        app.post("/user_delete", urlencode, function(request, response){
             db.delete('delete from users where id=' + request.body.id,function(result){
                 response.send(result);
             })

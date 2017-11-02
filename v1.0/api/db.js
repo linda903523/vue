@@ -8,27 +8,23 @@ var pool = mysql.createPool({
   port     : 3306,
   database : 'cnrmall'
 });
-
-
 module.exports = {
-    insert:function(tsql,_data,callback){
-        console.log(tsql)
+    insert:function(tsql,data,callback){
         pool.query(tsql,function(error, rows){
             if(error) throw error;
-            console.log(rows)
-            // callback(rows);
+           
         })
     },
     select: function(tsql,callback){
         pool.query(tsql, function(error, rows){
             if(error) throw error;
-            callback(rows);
+            callback(rows)
         })
     },
     delete: function(tsql,data,callback){
         pool.query(tsql, function(error, rows){
             if(error) throw error;
-            //callback(rows);
+           
         })
     },
     update: function(tsql,data,callback){
@@ -38,3 +34,5 @@ module.exports = {
         })
     },
 }
+
+

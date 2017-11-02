@@ -44,7 +44,6 @@ module.exports = {
                 })
                 }else {
                     aa = string.substring(0,string.length-1);
-                    console.log(aa)
                     db.insert(`insert into goods (name,price,img,type,number,decorations,addTime) values (${aa}) `,function(result){
                             response.send(result);
                         })

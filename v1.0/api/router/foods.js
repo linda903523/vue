@@ -57,7 +57,7 @@ module.exports = {
                     response.send(result);
                 })
                 }else {
-                    aa = string.substring(0,string.length-1);
+                    aa = string.substring(0,string.length-1);console.log(aa)
                     db.insert(`insert into carlist (name,img,price,number,type,decorations) values (${aa}) `,function(result){
                             response.send(result);
                         })

@@ -16,7 +16,7 @@
 				</ul> 
 			</div>
 		</header>
-		<div  id="box" class="body"  v-private>
+		<div  id="box" class="body"  @scroll="scroll">
 			<img src="../../img/timg.jpg" class="ctimg-1"/>
 			<ul class="c-ul1">
 				<li @click="foodslist" class="active">推荐</li>
@@ -95,25 +95,19 @@
 			tongxing:function(a){
 				this.$emit('liang',a);
 				this.canshu=JSON.stringify(a);
+			},
+			scroll:function(){
+				if($('.c-ul1').offset().top <= $('#box').scrollTop()){
+					$('.c-ul1').addClass('fixed');
+					$('#datagrid').css({marginTop:'150px'});
+				}else{
+					$('.c-ul1').removeClass('fixed');
+					$('#datagrid').css({marginTop:'0px'});
+				}
 			}
 		},
 		components:{
 			foodslist,
-		},
-		directives: {
-			//注册一个局布指令 v-private
-			private: function(element){
-				// var container = document.getElementById('box');
-				// console.log(container);
-				// var ul = document.getElementByClassName('c-ul1');
-				// if(window.scrollY>=100){
-				// 	ul.className = 'fixed';
-				// 	container.style.marginTop = '60px';
-				// }else{
-				// 	ul.className = '';
-				// 	container.style.marginTop = 0;
-				// }
-			}
 		}
 	}	
 </script>

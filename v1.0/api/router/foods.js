@@ -44,6 +44,44 @@ module.exports = {
                 response.send(rows);
             })  
         })
+        app.post("/carlistjian",urlencode,function(request, response){
+            var data = JSON.parse(request.body.ccc)
+            var cname='';
+            var id='';
+            for(var key in data){
+                if(key=='name'){
+                    cname=data[key];
+                }if(key=='id'){
+                    id=data[key];
+                }
+            }
+            db.select(`select * from foods where name like '%${cname}%'`,function(rows){
+                     var number = rows[0].number-1;
+                     var idd = rows[0].id;
+                    db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
+                    response.send(result);
+                })
+            })
+        })
+        app.post("/carlistjia",urlencode,function(request, response){
+            var data = JSON.parse(request.body.cccc)
+            var cname='';
+            var id='';
+            for(var key in data){
+                if(key=='name'){
+                    cname=data[key];
+                }if(key=='id'){
+                    id=data[key];
+                }
+            }
+            db.select(`select * from foods where name like '%${cname}%'`,function(rows){
+                     var number = rows[0].number+1;
+                     var idd = rows[0].id;
+                    db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
+                    response.send(result);
+                })
+            })
+        })
         app.post("/car_insert",urlencode,function(request, response){
             var data = JSON.parse(request.body.cc);
             var string = '';
@@ -76,6 +114,12 @@ module.exports = {
             })
             return false;
         })  
+        app.post('/serach', urlencode,function(request, response){
+            var cname = request.body.name;
+             db.select(`select * from foods where name like '%${cname}%'`,function(rows){
+                response.send(rows);
+            })  
+        })
         app.post("/car_delete",urlencode,function(request, response){
             var data = JSON.parse(request.body.cc);
             db.delete(`delete from carlist where id=${data.id}`,function(result){

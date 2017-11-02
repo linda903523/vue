@@ -1,3 +1,4 @@
+
 <template>
     <div class="container">
         <header>
@@ -17,8 +18,8 @@
                     <div class="carlist-div2 ">
                         <span>{{obj.decorations}}</span>
                         <span class="cc-span">{{obj.number}}</span>
-                        <i class="carlist-i1"></i>
-                        <i class="carlist-i2"></i>
+                        <i class="carlist-i1" @click="cjian(index)"></i>
+                        <i class="carlist-i2" @click="cjia(index)"></i>
                         <i class="carlist-i3" @click="car_delete(index)"></i>
                     </div>
                 </li>
@@ -28,8 +29,8 @@
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
-                    <li><span class="list-money"></span></li>
-                    <li><span>确认菜单</span></li>
+                    <li><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
+                    <li><span @click="cmoney">确认菜单</span></li>
                 </ul>
             </div>
             <ul class="home-c">
@@ -47,17 +48,55 @@
     import router from '../../router'
     import foodslist from '../foodslist/foodslist.vue'
     import $ from 'jquery'
-    
     export default {
         data:function(){
             return {
                 carlist:[],
                 can:'',
-                time:'',
-                carnumber:''
+                time:'',      
+                carnumber:'',
+                zongshu:0,
+                zongjia:0,
+
+                // number:obj.number
             }
         },
         methods:{
+            cjian:function(index){
+                this.carlist[index].number--;
+                var ccc=JSON.stringify(this.carlist[index]);
+                http.post({
+                    url: 'carlistjian',
+                    params:{
+                            ccc:ccc
+                        }
+                }).then(res => {
+                   console.log(res);
+                })
+            },
+            cjia:function(index){
+                this.carlist[index].number++;
+                var cccc=JSON.stringify(this.carlist[index]);
+                 http.post({
+                    url: 'carlistjia',
+                    params:{
+                            cccc:cccc
+                        }
+                }).then(res => {
+                   console.log(res);
+                })
+            },
+             cmoney:function(){
+                for (var i=0;i<this.carlist.length;i++){
+                    this.zongshu+=this.carlist[i].number;
+                    this.zongjia+=this.carlist[i].number*this.carlist[i].price;
+                };
+            },
+             tanchuang() {
+                this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
+                  dangerouslyUseHTMLString: true
+                });
+            },
             qian:function(){
                 router.push({name:'foodslist'})
             },
@@ -91,7 +130,7 @@
             min = min<10 ? '0'+min : min;
             this.time = hour + ':' + min;           
          },
-        mounted:function(){
+        mounted:function(index){
             var self = this;
             http.get({
                 url: 'carlist'

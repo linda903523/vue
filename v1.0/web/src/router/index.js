@@ -9,13 +9,14 @@ import BackstageComponent from '../components/backstage/backstage.vue'
 import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
 import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
 import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
+import SerachComponent from '../components/serach/serach.vue'
+import MyComponent from '../components/my/my.vue'
 import LiangComponent from '../components/foodstype/liangcai.vue'
 import RecaiComponent from '../components/foodstype/recai.vue'
 import TiandianComponent from '../components/foodstype/tiandian.vue'
 import YingpingComponent from '../components/foodstype/yingping.vue'
-
+import ListComponent from '../components/list/list.vue'
 Vue.use(VueRouter)
-
 var router = new VueRouter({
 	routes: [
 		{
@@ -31,7 +32,6 @@ var router = new VueRouter({
                 path:'/liangcai',
                 name:'liangcai',
                 component:LiangComponent
-
             },{
                 path:'/recai',
                 name:'recai',
@@ -46,6 +46,10 @@ var router = new VueRouter({
                 name:'yingping',
                 component:YingpingComponent
 
+            },{
+                path:'serach',
+                name:'serach',
+                component:SerachComponent
             }]
 		},
         {
@@ -58,11 +62,21 @@ var router = new VueRouter({
 			name: 'login',
 			component: LoginComponent
 		},
+        {
+            path:'/list',
+            name:'list',
+            component:ListComponent  
+        },
 		{
 			path:'/carlist',
 			name:'carlist',
 			component:CarListComponent
 		},
+        {
+            path:'/my',
+            name:'my',
+            component:MyComponent
+        },
 		{
 			path:'/backstage',
 			name:'backstage',

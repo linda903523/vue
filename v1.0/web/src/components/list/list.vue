@@ -7,10 +7,24 @@
             <p>购物车</p>
         </header>
         <div class="body">
-            <h2 class="h1-1">菜单</h2>
-            <carlist></carlist>
-        </div>        
+            <ul class="list-ul-c">
+                <li>
+                   <h1 class="h1-1">热菜</h1>
+                    <carlist v-if=""></carlist>
+                </li>
+            </ul>
+        </div>
         <footer class="fl_footer">
+            <div>
+            <ul class="list-ul">
+                    <li ><span @click="qian">加菜</span></li>
+                    <li id="list-money" ><span>{{zongshu}}份<span class="list-cspan">共{{zongjia}}元</span></span><span></span></li>
+                    <li  @click="cmoney"><span>确认菜单</span></li>
+            </ul>
+            <h2 class="h1-1">菜单</h2>
+           <!--  <carlist></carlist> -->
+        </div>        
+        
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
@@ -37,13 +51,29 @@
         data:function(){
             return {
                 time:'',
-                carnumber:''
+                carnumber:'',
+                // zongshu:'',
+                // zongjia:'',
+                show:false,
             }
         },
         methods:{
             qian:function(){
+
+                this.show=true;
                 router.push({name:'foodslist'})
             },
+            // cmoney:function(){
+            //     var shuliang = this.$children[0].carlist;
+            //     var cshu=0;
+            //     var titole=0;
+            //     for(var i=0;i<shuliang.length;i++){
+            //         cshu+=shuliang[i].number;
+            //         titole+=shuliang[i].number*shuliang[i].jiage;
+            //     }
+            //     this.zongshu=cshu;
+            //     this.zongjia=titole;
+            // },
             foodslist:function(){
                 router.push({name:'foodslist'})
             }
@@ -56,9 +86,20 @@
             min = min<10 ? '0'+min : min;
             this.time = hour + ':' + min;
          },
+         mounted:function(){
+         },
          components:{
             foodslist,
             carlist,
-         }
+         },
+        //  directives: {
+        //     //注册一个局布指令 v-private
+        //     cmoney: function(element){
+                
+                
+        //     }
+        // }
+
     }
+
 </script>

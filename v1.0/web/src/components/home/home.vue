@@ -86,8 +86,6 @@
 				router.push({name:'yingping'})
 				$('.c-ul1').children().eq(4).addClass('active').siblings().removeClass('active')
 			},
-			gundong:function(){
-			},
 			tongxing:function(a){
 				this.$emit('liang',a);
 				this.canshu=JSON.stringify(a);

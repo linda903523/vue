@@ -7,18 +7,17 @@
             <p>购物车</p>
         </header>
         <div class="body">
-            <h2 class="h1-1">菜单</h2>
             <ul v-for="(obj,index) in carlist" class="carlist-ul">
                 <li>
                     <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
                         <span>{{obj.name}}</span>
                         <span class="carlist-money">{{obj.price}}元</span>
-                        <i class="carlist-i1"></i>
                     </div>
                     <div class="carlist-div2 ">
                         <span>{{obj.decorations}}</span>
                         <span class="cc-span">{{obj.number}}</span>
+                        <i class="carlist-i1"></i>
                         <i class="carlist-i2"></i>
                         <i class="carlist-i3" @click="car_delete(index)"></i>
                     </div>

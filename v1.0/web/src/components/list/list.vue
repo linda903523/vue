@@ -7,31 +7,23 @@
             <p>已点列表</p>
         </header>
         <div class="body">
-            <ul class="list-ul-c">
-                <li>
-                    <div><span>热菜</span><span></span></div>
-                    <carlist></carlist>
-                </li>
-                <li>
-                    <div><span>冷菜</span><span></span></div>
-                </li>
-                <li>
-                    <div><span>甜品</span><span></span></div>
-                </li>
-                <li>
-                    <div><span>饮料</span><span></span></div>
-                    <router-view></router-view>
-                </li>
-            </ul>
-        </div>
-        <footer>
+            <h2 class="h1-1">菜单</h2>
+            <carlist></carlist>
+        </div>        
+        <footer class="fl_footer">
             <div>
                 <ul class="list-ul">
-                    <li><span >加菜</span></li>
-                    <li><span></span></li>
+                    <li><span @click="qian">加菜</span></li>
+                    <li class="list-money"><span></span></li>
                     <li><span>确认菜单</span></li>
                 </ul>
             </div>
+            <ul class="home-c">
+                <li><i class="ci-4"></i><span @click="foodslist">点菜</span></li>
+                <li class="active"><i class="ci-5"></i><span>购物车</span></li>
+                <li><i class="ci-6"></i><span>订单</span></li>
+                <li><i class="ci-7"></i><span>我的</span></li>
+            </ul>
         </footer>
     </div>
 </template>
@@ -50,7 +42,10 @@
         },
         methods:{
             qian:function(){
-                router.push({name:'home'})
+                router.push({name:'foodslist'})
+            },
+            foodslist:function(){
+                router.push({name:'foodslist'})
             }
         },
         created: function () {

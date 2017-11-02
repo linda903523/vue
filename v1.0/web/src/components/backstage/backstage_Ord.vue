@@ -5,10 +5,10 @@
             <li  v-for="(obj, index) in dataset">
                 <img :src="obj.img"  alt="" />
                 <span>菜名:{{obj.name}}{{obj.state}}</span>
-                <p>备注:<i>空{{obj.decorations}}</i></p>
+                <p>备注:<i>{{obj.decorations}}</i></p>
 
-                <input type="button" value="等待" @click="wait" v-if="obj.state==1" style="color:red;"/>
-                <input type="button" value="准备" @click="plan" v-if="obj.state==2 || obj.state==1" />
+                <input type="button" value="等待" @click="wait" style="color:red;"/>
+                <input type="button" value="准备" @click="plan" />
                 <input type="button" value="完成" @click="complete" />
             </li>
             <h2 class="bill_h2">收起</h2>
@@ -30,14 +30,13 @@
         price:[],
         img:[],
         decorations:[],
-        shu:'',
       }
     },
     props: ['api', 'cols'],
     mounted: function(){
       var self = this;
       http.get({
-        url: 'select'
+        url: 'carlist'
       }).then(res => {
         self.dataset = res.data
       })
@@ -48,18 +47,14 @@
         console.log(this.shu)  
       },
       plan: function(e){
-        this.shu=2
         $(e.target).css({color:'red'})
         $(e.target).prev('input').css({display:'none'})
         $(e.target).prev('input').css({color:''})
-        console.log(this.shu)
-      
       },
       complete: function(e){
         this.shu=3
         $(e.target).css({color:'red'})
         $(e.target).prev('input').css({display:'none'})
-        console.log(this.shu)
       }
     },
     components: {

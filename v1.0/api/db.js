@@ -12,10 +12,11 @@ var pool = mysql.createPool({
 
 module.exports = {
     insert:function(tsql,_data,callback){
+        console.log(tsql)
         pool.query(tsql,function(error, rows){
             if(error) throw error;
-            console.log(rows);
-            callback(rows);
+            console.log(rows)
+            // callback(rows);
         })
     },
     select: function(tsql,callback){
@@ -27,7 +28,7 @@ module.exports = {
     delete: function(tsql,data,callback){
         pool.query(tsql, function(error, rows){
             if(error) throw error;
-            callback(rows);
+            //callback(rows);
         })
     },
     update: function(tsql,data,callback){

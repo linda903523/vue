@@ -5,10 +5,10 @@
 				<img :src="obj.img"/>
 				<div class="span-c">
 					<span class="name-c">{{obj.name}}</span>
-					<span class="jiage-c">{{obj.price}}</span>
+					<span class="jiage-c">{{obj.price}}元</span>
 				</div>
 				<span>{{obj.decorations}}</span>
-				<i class="tianjia-c" @click="tianjia(index)"></i>
+				<i class="tianjia-c" @click="jiaru(index)"></i>
 			</li>
 		</ul>
 		<loading v-show="loadingShow"></loading>
@@ -27,14 +27,26 @@
 			return {
 				dataset: [],
 				loadingShow: false,
-				colsArray,
+				colsArray
 			}
 		},
-		props: ['api', 'cols','toolbar','tools'],
+		props: ['api', 'cols','toolbar','tools','aa'],
 		methods:{
 			tianjia:function(index){
-				var bb= this.dataset[index];
+				var bb = this.dataset[index];
 				this.$emit('abc',bb)
+			},
+			jiaru:function(index){
+				var cc =JSON.stringify(this.dataset[index]);
+				var self = this;
+				http.post({
+					url:self.aa,
+					params:{
+						cc:cc
+					}
+				}).then(res=>{
+					console.log(res);
+				})
 			}
 		},
 		mounted(){

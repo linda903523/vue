@@ -1,9 +1,8 @@
 <template>
-	<datagrid api="select" cols="" @abc="aa" :tools="tools"></datagrid>
+	<datagrid aa="insert" api="select" cols="" @abc="aa" :tools="tools"></datagrid>
 </template>
 <script type="text/javascript">
 	import datagrid from '../datagrid/datagird.vue'
-
     import router from '../../router'
 	//generate three buttons
 	//$parent

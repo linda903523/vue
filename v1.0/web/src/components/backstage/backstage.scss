@@ -23,6 +23,7 @@
 
 .menu{padding:0 50px; background:skyblue; float:left; height:600px;
     li{line-height:50px; border-radius:5px 5px; width:100px; text-align:center; float:none;
+        >a{ border-radius:5px 5px; }
         p{height:0px; background:skyblue; display:none;
             &:hover{background:#fff; border-radius:5px 5px;}
         }

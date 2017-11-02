@@ -9,10 +9,9 @@
             <tr v-for="(obj, index) in dataset">
                 <td><img :src="obj.img" /></td>
                 <td v-for="(value, key) in obj" v-if="(colsArray[0] && colsArray.indexOf(key) > -1) || !colsArray[0]">{{value}}</td>
-                <td><button type="button" class="btn btn-danger">删除</button><button type="button" class="btn btn-danger">停售</button></td>
+                <td><button type="button" class="btn btn-danger" @click="back_dele(obj.id)">删除</button><button type="button" class="btn btn-danger">停售</button></td>
                 
             </tr>
-            
         </tbody>
     </table>
 
@@ -40,10 +39,24 @@
     mounted: function(){
       var self = this;
       http.get({
-        url: 'select'
+        url: 'back_select'
       }).then(res => {
         self.dataset = res.data
       })
+    },
+    methods: {
+      back_dele: function(dele){
+       var idx=dele
+        http.post({
+          url: 'back_delete',
+          params:{
+              id:idx
+            }
+        }).then(res => {
+          self.dataset = res.data
+        })
+        console.log(dele)
+      }
     },
     components: {
       

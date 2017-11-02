@@ -4,22 +4,22 @@
         <div class="row">
           <div class="col-xs-2">
             <span>菜名: </span>
-            <input type="text" class="form-control" value="name:菜名" v-model="Row.name">
-            <i>* 不能为空</i>
+            <input type="text" class="form-control" value="" v-model="Row.name">
+            <i v-if="Row.name == '' ">* 不能为空</i>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-2">
-            <span>价格: </span>
-            <input type="text" class="form-control" value="price:"v-model="Row.price">
-            <i>* 不能为空</i>
+            <span>图片: </span>
+            <input type="text" class="form-control" value=""v-model="Row.img">
+            <i v-if="Row.img == '' ">* 不能为空</i>
           </div>
         </div>    
         <div class="row">
           <div class="col-xs-2">
-            <span>图片: </span>
-            <input type="text" class="form-control" value="img:" v-model="Row.img">
-            <i>* 不能为空</i>
+            <span>价格: </span>
+            <input type="text" class="form-control" value="" v-model="Row.price">
+            <i v-if="Row.price == '' ">* 不能为空</i>
           </div>
         </div>
         <div class="row">
@@ -31,40 +31,34 @@
               <option>3</option>
               <option>4</option>
             </select>
-            <i>* 不能为空</i>
+            <i v-if="Row.type == '' ">* 不能为空</i>
           </div>
         </div>  
         <div class="row">
           <div class="col-xs-2">
             <span>描述: </span>
-            <input type="text" class="form-control" value="decorations:" v-model="Row.decorations">
-            <i>* 不能为空</i>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2">
-            <span>时间: </span>
-            <input type="text" class="form-control" value="addTime:" v-model="Row.addTime">
+            <input type="text" class="form-control" value="addTime:" v-model="Row.decorations">
           </div>
         </div>
     </form>
     <div class="btn_ton">
-        <button type="button" class="btn btn-danger" @click="Row_btn">添加</button>
+        <button type="button" class="btn btn-danger" @click="Row_btn" >添加</button>
     </div>
 </div> 
 </template>
 <script type="text/javascript">
-    
+    import http from '../../utils/httpClient.js'
     export default {
       data() {
         return {
           Row: {
             name:'',
-            price:'',
             img:'',
+            price:'',
             type:'',
-            addTime:'',
-            decorations:''
+            number:'1',
+            decorations:'',
+            addTime:'1'
           }
         }
       },
@@ -73,8 +67,20 @@
       },
       methods:{
         Row_btn:function(){
-          console.log(this.Row)
+          var ROW =JSON.stringify(this.Row);
+          console.log(ROW)
+          var self = this;
+          http.post({
+            url:'backstage',
+            params:{
+              cc:ROW
+            }
+          }).then(res=>{
+            console.log(res);
+          })
+          
         }
       }
     }
 </script>
+v-moble

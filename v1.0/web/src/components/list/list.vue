@@ -4,7 +4,7 @@
             <i class="ci-1"></i>
             <span class="ctime" >{{time}}</span>
             <i class="list-qian"  @click="qian"></i>
-            <p>已点列表</p>
+            <p>购物车</p>
         </header>
         <div class="body">
             <h2 class="h1-1">菜单</h2>

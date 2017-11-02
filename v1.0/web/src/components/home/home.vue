@@ -30,7 +30,7 @@
 		<footer>
 			<ul class="home-c">
 				<li class="active"><i class="ci-4"></i><span>点菜</span></li>
-				<li><i class="ci-5"></i><span @click="cgoodlist">购物车</span></li>
+				<li><i class="ci-5"></i><span @click="carlist">购物车</span></li>
 				<li><i class="ci-6"></i><span>订单</span></li>
 				<li><i class="ci-7"></i><span>我的</span></li>
 			</ul>
@@ -51,7 +51,6 @@
 			time:'',
 			zhuohao:'A区36号',
 			diancai:'点菜',
-			canshu:'',
 			toolList: null
 			}
 		},
@@ -64,11 +63,8 @@
 			this.time = hour + ':' + min;
 		 },
 		methods: {
-			cgoodlist(){
-				router.push({name:'list'})				
-			},
-			cgoodlist:function(){
-				router.push({name:'list', params: {canshu: this.canshu}})
+			carlist:function(){
+				router.push({name:'carlist'})				
 			},
 			liangcai:function(){
 				router.push({name:'liangcai'})
@@ -107,7 +103,6 @@
 			}
 		},
 		components:{
-			foodslist,
 		}
 	}	
 </script>

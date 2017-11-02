@@ -4,7 +4,7 @@ import LoginComponent from '../components/login/login.vue'
 import HomeComponent from '../components/home/home.vue'
 import FoodsListComponent from '../components/foodslist/foodslist.vue'
 import FoodsFormComponent from '../components/foodsform/foodsform.vue'
-import ListComponent from '../components/list/list.vue'
+import CarListComponent from '../components/carlist/carlist.vue'
 import BackstageComponent from '../components/backstage/backstage.vue'
 import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
 import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
@@ -28,7 +28,7 @@ var router = new VueRouter({
 				component: FoodsListComponent
 			},
             {
-                path:'/liangcai/:type',
+                path:'/liangcai',
                 name:'liangcai',
                 component:LiangComponent
 
@@ -59,9 +59,9 @@ var router = new VueRouter({
 			component: LoginComponent
 		},
 		{
-			path:'/list',
-			name:'list',
-			component:ListComponent
+			path:'/carlist',
+			name:'carlist',
+			component:CarListComponent
 		},
 		{
 			path:'/backstage',

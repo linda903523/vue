@@ -9,6 +9,16 @@ module.exports = {
                 response.send(rows);
             })  
         })
+        app.post("/delete",urlencode,function(request, response){
+            db.delete('delete from foods where id=' + request.body.id,function(result){
+                response.send(result);
+            })
+        })
+        app.post("/update",urlencode,function(request, response){
+            db.update('update foods set '+ request.body +' where id=' + request.body.id,function(result){
+                response.send(result);            
+            })
+        }) 
         app.get('/re_select', function(request, response){
             db.select('select * from foods where type=1', function(rows){
                 response.send(rows);
@@ -34,7 +44,7 @@ module.exports = {
                 response.send(rows);
             })  
         })
-        app.post("/insert",urlencode,function(request, response){
+        app.post("/car_insert",urlencode,function(request, response){
             var data = JSON.parse(request.body.cc);
             var string = '';
             var cname = '';
@@ -54,25 +64,23 @@ module.exports = {
                      var number = rows[0].number+1;
                      var idd = rows[0].id;
                     db.insert(`update carlist set number= ${number} where id=${idd}`,function(result){
-                    response.send(result);
-                })
+                        response.send(result);
+                    })
+                    return false;
                 }else {
-                    aa = string.substring(0,string.length-1);console.log(aa)
-                    db.insert(`insert into carlist (name,img,price,number,type,decorations) values (${aa}) `,function(result){
+                    aa = string.substring(0,string.length-1);
+                    db.insert(`insert into carlist (name,img,price,number,type,decorations) values (${aa})`,function(result){
                             response.send(result);
                         })
                 }
             })
-        })
-        app.post("/delete",urlencode,function(request, response){
-            db.delete('delete from foods where id=' + request.body.id,function(result){
+            return false;
+        })  
+        app.post("/car_delete",urlencode,function(request, response){
+            var data = JSON.parse(request.body.cc);
+            db.delete(`delete from carlist where id=${data.id}`,function(result){
                 response.send(result);
             })
-        })
-        app.post("/update",urlencode,function(request, response){
-            db.update('update foods set '+ request.body +' where id=' + request.body.id,function(result){
-                response.send(result);            
-            })
-        })       
+        })   
     }
 }

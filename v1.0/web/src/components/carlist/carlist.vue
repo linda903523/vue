@@ -147,8 +147,7 @@
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
                 }
             })
-            this.show=true;
-           
+            this.show=true;           
         }
     }
 </script>

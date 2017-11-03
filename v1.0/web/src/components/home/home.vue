@@ -74,7 +74,6 @@
 				router.push({name:'carlist'})				
 			},
 			list:function(){
-				// router.push({name: 'list', params: {number:1}})
 				router.push({name:'list'})				
 			},
 			my:function(){

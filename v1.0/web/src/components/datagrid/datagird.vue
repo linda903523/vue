@@ -20,6 +20,7 @@
 	import loading from '../loading/loading.vue'
 	import './datagird.scss'
 	import $ from 'jquery'
+	
 	export default {
 		data(){
 			var colsArray = this.cols ? this.cols.split(',') : [];
@@ -61,8 +62,4 @@
 			loading
 		}
 	}
-
 </script>
-
-
-

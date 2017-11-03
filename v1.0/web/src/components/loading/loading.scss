@@ -8,7 +8,6 @@
     opacity: .4;
     z-index: 2090;
 }
-
 .dk-spinner-three-bounce.dk-spinner {
     position: absolute;
     top: 53%;
@@ -19,7 +18,6 @@
     width: 70px;
     text-align: center;    
 }
-
 .dk-spinner-three-bounce div {
     width: 18px;
     height: 18px;
@@ -31,17 +29,14 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
-
 .dk-spinner-three-bounce .dk-bounce1 {
     -webkit-animation-delay: -.32s;
     animation-delay: -.32s;
 }
-
 .dk-spinner-three-bounce .dk-bounce2 {
     -webkit-animation-delay: -.16s;
     animation-delay: -.16s;
 }
-
 @-webkit-keyframes dk-threeBounceDelay{
     0%,
     100%,

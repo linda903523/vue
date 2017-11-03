@@ -135,7 +135,7 @@ module.exports = {
                 response.send(rows);
             })  
         })
-          app.post("/review_insert",urlencode,function(request, response){
+        app.post("/review_insert",urlencode,function(request, response){
             var data = request.body;
             var zifu = '';
              for(var key in data){
@@ -143,9 +143,8 @@ module.exports = {
             }
             aa = zifu.substring(0,zifu.length-1);
             db.insert(`insert into review (content,star) values (${aa})`,function(result){
-                    response.send(result);
-                })
-        })  
-        
+                response.send(result);
+            })
+        })         
     }
 }

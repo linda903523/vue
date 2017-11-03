@@ -35,10 +35,6 @@
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
                 <li class="active"><i class="ci-5"></i><span>购物车</span></li>
-
-               <!--  <li><i class="ci-6"></i><span>订单</span></li>
-                <li @click="cmy"><i class="ci-7"></i><span>我的</span></li>
- -->
                 <li @click="list"><i class="ci-6"></i><span>订单</span></li>
                 <li @click="my"><i class="ci-7"></i><span>我的</span></li>
             </ul>
@@ -50,6 +46,7 @@
     import './carlist.scss'
     import router from '../../router'
     import $ from 'jquery'
+    
     export default {
         data:function(){
             return {
@@ -83,11 +80,10 @@
                             cccc:cccc
                         }
                 }).then(res => {
-                   console.log(res);
+                   // console.log(res);
                 })
             },
-
-             cmoney:function(){
+            cmoney:function(){
                 this.show=true;
                 for (var i=0;i<this.carlist.length;i++){
                     this.zongshu+=this.carlist[i].number;

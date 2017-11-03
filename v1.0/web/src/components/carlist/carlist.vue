@@ -12,7 +12,7 @@
                     <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
                         <span>{{obj.name}}</span>
-                        <span class="carlist-money">{{obj.price}}元</span>
+                        <span  class="carlist-money">{{obj.price}}元</span>
                     </div>
                     <div class="carlist-div2 ">
                         <span>{{obj.decorations}}</span>
@@ -28,13 +28,17 @@
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
-                    <li><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
+                    <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
                     <li><span @click="cmoney">确认菜单</span></li>
                 </ul>
             </div>
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
                 <li class="active"><i class="ci-5"></i><span>购物车</span></li>
+
+               <!--  <li><i class="ci-6"></i><span>订单</span></li>
+                <li @click="cmy"><i class="ci-7"></i><span>我的</span></li>
+ -->
                 <li @click="list"><i class="ci-6"></i><span>订单</span></li>
                 <li @click="my"><i class="ci-7"></i><span>我的</span></li>
             </ul>
@@ -53,7 +57,8 @@
                 can:'',
                 time:'',
                 zongshu:0,
-                zongjia:0
+                zongjia:0,
+                show:false
             }
         },
         methods:{
@@ -81,7 +86,9 @@
                    console.log(res);
                 })
             },
-            cmoney:function(){
+
+             cmoney:function(){
+                this.show=true;
                 for (var i=0;i<this.carlist.length;i++){
                     this.zongshu+=this.carlist[i].number;
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
@@ -114,6 +121,11 @@
                 }).then(res => {
                     //console.log(res)
                 })
+            }, 
+            cmy:function(){
+                console.log(99);
+                this.show=true;
+                router.push({name:'my'})
             }
         },
         components: {

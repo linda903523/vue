@@ -32,6 +32,10 @@
 		<footer>
 			<ul class="home-c">
 				<li class="active"><i class="ci-4"></i><span>点菜</span></li>
+				<!-- <li><i class="ci-5"></i><span @click="carlist">购物车</span></li>
+				<li @click="list"><i class="ci-6"></i><span>订单</span></li>
+				<li @click="cmy"><i class="ci-7"></i><span>我的</span></li> -->
+
 				<li @click="carlist"><i class="ci-5"></i><span>购物车</span></li>
 				<li @click="list"><i class="ci-6"></i><span>订单</span></li>
 				<li @click="my"><i class="ci-7"></i><span>我的</span></li>
@@ -47,7 +51,6 @@
 	import foodslist from '../foodslist/foodslist.vue'
 	import http from '../../utils/httpClient.js'
 	import $ from 'jquery'
-
 	export default {
 		data(){
 			return {
@@ -74,6 +77,7 @@
 			carlist:function(){
 				router.push({name:'carlist'})				
 			},
+
 			list:function(){
 				router.push({name:'list'})				
 			},
@@ -138,10 +142,19 @@
 					$('.c-ul1').removeClass('fixed');
 					$('#datagrid').css({marginTop:'0px'});
 				}
-			}			
+			}
+			// ,
+			// cmy:function(){
+   //              console.log(99);
+   //              this.show=true;
+   //              router.push({name:'my'})
+   //          }
+          
 		},
 		components:{
 			foodslist,
+			
 		}
+		
 	}	
 </script>

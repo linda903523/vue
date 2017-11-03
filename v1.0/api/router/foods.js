@@ -1,7 +1,6 @@
 var db = require('../db.js');
 var bodyparser = require('body-parser');
 var urlencode = bodyparser.urlencoded({extended: false});
-
 module.exports = {
     Food:function(app){
         app.get('/select', function(request, response){
@@ -126,5 +125,27 @@ module.exports = {
                 response.send(result);
             })
         })   
+        app.get('my_select', function(request, response){
+            db.select('select * from foods', function(rows){
+                response.send(rows);
+            }) 
+        })
+         app.get('/pinglun', function(request, response){
+            db.select('select * from review', function(rows){
+                response.send(rows);
+            })  
+        })
+          app.post("/review_insert",urlencode,function(request, response){
+            var data = request.body;
+            var zifu = '';
+             for(var key in data){
+                zifu+='"'+data[key]+'"'+','
+            }
+            aa = zifu.substring(0,zifu.length-1);
+            db.insert(`insert into review (content,star) values (${aa})`,function(result){
+                    response.send(result);
+                })
+        })  
+        
     }
 }

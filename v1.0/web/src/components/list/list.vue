@@ -26,7 +26,7 @@
                 </ul>
             </div>
         </div>
-        <input type="submit" value="提交订单" @click="fl_submit">
+        <input type="submit" value="提交订单">
         <footer class="list_footer">
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
@@ -93,17 +93,6 @@
                     self.fl_list = res.data
                 })
             
-            },
-            fl_submit:function(){
-                var self = this;
-                http.get({
-                    url: 'carlist_update',
-                    parmas:{
-                        self.tableNum
-                    }
-                }).then(res => {
-                    self.fl_list = res.data
-                })                
             }
         },
         components:{

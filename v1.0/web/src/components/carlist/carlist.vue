@@ -119,7 +119,6 @@
                 })
             }, 
             cmy:function(){
-                console.log(99);
                 this.show=true;
                 router.push({name:'my'})
             }

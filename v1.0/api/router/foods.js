@@ -113,7 +113,7 @@ module.exports = {
                 }
             })
             return false;
-        })  
+        })
         app.post('/serach', urlencode,function(request, response){
             var cname = request.body.name;
              db.select(`select * from foods where name like '%${cname}%'`,function(rows){

@@ -15,9 +15,23 @@ $(document).on('click',function(e){
         $(e.target).css({display:'none'})
         
     }
-    if($(e.target).val() == '准备' || $(e.target).val() == '完成'){
-        $(e.target).css({color:'red'})
+    if($(e.target).val() == '准备'){
+        $(e.target).css({backgroundColor:'#fc5000'})
         $(e.target).prev('input').css({display:'none'})
+    }else if($(e.target).val() == '完成'){
+        $(e.target).css({backgroundColor:'#fc5000'})
+        $(e.target).prevAll('input').css({display:'none'})
     }
 
 })
+
+
+// var ws;
+// ws = new WebSocket("ws://10.3.131.14:888");
+// ws.onmessage = function(_msg){
+//     console.log(_msg.data);
+// }  
+
+// $(":button").click(function(_me){
+//     ws.send($(this).val());
+// })

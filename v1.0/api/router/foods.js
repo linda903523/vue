@@ -107,7 +107,7 @@ module.exports = {
                     return false;
                 }else {
                     aa = string.substring(0,string.length-1);
-                    db.insert(`insert into carlist (name,img,price,number,type,decorations) values (${aa})`,function(result){
+                    db.insert(`insert into carlist (name,img,price,number,type,decorations,status) values (${aa})`,function(result){
                             response.send(result);
                         })
                 }

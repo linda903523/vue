@@ -44,15 +44,14 @@
 .container .body .ctimg-1{width:100%;}
 .container .body .c-ul1{line-height:100px;}
 .active{color:#F76D2F;}
-.container footer{height:170px;border-top:1px solid #ccc;}
+.container footer{height:150px;border-top:1px solid #ccc;}
 .container .body .c-ul1,.container footer .home-c{
     display:flex;
     justify-content: space-around;
     height:150px;
-
 }
 .container footer ul li{
-    margin-top:50px;
+    margin-top:35px;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -90,7 +89,7 @@
     background-image: url("../../img/1.png");
     background-size:1300px;
     margin:0 auto;
-    background-position:-463px -3px;  
+    background-position:-463px 0px;  
 }
 
 .fixed{position:fixed;top:190px;left:0;z-index:999;background: #fff;width:100%;}

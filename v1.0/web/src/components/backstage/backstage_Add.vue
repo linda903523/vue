@@ -43,7 +43,6 @@
     </form>
     <div class="btn_ton">
         <button type="button" class="btn btn-danger" @click="Row_btn" >添加</button>
-        <button-counter v-on:dk="incrementTotal"></button-counter>
     </div>
 </div> 
 </template>

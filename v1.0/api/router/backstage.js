@@ -16,8 +16,19 @@ module.exports = {
             })
         })
         app.post("/back_update",urlencode,function(request, response){
-            db.update('update goods set '+ request.body +' where id=' + request.body.id,function(result){
-                response.send(result);            
+            
+            var DD=request.body.dd
+
+            var cname = request.body.myname;
+            console.log(DD)
+            
+            db.select(`select * from carlist where name like '%${cname}%'`,function(rows){
+                console.log(rows)
+                var dd = DD;
+                var idd = rows[0].id;
+                db.insert(`update carlist set dd= ${dd} where id=${idd}`,function(result){
+                    response.send(result);
+                })
             })
         })
         app.post("/backstage",urlencode,function(request, response){

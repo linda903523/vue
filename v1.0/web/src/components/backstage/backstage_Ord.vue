@@ -4,12 +4,12 @@
         <ul>
             <li  v-for="(obj, index) in dataset">
                 <img :src="obj.img"  alt="" />
-                <span>菜名:{{obj.name}}{{obj.state}}</span>
+                <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
                 <p>备注:<i>{{obj.decorations}}</i></p>
 
-                <input type="button" value="等待" @click="wait" style="color:red;"/>
-                <input type="button" value="准备" @click="plan" />
-                <input type="button" value="完成" @click="complete" />
+                <input type="button" value="等待" @click="wait(obj.name)" style="color:red;"/>
+                <input type="button" value="准备" @click="plan(obj.name)"/>
+                <input type="button" value="完成" @click="complete(obj.name)" />
             </li>
             <h2 class="bill_h2">收起</h2>
         </ul>
@@ -43,20 +43,45 @@
     },
     methods: {
       wait: function(e){
-        $(e.target).css({color:'red'})
-        console.log(this.$store.state.backstage.incrementTotal('准备'))  
+        var idx=e
+        var self = this;
+        http.post({
+        url: 'back_update',
+        params:{
+              myname:idx,
+              dd:1
+            }
+        }).then(res => {
+          self.dataset = res.data
+        })
+          
       },
       plan: function(e){
-        $(e.target).css({color:'red'})
-        $(e.target).prev('input').css({display:'none'})
-        $(e.target).prev('input').css({color:''})
-        this.$store.state.backstage.incrementTotal('准备')
+        console.log(e)
+        var idx=e
+        var self = this;
+        http.post({
+        url: 'back_update',
+        params:{
+              myname:idx,
+              dd:2
+            }
+        }).then(res => {
+          self.dataset = res.data
+        })
       },
       complete: function(e){
-        this.shu=3
-        $(e.target).css({color:'red'})
-        $(e.target).prev('input').css({display:'none'})
-        this.$store.state.backstage.incrementTotal('完成')
+        var idx=e
+        var self = this;
+        http.post({
+        url: 'back_update',
+        params:{
+              myname:idx,
+              dd:3
+            }
+        }).then(res => {
+          self.dataset = res.data
+        })
       }
     },
     components: {

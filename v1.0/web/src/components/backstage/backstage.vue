@@ -16,7 +16,6 @@
                     <li @click="adm">
                         <router-link to="/AdmFood">管理菜单</router-link>
                     </li>
-                    <button v-on:dk="incrementTotal" id="cssa"></button>
                 </ul>
             </div>
             <div class="bill">            
@@ -36,13 +35,6 @@
     import './backstage.scss';
     
     export default {
-        state: {
-            name:'home',
-            incrementTotal: function(htm){
-            console.log($('#cssa'))
-              $('#cssa').html(htm)
-            }
-        },
         data() {
             return {
                 total:0
@@ -60,10 +52,6 @@
             adm: function(e){
                 $(e.target).css({background:'#fff'})
                 $(e.target).parent('li').siblings('li').find('a').css({background:''})
-            },
-            incrementTotal: function(){
-            console.log($('#cssa'))
-              $('#cssa').html('hhh')
             }
         }
     }

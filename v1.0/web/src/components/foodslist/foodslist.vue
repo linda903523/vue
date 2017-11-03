@@ -1,5 +1,4 @@
 <template>
-
 	<datagrid aa="car_insert" api="select" cols="" @abc="aa" :tools="tools"></datagrid>
 </template>
 <script type="text/javascript">

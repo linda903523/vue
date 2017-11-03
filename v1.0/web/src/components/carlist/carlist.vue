@@ -1,4 +1,3 @@
-
 <template>
     <div class="container">
         <header>
@@ -25,7 +24,7 @@
                 </li>
             </ul>
         </div>        
-        <footer class="fl_footer">
+        <footer class="car_footer">
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
@@ -34,10 +33,10 @@
                 </ul>
             </div>
             <ul class="home-c">
-                <li><i class="ci-4"></i><span @click="foodslist">点菜</span></li>
+                <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
                 <li class="active"><i class="ci-5"></i><span>购物车</span></li>
-                <li><i class="ci-6"></i><span>订单</span></li>
-                <li><i class="ci-7"></i><span>我的</span></li>
+                <li @click="list"><i class="ci-6"></i><span>订单</span></li>
+                <li @click="my"><i class="ci-7"></i><span>我的</span></li>
             </ul>
         </footer>
     </div>
@@ -46,19 +45,15 @@
     import http from '../../utils/httpClient.js'
     import './carlist.scss'
     import router from '../../router'
-    import foodslist from '../foodslist/foodslist.vue'
     import $ from 'jquery'
     export default {
         data:function(){
             return {
                 carlist:[],
                 can:'',
-                time:'',      
-                carnumber:'',
+                time:'',
                 zongshu:0,
-                zongjia:0,
-
-                // number:obj.number
+                zongjia:0
             }
         },
         methods:{
@@ -86,19 +81,25 @@
                    console.log(res);
                 })
             },
-             cmoney:function(){
+            cmoney:function(){
                 for (var i=0;i<this.carlist.length;i++){
                     this.zongshu+=this.carlist[i].number;
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
-                };
+                }
             },
-             tanchuang() {
+            tanchuang:function(){
                 this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
                   dangerouslyUseHTMLString: true
-                });
+                })
             },
             qian:function(){
                 router.push({name:'foodslist'})
+            },
+            list:function(){
+                router.push({name:'list'})              
+            },
+            my:function(){
+                router.push({name:'my'})              
             },
             foodslist:function(){
                 router.push({name:'foodslist'})
@@ -116,11 +117,6 @@
             }
         },
         components: {
-            foodslist
-        },
-        directives:{
-            aa:function(){
-            }
         },
         created: function () {
             var now = new Date();

@@ -21,7 +21,7 @@ Vue.use(VueRouter)
 var router = new VueRouter({
 	routes: [
 		{
-			path: '/',
+			path: '/home',
 			name: 'home',
 			component: HomeComponent,
 			children: [{
@@ -59,7 +59,7 @@ var router = new VueRouter({
             component: FoodsFormComponent
         },
 		{
-			path: '/login',
+			path: '/',
 			name: 'login',
 			component: LoginComponent
 		},

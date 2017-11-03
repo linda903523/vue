@@ -75,9 +75,9 @@ module.exports = {
                 }
             }
             db.select(`select * from foods where name like '%${cname}%'`,function(rows){
-                     var number = rows[0].number+1;
-                     var idd = rows[0].id;
-                    db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
+                var number = rows[0].number+1;
+                var idd = rows[0].id;
+                db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
                     response.send(result);
                 })
             })

@@ -36,10 +36,6 @@
 		},
 		methods: {
 			login: function(event){
-				// if($('form').valid()){
-				// 	this.$store.dispatch('login', {username: this.username, password: this.password})
-				// }
-				// var cc = JSON.stringify({username:this.username,password:this.password});
 				var self = this;
                 http.post({
                     url: 'login',
@@ -48,8 +44,13 @@
                         password:self.password
                     }
                 }).then(res => {
-                    //console.log(res)
-                    router.push({name:'home'})
+                	if(res.data.status){
+                    	router.push({name:'home'})
+                    	alert('登录成功');            		
+                	}else{
+                		alert('登录出错');
+                		return false;
+                	}
                 })
 			}
 		},

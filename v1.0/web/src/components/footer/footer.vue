@@ -21,7 +21,7 @@ export default {
         my:function(){
                 this.show=true;
                 router.push({name:'my'})
-                // console.log();
+                
             }
 
     }

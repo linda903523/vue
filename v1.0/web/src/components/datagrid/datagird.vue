@@ -8,13 +8,13 @@
 					<span class="jiage-c">{{obj.price}}元</span>
 				</div>
 				<span>{{obj.decorations}}</span>
+				<i class="ai"></i>
 				<i class="tianjia-c" @click="jiaru(index)"></i>
 			</li>
 		</ul>
 		<loading v-show="loadingShow"></loading>
 	</div>
 </template>
-
 <script type="text/javascript">
 	import http from '../../utils/httpClient.js'
 	import loading from '../loading/loading.vue'
@@ -29,7 +29,7 @@
 				colsArray
 			}
 		},
-		props: ['api', 'cols','toolbar','tools','aa'],
+		props: ['api', 'cols','toolbar','tools','aa','my'],
 		methods:{
 			tianjia:function(index){
 				var bb = this.dataset[index];

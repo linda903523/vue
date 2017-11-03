@@ -1,1 +1,29 @@
-.container .c-my{}
+.container .ci-7{
+    width: 44px;
+    height: 44px;
+    background-image: url("../../img/2.png");
+    background-size:1300px;
+    margin:0 auto;
+    background-position:-463px -3px;  
+    background-color:#fc5000;
+}
+.container .pinglun-ul span{display:block;}
+.container .pinglun-ul .pinglun-li{width:100%;position:relative;padding:40px 0;}
+.container .pinglun-ul .pinglun-span1{padding:10px;}
+.container .pinglun-ul .pinglun-span2{position:absolute;right:30px;}
+.container .my-ul .li {display:block;width:100%;border-bottom:1px solid #ccc;position:relative;}
+.container .my-ul .li .my-span{position:absolute;right:60px;top:35px;}
+.container .my-ul .my-li1{float:none;}
+.container .my-ul h1{height:100px;line-height:100px;}
+
+.container .my-textarea{margin-top:30px;border:1px solid #000;width:100%;height:300px;}
+.container .ai{
+    width: 60px;
+    height: 60px;
+    background-image: url("../../img/1.png");
+    background-size:1300px;
+    position:absolute;
+    background-position:109px 303px;
+    bottom: 28px;
+    right: 90px;
+}

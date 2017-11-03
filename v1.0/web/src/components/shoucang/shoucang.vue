@@ -1,16 +1,19 @@
 <template>
-    <datagrid aa="car_insert" api="select" my="my_select" cols="" :tools="tools"></datagrid>
+    <ul class="love-ul">
+       <li v-for="(obj,index) in love">
+            <img :src="obj.img"/>
+            <span id="love-span"><strong>{{obj.name}}</strong></span>
+            <span style="font-size:30px;">{{obj.decorations}}</span>
+            <span style="color:red;">{{obj.price}}元</span>
+       </li>
+    </ul> 
 </template>
 <script type="text/javascript">
-    import datagrid from '../datagrid/datagird.vue'
-    import router from '../../router'
+    import http from '../../utils/httpClient.js'
     export default {
-        components: {
-            datagrid
-        },
         data(){
             return {
-                carlist:[],
+                love:[],
                 tools: {
                     add: {
                         text: '添加',
@@ -22,6 +25,17 @@
             }
         },
         methods:{
+
+        },
+        mounted:function(){
+            var self = this;
+            http.get({
+                url: 'my_select'
+            }).then(res => {
+                self.love = res.data
+                console.log(self.love);
+            })
+            
         }
     }
 </script>

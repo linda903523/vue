@@ -8,7 +8,7 @@
 					<span class="jiage-c">{{obj.price}}元</span>
 				</div>
 				<span>{{obj.decorations}}</span>
-				<i class="ai"></i>
+				<i class="ai" @click="ai(index)"></i>
 				<i class="tianjia-c" @click="jiaru(index)"></i>
 			</li>
 		</ul>
@@ -47,6 +47,19 @@
 					}
 				}).then(res=>{
 					console.log(res);
+				})
+			},
+			ai:function(index){
+				var cu =JSON.stringify(this.dataset[index]);
+				http.post({
+					url:'ai_insert',
+					params:{
+						cu:cu
+					}
+				}).then(res=>{
+					if(res.data==false){
+						alert('亲，该商品已收藏了');
+					}
 				})
 			}
 		},

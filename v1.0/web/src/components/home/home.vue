@@ -40,7 +40,6 @@
 	</div>
 </template>
 <script type="text/javascript">
-	//$children
 	import Vue from 'vue'
 	import './home.scss'
 	import router from '../../router'
@@ -74,8 +73,8 @@
 			carlist:function(){
 				router.push({name:'carlist'})				
 			},
-
 			list:function(){
+				// router.push({name: 'list', params: {number:1}})
 				router.push({name:'list'})				
 			},
 			my:function(){

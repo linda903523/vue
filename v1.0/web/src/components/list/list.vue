@@ -6,9 +6,9 @@
             <i class="list-qian"  @click="qian"></i>
             <p class="c-my">我的订单</p>
         </header>
-        <div class="body">
-            <div>
-                <h3>桌号：<input type="text" v-model="tableNum"></h3>
+       <div class="body">
+
+                <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
                 <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
                     <li>
                         <img :src="obj.img" class="img-carlist"/>
@@ -24,7 +24,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+           
         </div>
         <input type="submit" value="提交订单">
         <footer class="list_footer">
@@ -59,6 +59,7 @@
             return {
                 time:'',
                 fl_list:[],
+                hao:'',
                 tableNum:''
             }
         },
@@ -96,6 +97,7 @@
             }).then(res => {
                 self.fl_list = res.data
             })
+            console.log()
         }
     }
 </script>

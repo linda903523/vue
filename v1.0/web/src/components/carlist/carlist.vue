@@ -7,7 +7,7 @@
             <p>购物车</p>
         </header>
         <div class="body">
-            <ul v-for="(obj,index) in carlist" class="carlist-ul">
+            <ul v-for="(obj,index) in carlist" class="carlist-ul" v-if="show">
                 <li>
                     <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
@@ -29,7 +29,7 @@
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
                     <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
-                    <li><span @click="cmoney">确认菜单</span></li>
+                    <li><span @click="cmoney">确认下单</span></li>
                 </ul>
             </div>
             <ul class="home-c">
@@ -55,7 +55,8 @@
                 time:'',
                 zongshu:0,
                 zongjia:0,
-                show:false
+                show:false,
+                suiji:''
             }
         },
         methods:{
@@ -70,6 +71,8 @@
                 }).then(res => {
                    console.log(res);
                 })
+               this.zongjia=this.zongjia-this.carlist[index].price;
+               this.zongshu=this.zongshu-1;
             },
             cjia:function(index){
                 this.carlist[index].number++;
@@ -82,13 +85,13 @@
                 }).then(res => {
                    // console.log(res);
                 })
+                this.zongjia=this.zongjia+this.carlist[index].price;
+               this.zongshu=this.zongshu+1;
             },
-            cmoney:function(){
-                this.show=true;
-                for (var i=0;i<this.carlist.length;i++){
-                    this.zongshu+=this.carlist[i].number;
-                    this.zongjia+=this.carlist[i].number*this.carlist[i].price;
-                }
+             cmoney:function(){
+                var res = parseInt(Math.random()*1000000000);
+                this.suiji=res;
+                router.push({name: 'li', params: {number: this.suiji}});
             },
             tanchuang:function(){
                 this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
@@ -99,7 +102,7 @@
                 router.push({name:'foodslist'})
             },
             list:function(){
-                router.push({name:'list'})              
+                router.push({name: 'list'})              
             },
             my:function(){
                 router.push({name:'my'})              
@@ -139,7 +142,13 @@
                 url: 'carlist'
             }).then(res => {
                 self.carlist = res.data
+                for (var i=0;i<this.carlist.length;i++){
+                    this.zongshu+=this.carlist[i].number;
+                    this.zongjia+=this.carlist[i].number*this.carlist[i].price;
+                }
             })
+            this.show=true;
+           
         }
     }
 </script>

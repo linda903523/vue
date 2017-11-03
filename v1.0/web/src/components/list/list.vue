@@ -7,7 +7,6 @@
             <p class="c-my">我的订单</p>
         </header>
        <div class="body">
-
                 <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
                 <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
                     <li>
@@ -24,7 +23,6 @@
                         </div>
                     </li>
                 </ul>
-           
         </div>
         <input type="submit" value="提交订单">
         <footer class="list_footer">
@@ -41,7 +39,6 @@
     import router from '../../router'
     import './list.scss'
     import http from '../../utils/httpClient.js'
-    
     export default {
         state: {
             name:'home',

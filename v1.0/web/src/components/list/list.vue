@@ -10,7 +10,6 @@
             <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
             <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
                 <li>
-                    <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
                         <p>菜名：<span>{{obj.name}}</span></p>
                         <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
@@ -24,7 +23,7 @@
                 </li>
             </ul>          
         </div>
-        <input type="submit" value="提交订单">
+        <input type="submit" value="提交订单" style="backgroundColor:green;color:#fff;">
         <footer class="list_footer">
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
@@ -89,6 +88,14 @@
         components:{
         },
         mounted:function(index){
+            var self = this;
+            http.get({
+                url: 'carlist'
+            }).then(res => {
+                self.fl_list = res.data
+            })
+        },
+        updated:function(){
             var self = this;
             http.get({
                 url: 'carlist'

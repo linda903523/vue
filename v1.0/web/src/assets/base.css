@@ -5,7 +5,7 @@ ol,ul{margin:0; padding:0;}
 ul,ol,li{list-style:none;}
 ul{overflow: hidden;}
 img{display:block;border:0 none;}
-li{float:left;margin:10px;}
+li{margin:10px;}
 input{outline:none;border:0 none;}
 body{font-family:"微软雅黑";height: 100%;font-size:10px;}
 a{text-decoration:none;display:block;}

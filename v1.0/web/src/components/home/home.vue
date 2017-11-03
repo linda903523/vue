@@ -46,18 +46,19 @@
 	import foodslist from '../foodslist/foodslist.vue'
 	import http from '../../utils/httpClient.js'
 	import $ from 'jquery'
+	
 	export default {
 		data(){
 			return {
-			time:'',
-			zhuohao:'A区36号',
-			diancai:'点菜',
-			canshu:'',
-			toolList: null,
-			message:'',
-			showw:true,
-			show:false,
-			 serachnumber:[]
+				time:'',
+				zhuohao:'A区36号',
+				diancai:'点菜',
+				canshu:'',
+				toolList: null,
+				message:'',
+				showw:true,
+				show:false,
+				 serachnumber:[]
 			}
 		},
 		created: function () {
@@ -138,18 +139,10 @@
 					$('#datagrid').css({marginTop:'0px'});
 				}
 			}
-			// ,
-			// cmy:function(){
-   //              console.log(99);
-   //              this.show=true;
-   //              router.push({name:'my'})
-   //          }
           
 		},
 		components:{
-			foodslist,
-			
-		}
-		
+			foodslist			
+		}		
 	}	
 </script>

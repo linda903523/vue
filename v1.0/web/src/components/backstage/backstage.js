@@ -15,6 +15,9 @@ $(document).on('click',function(e){
         $(e.target).css({display:'none'})
         
     }
-    
+    if($(e.target).val() == '准备' || $(e.target).val() == '完成'){
+        $(e.target).css({color:'red'})
+        $(e.target).prev('input').css({display:'none'})
+    }
 
 })

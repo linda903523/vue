@@ -1,5 +1,6 @@
 var food = require('./foods.js');
 var user = require('./users.js');
+var backstage = require('./backstage.js');
 var path = require('path');
 
 module.exports = {
@@ -20,6 +21,7 @@ module.exports = {
 
         user.User(app);
         food.Food(app);
+        backstage.Backstage(app);
 
         app.listen(88);
     }

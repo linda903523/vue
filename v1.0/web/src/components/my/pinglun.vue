@@ -7,25 +7,25 @@
     </ul>
 </template>
 <script type="text/javascript">
-import http from '../../utils/httpClient.js'
-export default {
-    data:function(){
-        return {
-            pingdata:[],
-        }
-    },
-     methods:{
-        fa:function(){
-        }
-    },
-    mounted:function(){
+    import http from '../../utils/httpClient.js'
+    
+    export default {
+        data:function(){
+            return {
+                pingdata:[],
+            }
+        },
+         methods:{
+            fa:function(){
+            }
+        },
+        mounted:function(){
             var self = this;
             http.get({
                 url: 'pinglun'
             }).then(res => {
-                console.log(res.data);
                 self.pingdata = res.data
             })
         }
-}
+    }
 </script>

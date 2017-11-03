@@ -9,19 +9,20 @@
     </ul>
 </template>
 <script type="text/javascript">
-import http from '../../utils/httpClient.js'
-export default {
-    data:function(){
-        return {
-            serachnumber:[]
-        }
-    },
-    methods:{
-    },
-    mounted:function(){
-        this.serachnumber = this.$parent.serachnumber;
-    } 
-}
+    import http from '../../utils/httpClient.js'
+   
+    export default {
+        data:function(){
+            return {
+                serachnumber:[]
+            }
+        },
+        methods:{
+        },
+        mounted:function(){
+            this.serachnumber = this.$parent.serachnumber;
+        } 
+    }
 </script>
 <style>
     .serach li{width:100%;}

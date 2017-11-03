@@ -6,14 +6,14 @@
         <div id="main" >            
             <div class="menu">
                 <ul>
-                    <li>
+                    <li @click="ord">
                         <router-link to="/OrdFood">顾客点餐</router-link> 
                     </li>
-                    <li>
+                    <li @click="add">
                         <router-link to="/AddFood">添加菜单</router-link> 
                         
                     </li>
-                    <li>
+                    <li @click="adm">
                         <router-link to="/AdmFood">管理菜单</router-link>
                     </li>
                 </ul>
@@ -35,6 +35,24 @@
     import './backstage.scss';
     
     export default {
-        
+        data() {
+            return {
+                total:0
+            }
+        },
+        methods: {
+            ord: function(e){
+                $(e.target).css({background:'#fff'})
+                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+            },
+            add: function(e){
+                $(e.target).css({background:'#fff'})
+                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+            },
+            adm: function(e){
+                $(e.target).css({background:'#fff'})
+                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+            }
+        }
     }
 </script>

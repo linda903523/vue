@@ -20,13 +20,11 @@
                     <h1 @click="chuxian">欢迎评分</h1><span class="my-span">></span>
                 </li>
                 <div class="my-div" v-if="showww">
-                    <fen ></fen>
+                    <fen></fen>
                     <input type="button" value="提交" @click="tijiao">
                 </div>
             </ul>
-        </div>
-
-   
+        </div>   
         <footer class="my_footer">
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
@@ -38,13 +36,13 @@
     </div>
 </template>
 <script type="text/javascript">
-
     import http from '../../utils/httpClient.js'
     import router from '../../router'
     import shoucang from '../shoucang/shoucang.vue'
-    import pinglun from '../pinglun/pinglun.vue'
-    import pingfen from '../pingfen/pingfen.vue'
+    import pinglun from './pinglun.vue'
+    import pingfen from './pingfen.vue'
     import './my.scss'
+    
     export default {
        data:function(){
             return {
@@ -62,7 +60,6 @@
             min = min<10 ? '0'+min : min;
             this.time = hour + ':' + min;           
          },
-
         methods:{
             foodslist:function(){
                 router.push({name:'foodslist'})
@@ -74,10 +71,6 @@
             carlist:function(){
                 router.push({name:'carlist'})  
             },
-            // my:function(){
-            //     this.show=true;
-            //     router.push({name:'my'})
-            // },
             myshow:function(){
                 this.show= this.show==true ? false : true
             },
@@ -91,16 +84,16 @@
                 this.showww= this.showww==true ? false : true
             },
             tijiao:function(){
-                var message=this.$children[0].message;
-                console.log(message);
-                    http.post({
+                var message = this.$children[0].message;
+                http.post({
                     url: 'review_insert',
                     params:{
                         content:message,
                         star:1
                     }
-                    }).then(res => {
-                    })
+                }).then(res => {
+                })
+                this.showww = false
             }
         },
         components:{

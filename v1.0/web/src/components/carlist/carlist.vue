@@ -46,6 +46,7 @@
     import './carlist.scss'
     import router from '../../router'
     import $ from 'jquery'
+    
     export default {
         data:function(){
             return {
@@ -82,7 +83,7 @@
                             cccc:cccc
                         }
                 }).then(res => {
-                   console.log(res);
+                   // console.log(res);
                 })
                 this.zongjia=this.zongjia+this.carlist[index].price;
                this.zongshu=this.zongshu+1;
@@ -90,7 +91,7 @@
              cmoney:function(){
                 var res = parseInt(Math.random()*1000000000);
                 this.suiji=res;
-                router.push({name: 'li', params: {number: this.suiji}})
+                router.push({name: 'li', params: {number: this.suiji}});
             },
             tanchuang:function(){
                 this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
@@ -121,7 +122,6 @@
                 })
             }, 
             cmy:function(){
-                console.log(99);
                 this.show=true;
                 router.push({name:'my'})
             }

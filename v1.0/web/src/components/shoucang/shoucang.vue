@@ -1,17 +1,16 @@
 <template>
-	<datagrid aa="car_insert" api="select" cols="" @abc="aa" :tools="tools"></datagrid>
+    <datagrid aa="car_insert" api="select" my="my_select" cols="" :tools="tools"></datagrid>
 </template>
 <script type="text/javascript">
-	import datagrid from '../datagrid/datagird.vue'
+    import datagrid from '../datagrid/datagird.vue'
     import router from '../../router'
-	
     export default {
-		components: {
-			datagrid
-		},
-		data(){
-			return {
-				carlist:[],
+        components: {
+            datagrid
+        },
+        data(){
+            return {
+                carlist:[],
                 tools: {
                     add: {
                         text: '添加',
@@ -21,13 +20,8 @@
                     }
                 }
             }
-		},
-		methods:{
-			aa:function(a){
-				this.carlist.push(a);
-				a = this.carlist
-				this.$emit('tong',a);
-			}
-		}
-	}
+        },
+        methods:{
+        }
+    }
 </script>

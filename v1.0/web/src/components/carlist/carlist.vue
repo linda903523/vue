@@ -12,7 +12,7 @@
                     <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
                         <span>{{obj.name}}</span>
-                        <span class="carlist-money">{{obj.price}}元</span>
+                        <span  class="carlist-money">{{obj.price}}元</span>
                     </div>
                     <div class="carlist-div2 ">
                         <span>{{obj.decorations}}</span>
@@ -28,7 +28,7 @@
             <div>
                 <ul class="list-ul">
                     <li><span @click="qian">加菜</span></li>
-                    <li><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
+                    <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
                     <li><span @click="cmoney">确认菜单</span></li>
                 </ul>
             </div>
@@ -46,6 +46,7 @@
     import './carlist.scss'
     import router from '../../router'
     import $ from 'jquery'
+    
     export default {
         data:function(){
             return {
@@ -53,7 +54,8 @@
                 can:'',
                 time:'',
                 zongshu:0,
-                zongjia:0
+                zongjia:0,
+                show:false
             }
         },
         methods:{
@@ -78,10 +80,11 @@
                             cccc:cccc
                         }
                 }).then(res => {
-                   console.log(res);
+                   // console.log(res);
                 })
             },
             cmoney:function(){
+                this.show=true;
                 for (var i=0;i<this.carlist.length;i++){
                     this.zongshu+=this.carlist[i].number;
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
@@ -114,6 +117,11 @@
                 }).then(res => {
                     //console.log(res)
                 })
+            }, 
+            cmy:function(){
+                console.log(99);
+                this.show=true;
+                router.push({name:'my'})
             }
         },
         components: {

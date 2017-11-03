@@ -20,6 +20,8 @@
 
 <script type="text/javascript">
 	import loading from '../loading/loading.vue'
+	import http from '../../utils/httpClient.js'
+	import router from '../../router'
 	import $ from 'jquery'
 	import './login.js'
 	import './login.scss'
@@ -34,9 +36,22 @@
 		},
 		methods: {
 			login: function(event){
-				if($('form').valid()){
-					this.$store.dispatch('login', {username: this.username, password: this.password})
-				}
+				var self = this;
+                http.post({
+                    url: 'login',
+                    params:{
+                        username:self.username,
+                        password:self.password
+                    }
+                }).then(res => {
+                	if(res.data.status){
+                    	router.push({name:'home'})
+                    	alert('登录成功');            		
+                	}else{
+                		alert('登录出错');
+                		return false;
+                	}
+                })
 			}
 		},
 		components: {

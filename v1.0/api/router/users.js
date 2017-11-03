@@ -4,9 +4,14 @@ var urlencode = bodyparser.urlencoded({extended: false});
 
 module.exports = {
     User: function(app){
-        app.get("/login",function(request, response){
-            db.select("select * from users",function(result){
-                response.send(result);
+        app.post("/login",urlencode,function(request, response){
+            var uname = request.body.username;
+            db.select(`select * from users where username like '%${uname}%'`,function(rows){
+                if(rows[0].password == request.body.password){
+                    response.send({status:true})
+                }else{
+                    response.send({status:false,message:'登录出错'})
+                }
             })
         })
         app.post("/register", urlencode, function(request, response){

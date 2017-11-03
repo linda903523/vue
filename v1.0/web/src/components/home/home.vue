@@ -47,19 +47,19 @@
 	import foodslist from '../foodslist/foodslist.vue'
 	import http from '../../utils/httpClient.js'
 	import $ from 'jquery'
-
+	
 	export default {
 		data(){
 			return {
-			time:'',
-			zhuohao:'A区36号',
-			diancai:'点菜',
-			canshu:'',
-			toolList: null,
-			message:'',
-			showw:true,
-			show:false,
-			 serachnumber:[]
+				time:'',
+				zhuohao:'A区36号',
+				diancai:'点菜',
+				canshu:'',
+				toolList: null,
+				message:'',
+				showw:true,
+				show:false,
+				 serachnumber:[]
 			}
 		},
 		created: function () {
@@ -74,6 +74,7 @@
 			carlist:function(){
 				router.push({name:'carlist'})				
 			},
+
 			list:function(){
 				router.push({name:'list'})				
 			},
@@ -138,10 +139,11 @@
 					$('.c-ul1').removeClass('fixed');
 					$('#datagrid').css({marginTop:'0px'});
 				}
-			}			
+			}
+          
 		},
 		components:{
-			foodslist,
-		}
+			foodslist			
+		}		
 	}	
 </script>

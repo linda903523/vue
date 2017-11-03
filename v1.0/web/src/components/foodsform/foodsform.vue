@@ -37,7 +37,6 @@
     import router from '../../router'
     import http from '../../utils/HttpClient'
     import $ from 'jquery'
-    import './foodsform.scss'
 	
     export default {
         data(){
@@ -92,3 +91,8 @@
         }
     }
 </script>
+<style>
+    .fl-toolbar{ background: #fff;text-align:right;}
+    .btn-goback{background-color: #e6674a;border-color: #e6674a}
+    .form-horizontal{margin-top:10px;}
+</style>

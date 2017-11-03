@@ -58,7 +58,8 @@
             type:'',
             number:'1',
             decorations:'',
-            addTime:'1'
+            addTime:'1',
+            dd:'1'
           }
         }
       },

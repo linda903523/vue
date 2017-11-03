@@ -24,7 +24,6 @@
             http.get({
                 url: 'pinglun'
             }).then(res => {
-                console.log(res.data);
                 self.pingdata = res.data
             })
         }

@@ -10,23 +10,17 @@ module.exports = {
             })  
         })
         app.post("/back_delete",urlencode,function(request, response){
-            console.log(request.body.id)
             db.delete('delete from foods where id=' + request.body.id,function(result){
                 response.send(result);
             })
         })
-        app.post("/back_update",urlencode,function(request, response){
-            
-            var DD=request.body.dd
-
+        app.post("/back_update",urlencode,function(request, response){            
+            var dd = request.body.dd
             var cname = request.body.myname;
-            console.log(DD)
             
             db.select(`select * from carlist where name like '%${cname}%'`,function(rows){
-                console.log(rows)
-                var dd = DD;
                 var idd = rows[0].id;
-                db.insert(`update carlist set dd= ${dd} where id=${idd}`,function(result){
+                db.insert(`update carlist set status= ${dd} where id=${idd}`,function(result){
                     response.send(result);
                 })
             })
@@ -48,11 +42,11 @@ module.exports = {
             }
             db.select(`select * from foods where name like '%${cname}%'`,function(rows){
                 if(rows.length>0){
-                     var number = rows[0].number+1;
-                     var idd = rows[0].id;
+                    var number = rows[0].number+1;
+                    var idd = rows[0].id;
                     db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
-                    response.send(result);
-                })
+                        response.send(result);
+                    })
                 }else {
                     aa = string.substring(0,string.length-1);
                     db.insert(`insert into foods (name,price,img,type,number,decorations,addTime) values (${aa}) `,function(result){

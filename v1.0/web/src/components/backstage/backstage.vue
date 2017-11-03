@@ -43,15 +43,15 @@
         methods: {
             ord: function(e){
                 $(e.target).css({background:'#fff'})
-                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+                $(e.target).parent('li').siblings('li').find('a').css({background:'orange'})
             },
             add: function(e){
                 $(e.target).css({background:'#fff'})
-                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+                $(e.target).parent('li').siblings('li').find('a').css({background:'orange'})
             },
             adm: function(e){
                 $(e.target).css({background:'#fff'})
-                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+                $(e.target).parent('li').siblings('li').find('a').css({background:'orange'})
             }
         }
     }

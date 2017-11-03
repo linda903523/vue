@@ -7,22 +7,22 @@
             <p class="c-my">我的订单</p>
         </header>
        <div class="body">
-                <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
-                <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
-                    <li>
-                        <img :src="obj.img" class="img-carlist"/>
-                        <div class="carlist-div1 ">
-                            <p>菜名：<span>{{obj.name}}</span></p>
-                            <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
-                            <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
-                            <p>状态：<span v-on:dk="span_list" class="cssa" v-if="obj.dd==1">等待</span>
-                                <span v-on:dk="span_list" class="cssa" v-if="obj.dd==1">退单</span>
-                                <span v-on:dk="span_list" class="cssa" v-if="obj.dd==2">准备</span>
-                                <span v-on:dk="span_list" class="cssa" v-if="obj.dd==3">完成</span>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+            <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
+            <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
+                <li>
+                    <!-- <img :src="obj.img" class="img-carlist"/> -->
+                    <div class="carlist-div1 ">
+                        <p>菜名：<span>{{obj.name}}</span></p>
+                        <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
+                        <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
+                        <p>状态：<span v-on:dk="span_list" class="cssa" v-if="obj.dd==1">等待</span>
+                            <span v-on:dk="span_list" class="cssa" v-if="obj.dd==1">退单</span>
+                            <span v-on:dk="span_list" class="cssa" v-if="obj.dd==2">准备</span>
+                            <span v-on:dk="span_list" class="cssa" v-if="obj.dd==3">完成</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
         </div>
         <input type="submit" value="提交订单">
         <footer class="list_footer">
@@ -38,6 +38,7 @@
 <script type="text/javascript">
     import router from '../../router'
     import './list.scss'
+    import './list.js'
     import http from '../../utils/httpClient.js'
     export default {
         state: {
@@ -93,7 +94,6 @@
             }).then(res => {
                 self.fl_list = res.data
             })
-            console.log()
         }
     }
 </script>

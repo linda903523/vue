@@ -6,9 +6,10 @@ var wss = new socketServer({
 
 wss.on('connection', function (client) {
     client.on('message', function (_message) {
-        var _messageObj = '支付成功';
-        //status = 1 表示正常聊天
-        _messageObj.status = 1;
+        console.log(_message)
+        var _messageObj = _message;
+        
+        _messageObj.status = 1;//status = 1 表示正常聊天
         // this.message = _messageObj;
         //把客户端的消息广播给所有在线的用户
         wss.broadcast(_messageObj);

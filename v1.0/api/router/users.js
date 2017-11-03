@@ -4,8 +4,9 @@ var urlencode = bodyparser.urlencoded({extended: false});
 
 module.exports = {
     User: function(app){
-        app.get("/login",function(request, response){
-            db.select("select * from users",function(result){
+        app.post("/login",urlencode,function(request, response){
+            console.log(request.body)
+            db.select(`select * from users`,function(result){
                 response.send(result);
             })
         })

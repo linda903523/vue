@@ -7,6 +7,7 @@
             <p class="c-my">我的订单</p>
         </header>
         <div class="body">
+            <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
             <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
                 <li>
                     <img :src="obj.img" class="img-carlist"/>
@@ -18,6 +19,7 @@
                     </div>
                 </li>
             </ul>
+            <input type="button" value="提交" class="list-button">
         </div>  
         <footer class="list_footer">
             <ul class="home-c">
@@ -38,7 +40,8 @@
         data:function(){
             return {
                 time:'',
-                fl_list:[]
+                fl_list:[],
+                hao:''
             }
         },
         created: function () {
@@ -75,6 +78,7 @@
             }).then(res => {
                 self.fl_list = res.data
             })
+            console.log()
         }
     }
 </script>

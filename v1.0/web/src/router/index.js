@@ -64,6 +64,11 @@ var router = new VueRouter({
 			component: LoginComponent
 		},
         {
+            path:'/li/:number',
+            name:'li',
+            component:ListComponent    
+        },
+        {
             path:'/list',
             name:'list',
             component:ListComponent  

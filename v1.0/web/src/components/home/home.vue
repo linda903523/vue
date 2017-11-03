@@ -32,10 +32,6 @@
 		<footer>
 			<ul class="home-c">
 				<li class="active"><i class="ci-4"></i><span>点菜</span></li>
-				<!-- <li><i class="ci-5"></i><span @click="carlist">购物车</span></li>
-				<li @click="list"><i class="ci-6"></i><span>订单</span></li>
-				<li @click="cmy"><i class="ci-7"></i><span>我的</span></li> -->
-
 				<li @click="carlist"><i class="ci-5"></i><span>购物车</span></li>
 				<li @click="list"><i class="ci-6"></i><span>订单</span></li>
 				<li @click="my"><i class="ci-7"></i><span>我的</span></li>
@@ -44,7 +40,6 @@
 	</div>
 </template>
 <script type="text/javascript">
-	//$children
 	import Vue from 'vue'
 	import './home.scss'
 	import router from '../../router'
@@ -77,8 +72,8 @@
 			carlist:function(){
 				router.push({name:'carlist'})				
 			},
-
 			list:function(){
+				// router.push({name: 'list', params: {number:1}})
 				router.push({name:'list'})				
 			},
 			my:function(){

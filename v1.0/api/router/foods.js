@@ -125,13 +125,13 @@ module.exports = {
                 response.send(result);
             })
         })   
-        app.get('my_select', function(request, response){
-            db.select('select * from foods', function(rows){
-                response.send(rows);
-            }) 
-        })
          app.get('/pinglun', function(request, response){
             db.select('select * from review', function(rows){
+                response.send(rows);
+            })  
+        })
+          app.get('/my_select', function(request, response){
+            db.select('select * from ai', function(rows){
                 response.send(rows);
             })  
         })
@@ -145,7 +145,34 @@ module.exports = {
             db.insert(`insert into review (content,star) values (${aa})`,function(result){
                     response.send(result);
                 })
-        })  
+        })
+        app.post("/ai_insert",urlencode,function(request, response){
+            var data = JSON.parse(request.body.cu);
+            var str = '';
+            var cname = '';
+            var id='';
+            for(var key in data){
+                if(key!=='id' && key!='addTime'){
+                    str+='"'+data[key]+'"'+','
+                }
+                if(key=='name'){
+                    cname=data[key];
+                }if(key=='id'){
+                    id=data[key];
+                }
+            }
+            db.select(`select * from ai where name like '%${cname}%'`,function(rows){
+                if(rows.length>0){
+                    response.send('false');
+                }else{
+                    aa = str.substring(0,str.length-1);
+                    db.insert(`insert into ai (name,img,price,number,type,decorations) values (${aa})`,function(result){
+                            response.send(result);
+                        })
+                }
+            })
+            
+        })    
         
-    }
+     }
 }

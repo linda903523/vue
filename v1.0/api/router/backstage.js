@@ -5,13 +5,13 @@ var urlencode = bodyparser.urlencoded({extended: false});
 module.exports = {
     Backstage:function(app){
         app.get('/back_select', function(request, response){
-            db.select('select * from goods', function(rows){
+            db.select('select * from foods', function(rows){
                 response.send(rows);
             })  
         })
         app.post("/back_delete",urlencode,function(request, response){
             console.log(request.body.id)
-            db.delete('delete from goods where id=' + request.body.id,function(result){
+            db.delete('delete from foods where id=' + request.body.id,function(result){
                 response.send(result);
             })
         })
@@ -46,16 +46,16 @@ module.exports = {
                     id=data[key];
                 }
             }
-            db.select(`select * from goods where name like '%${cname}%'`,function(rows){
+            db.select(`select * from foods where name like '%${cname}%'`,function(rows){
                 if(rows.length>0){
                      var number = rows[0].number+1;
                      var idd = rows[0].id;
-                    db.insert(`update goods set number= ${number} where id=${idd}`,function(result){
+                    db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
                     response.send(result);
                 })
                 }else {
                     aa = string.substring(0,string.length-1);
-                    db.insert(`insert into goods (name,price,img,type,number,decorations,addTime) values (${aa}) `,function(result){
+                    db.insert(`insert into foods (name,price,img,type,number,decorations,addTime) values (${aa}) `,function(result){
                             response.send(result);
                         })
                 }

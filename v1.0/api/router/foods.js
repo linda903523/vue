@@ -101,8 +101,8 @@ module.exports = {
             }
             db.select(`select * from carlist where name ='${cname}' and zhuohao='${zhuohao}'`,function(rows){
                 if(rows.length>0){
-                     var number = rows[0].number+1;
-                     var idd = rows[0].id;
+                    var number = rows[0].number+1;
+                    var idd = rows[0].id;
                     db.insert(`update carlist set number= ${number} where id=${idd}`,function(result){
                         response.send(result);
                     })
@@ -138,7 +138,8 @@ module.exports = {
                 response.send(rows);
             })  
         })
-          app.get('/my_select', function(request, response){
+
+        app.get('/my_select', function(request, response){
             db.select('select * from ai', function(rows){
                 response.send(rows);
             })  
@@ -158,7 +159,7 @@ module.exports = {
             var data = JSON.parse(request.body.cu);
             var str = '';
             var cname = '';
-            var id='';
+            var id = '';
             for(var key in data){
                 if(key!=='id' && key!='addTime'){
                     str+='"'+data[key]+'"'+','
@@ -178,10 +179,9 @@ module.exports = {
                             response.send(result);
                         })
                 }
-            })
-            
-        })    
-        
-     }
+
+            })            
+        })        
+    }
 
 }

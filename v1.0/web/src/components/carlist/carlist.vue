@@ -23,12 +23,14 @@
                     </div>
                 </li>
             </ul>
+        </div>     
+        <div>
+            <ul class="list-ul">
+                <li><span @click="qian">加菜</span></li>
+                <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
+                <li><span @click="cmoney">确认下单</span></li>
+            </ul>
         </div>
-        <ul class="list-ul">
-            <li><span @click="qian">加菜</span></li>
-            <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
-            <li><span @click="cmoney">确认下单</span></li>
-        </ul>
     </div>
 </template>
 <script type="text/javascript">
@@ -59,7 +61,7 @@
                             ccc:ccc
                         }
                 }).then(res => {
-                   console.log(res);
+                   // console.log(res);
                 })
                this.zongjia=this.zongjia-this.carlist[index].price;
                this.zongshu=this.zongshu-1;
@@ -75,7 +77,7 @@
                 }).then(res => {
                 })
                 this.zongjia=this.zongjia+this.carlist[index].price;
-               this.zongshu=this.zongshu+1;
+                this.zongshu=this.zongshu+1;
             },
              cmoney:function(){
                 var res =JSON.stringify(parseInt(Math.random()*1000000000));
@@ -104,12 +106,11 @@
                     params:{
                         cc:cc
                     }
-                }).then(res => {
-                  
+                }).then(res => {  
                 })
-            $('.carlistli')[index].remove();
-            this.zongjia=this.zongjia-this.carlist[index].price*this.carlist[index].number;
-            this.zongshu=this.zongshu-this.carlist[index].number;
+                this.zongjia = this.zongjia-this.carlist[index].price*this.carlist[index].number;
+                this.zongshu = this.zongshu-this.carlist[index].number;
+                $('.carlistli')[index].remove();
             }, 
             cmy:function(){
                 this.show=true;

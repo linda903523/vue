@@ -42,7 +42,6 @@
 				var obj = Object.assign({},person,{zhuohao:zhuohao,renshu:renshu});
 				var cc =JSON.stringify(obj);
 				var self = this;
-				console.log(self.aa);
 				http.post({
 					url:self.aa,
 					params:{
@@ -51,7 +50,7 @@
 						renshu:renshu
 					}
 				}).then(res=>{
-					console.log(res);
+					// console.log(res);
 				})
 			},
 			ai:function(index){

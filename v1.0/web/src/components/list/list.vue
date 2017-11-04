@@ -24,7 +24,6 @@
                 </li>
             </ul>
         </div>
-        <input type="submit" value="提交订单" style="backgroundColor:green;color:#fff;">
         <footer class="list_footer">
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>

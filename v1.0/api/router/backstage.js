@@ -4,16 +4,6 @@ var urlencode = bodyparser.urlencoded({extended: false});
 
 module.exports = {
     Backstage:function(app){
-        app.get('/back_select', function(request, response){
-            db.select('select * from foods', function(rows){
-                response.send(rows);
-            })  
-        })
-        app.post("/back_delete",urlencode,function(request, response){
-            db.delete('delete from foods where id=' + request.body.id,function(result){
-                response.send(result);
-            })
-        })
         app.post("/back_update",urlencode,function(request, response){            
             var dd = request.body.dd
             var cname = request.body.myname;

@@ -64,7 +64,6 @@
     
     export default {
         data: function(){
-            var colsArray = this.cols ? this.cols.split(',') : [];
             return {
                 dataset: [],
                 loadingShow: false,
@@ -75,8 +74,15 @@
                 decorations:[],
             }
         },
-        props: ['api', 'cols'],
         mounted: function(){
+            var self = this;
+            http.get({
+                url: 'carlist'
+            }).then(res => {
+                self.dataset = res.data
+            })
+        },
+        updated: function(){
             var self = this;
             http.get({
                 url: 'carlist'

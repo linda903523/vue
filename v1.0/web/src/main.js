@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router/'
 // import '../node_modules/element-ui/lib/theme-chalk/index.css'
 // import '../node_modules/element-ui/lib/index.js'
+
 Vue.use(ElementUI)
 new Vue({
   el: '#app',

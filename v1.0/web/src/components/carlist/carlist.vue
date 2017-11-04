@@ -148,6 +148,14 @@
                 }
             })
             this.show=true;           
+        },
+        updated:function(){
+            var self = this;
+            http.get({
+                url: 'carlist'
+            }).then(res => {
+                self.carlist = res.data
+            })
         }
     }
 </script>

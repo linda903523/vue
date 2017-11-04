@@ -136,16 +136,12 @@ module.exports = {
                 response.send(rows);
             })  
         })
-<<<<<<< HEAD
           app.get('/my_select', function(request, response){
             db.select('select * from ai', function(rows){
                 response.send(rows);
             })  
         })
-          app.post("/review_insert",urlencode,function(request, response){
-=======
         app.post("/review_insert",urlencode,function(request, response){
->>>>>>> b051c7a32fcf9b3bc07ef0d34a54047a2f03c488
             var data = request.body;
             var zifu = '';
              for(var key in data){
@@ -153,7 +149,6 @@ module.exports = {
             }
             aa = zifu.substring(0,zifu.length-1);
             db.insert(`insert into review (content,star) values (${aa})`,function(result){
-<<<<<<< HEAD
                     response.send(result);
                 })
         })
@@ -186,10 +181,5 @@ module.exports = {
         })    
         
      }
-=======
-                response.send(result);
-            })
-        })         
-    }
->>>>>>> b051c7a32fcf9b3bc07ef0d34a54047a2f03c488
+
 }

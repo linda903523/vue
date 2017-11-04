@@ -24,7 +24,7 @@
                 </li>
             </ul>
         </div>
-        <input type="submit" value="提交订单">
+        <input type="submit" value="提交订单" style="backgroundColor:green;color:#fff;">
         <footer class="list_footer">
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
@@ -88,6 +88,14 @@
         components:{
         },
         mounted:function(index){
+            var self = this;
+            http.get({
+                url: 'carlist'
+            }).then(res => {
+                self.fl_list = res.data
+            })
+        },
+        updated:function(){
             var self = this;
             http.get({
                 url: 'carlist'

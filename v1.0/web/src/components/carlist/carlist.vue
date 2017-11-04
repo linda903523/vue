@@ -81,16 +81,18 @@
             },
              cmoney:function(){
                 var res =JSON.stringify(parseInt(Math.random()*1000000000));
-                var a = this.carlist[0].zhuohao;
-                if(a<10){
-                    a='00'+a;
-                    res=res+a;
-                    this.suiji=res;
-                }if(9<a<100){
-                    a='0'+a;
-                    res=res+a;
-                    this.suiji=res;
+                var a='';
+                for(var i=0;i<this.carlist.length;i++){
+                    var b = this.carlist[i].zhuohao;
+                    if(b<10){
+                        b = '00'+b;
+                    }if(9<b<100){
+                        b='0'+b;
+                    }
+                   a+=b;
                 }
+                res+=a;
+                this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
             },
             qian:function(){

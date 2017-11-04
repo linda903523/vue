@@ -98,7 +98,7 @@ module.exports = {
                 }if(key=='zhuohao'){
                     zhuohao=data[key];
                 }
-            }
+            }           
             db.select(`select * from carlist where name ='${cname}' and zhuohao='${zhuohao}'`,function(rows){
                 if(rows.length>0){
                     var number = rows[0].number+1;

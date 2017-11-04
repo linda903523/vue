@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   user     : 'root',
   password : '',
   port     : 3306,
-  database : 'vue1'
+  database : 'vue'
 });
 module.exports = {
     insert:function(tsql,data,callback){

@@ -1,7 +1,7 @@
 <template>
     <div id="btn" >
         <div id="header">  
-            <h1>X X X 餐厅----后厨</h1>        
+            <h1>神马餐厅----后厨</h1>        
         </div>
         <div id="main" >            
             <div class="menu">
@@ -18,7 +18,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="bill">            
+            <div class="bill">
                 <router-view></router-view>
             </div>
         </div>

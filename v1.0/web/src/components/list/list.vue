@@ -94,14 +94,6 @@
             }).then(res => {
                 self.fl_list = res.data
             })
-        },
-        updated:function(){
-            var self = this;
-            http.get({
-                url: 'carlist'
-            }).then(res => {
-                self.fl_list = res.data
-            })
         }
     }
 </script>

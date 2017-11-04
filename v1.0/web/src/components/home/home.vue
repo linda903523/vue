@@ -9,7 +9,8 @@
 				<ul>
 					<li>
 						<i class="ci-2"></i>
-						<span>{{zhuohao}}</span>
+						<span>桌号:<input type="text" v-model="zhuohao" class="zhuohao"/></span>
+						<span>人数:<input type="text" v-model="renshu" class="zhuohao"/></span>
 					</li>
 					<li><span>{{diancai}}</span></li>
 					<input type="text" v-model="message" />
@@ -46,12 +47,12 @@
 	import foodslist from '../foodslist/foodslist.vue'
 	import http from '../../utils/httpClient.js'
 	import $ from 'jquery'
-	
 	export default {
 		data(){
 			return {
 				time:'',
-				zhuohao:'A区36号',
+				zhuohao:'',
+				renshu:'',
 				diancai:'点菜',
 				canshu:'',
 				toolList: null,
@@ -138,7 +139,6 @@
 					$('#datagrid').css({marginTop:'0px'});
 				}
 			}
-          
 		},
 		components:{
 			foodslist			

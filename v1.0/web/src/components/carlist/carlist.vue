@@ -48,7 +48,8 @@
                 zongshu:0,
                 zongjia:0,
                 show:false,
-                suiji:''
+                suiji:'',
+                ws:''
             }
         },
         methods:{
@@ -84,6 +85,7 @@
                 var res = parseInt(Math.random()*1000000000);
                 this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
+                this.ws.send('您有新的订单:' + res);
             },
             qian:function(){
                 router.push({name:'foodslist'})
@@ -137,7 +139,11 @@
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
                 }
             })
-            this.show=true;           
+            this.show=true;    
+            this.ws = new WebSocket("ws://10.3.131.7:888");
+            this.ws.onmessage = function(_msg){
+                // console.log(_msg.data);
+            }       
         }
     }
 </script>

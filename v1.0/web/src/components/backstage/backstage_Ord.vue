@@ -3,16 +3,16 @@
         <ul id="fl_list">
             <li v-for="(value,index) in listNum">{{value}}</li>
         </ul>
-        <div class="bill_6">
-            <h3 class="bill_h3"> 桌号22<span class="bill_span">关闭</span></h3>
+        <div class="bill_6" v-for="(value,index) in zhuohao">
+            <h3 class="bill_h3"> 桌号:{{value}}</h3>
             <ul>
                 <li  v-for="(obj, index) in dataset">
                     <img :src="obj.img"  alt="" />
                     <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
                     <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input class="fl_first" type="button" value="已下单" @click="wait(obj.name)"/>
-                    <input type="button" value="准备" @click="plan(obj.name)"/>
-                    <input type="button" value="完成" @click="complete(obj.name)" />
+                    <input type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1" class="btn-danger"/>
+                    <input type="button" value="准备" @click="plan(obj.name)" v-if="obj.status<=2" class="btn-warning"/>
+                    <input type="button" value="完成" @click="complete(obj.name)"  v-if="obj.status<=3" class="btn-success"/>
                 </li>
                 <h2 class="bill_h2">收起</h2>
             </ul>
@@ -32,7 +32,8 @@
                 price:[],
                 img:[],
                 decorations:[],
-                listNum:[]
+                listNum:[],
+                zhuohao:[]
             }
         },
         mounted: function(){
@@ -44,7 +45,11 @@
             })
             var ws = new WebSocket("ws://localhost:888");
             ws.onmessage = function(_msg){
-                self.listNum.push(_msg.data)
+                var data = _msg.data;
+                var data2 = data.substring(data.length,21);
+                data2 = data2.substring(0,data2.length-1);
+                self.zhuohao.push(data2);
+                self.listNum.push(_msg.data);
             }
         },
         methods: {

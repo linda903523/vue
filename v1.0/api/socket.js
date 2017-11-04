@@ -6,7 +6,7 @@ var wss = new socketServer({
 
 wss.on('connection', function (client) {
     client.on('message', function (_message) {
-        console.log(_message)
+        // console.log(_message)
         var _messageObj = _message;
         
         _messageObj.status = 1;//status = 1 表示正常聊天

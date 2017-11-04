@@ -8,7 +8,6 @@ var pool = mysql.createPool({
   port     : 3306,
   database : 'vue'
 });
-
 module.exports = {
     insert:function(tsql,data,callback){
         pool.query(tsql,function(error, rows){

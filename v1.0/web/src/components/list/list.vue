@@ -14,14 +14,13 @@
                         <p>菜名：<span>{{obj.name}}</span></p>
                         <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
                         <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
-                        <p>状态：
-                            <span v-if="obj.status==1">已下单</span>
-                            <span v-if="obj.status==2">准备</span>
-                            <span v-if="obj.status==3">完成</span>
+                        <p>状态：<span v-if="obj.status==1" class="btn-danger">已下单</span>
+                            <span v-if="obj.status==2" class="btn-warning">准备</span>
+                            <span v-if="obj.status==3" class="btn-success">完成</span>
                         </p>
                     </div>
                 </li>
-            </ul>          
+            </ul>
         </div>
         <footer class="list_footer">
             <ul class="home-c">
@@ -37,7 +36,6 @@
     import router from '../../router'
     import './list.scss'
     import http from '../../utils/httpClient.js'
-    
     export default {
         state: {
             name:'home',
@@ -86,6 +84,14 @@
         components:{
         },
         mounted:function(index){
+            var self = this;
+            http.get({
+                url: 'carlist'
+            }).then(res => {
+                self.fl_list = res.data
+            })
+        },
+        updated:function(){
             var self = this;
             http.get({
                 url: 'carlist'

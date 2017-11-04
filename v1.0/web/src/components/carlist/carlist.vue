@@ -23,7 +23,7 @@
                     </div>
                 </li>
             </ul>
-        </div>        
+        </div>     
         <div>
             <ul class="list-ul">
                 <li><span @click="qian">加菜</span></li>
@@ -38,7 +38,6 @@
     import './carlist.scss'
     import router from '../../router'
     import $ from 'jquery'
-    
     export default {
         data:function(){
             return {
@@ -49,7 +48,8 @@
                 zongjia:0,
                 show:false,
                 suiji:'',
-                ws:''
+                ws:'',
+                delect:false
             }
         },
         methods:{
@@ -76,28 +76,30 @@
                             cccc:cccc
                         }
                 }).then(res => {
-                   // console.log(res);
                 })
                 this.zongjia=this.zongjia+this.carlist[index].price;
                 this.zongshu=this.zongshu+1;
             },
-            cmoney:function(){
-                var res = parseInt(Math.random()*1000000000);
-                this.suiji=res;
+             cmoney:function(){
+                var res =JSON.stringify(parseInt(Math.random()*1000000000));
+                var a = this.carlist[0].zhuohao;
+                if(a<10){
+                    a='00'+a;
+                    res=res+a;
+                    this.suiji=res;
+                }if(9<a<100){
+                    a='0'+a;
+                    res=res+a;
+                    this.suiji=res;
+                }
                 router.push({name: 'li', params: {number: this.suiji}});
-                this.ws.send('您有新的订单:' + res);
+                this.ws.send('您有新的订单:' + this.suiji);
             },
             qian:function(){
                 router.push({name:'foodslist'})
             },
             list:function(){
                 router.push({name: 'list'})              
-            },
-            my:function(){
-                router.push({name:'my'})              
-            },
-            foodslist:function(){
-                router.push({name:'foodslist'})
             },
             car_delete:function(index){
                 var cc = JSON.stringify(this.carlist[index]);
@@ -106,8 +108,7 @@
                     params:{
                         cc:cc
                     }
-                }).then(res => {
-                    //console.log(res)
+                }).then(res => {  
                 })
                 this.zongjia = this.zongjia-this.carlist[index].price*this.carlist[index].number;
                 this.zongshu = this.zongshu-this.carlist[index].number;

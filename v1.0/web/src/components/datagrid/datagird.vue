@@ -20,7 +20,6 @@
 	import loading from '../loading/loading.vue'
 	import './datagird.scss'
 	import $ from 'jquery'
-	
 	export default {
 		data(){
 			var colsArray = this.cols ? this.cols.split(',') : [];
@@ -37,12 +36,18 @@
 				this.$emit('abc',bb)
 			},
 			jiaru:function(index){
-				var cc =JSON.stringify(this.dataset[index]);
+				var zhuohao = this.$parent.$parent.zhuohao;
+				var renshu = this.$parent.$parent.renshu;
+				var person = this.dataset[index];
+				var obj = Object.assign({},person,{zhuohao:zhuohao,renshu:renshu});
+				var cc =JSON.stringify(obj);
 				var self = this;
 				http.post({
 					url:self.aa,
 					params:{
-						cc:cc
+						cc:cc,
+						zhuohao:zhuohao,
+						renshu:renshu
 					}
 				}).then(res=>{
 					// console.log(res);

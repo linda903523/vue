@@ -7,7 +7,6 @@ module.exports = {
         app.post("/back_update",urlencode,function(request, response){            
             var dd = request.body.dd
             var cname = request.body.myname;
-            
             db.select(`select * from carlist where name like '%${cname}%'`,function(rows){
                 var idd = rows[0].id;
                 db.insert(`update carlist set status= ${dd} where id=${idd}`,function(result){

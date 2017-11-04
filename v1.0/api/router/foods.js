@@ -1,7 +1,6 @@
 var db = require('../db.js');
 var bodyparser = require('body-parser');
 var urlencode = bodyparser.urlencoded({extended: false});
-
 module.exports = {
     Food:function(app){
         app.get('/select', function(request, response){
@@ -87,6 +86,7 @@ module.exports = {
             var string = '';
             var cname = '';
             var id='';
+            var zhuohao=''
             for(var key in data){
                 if(key!=='id' && key!='addTime'){
                     string+='"'+data[key]+'"'+','
@@ -95,9 +95,11 @@ module.exports = {
                     cname=data[key];
                 }if(key=='id'){
                     id=data[key];
+                }if(key=='zhuohao'){
+                    zhuohao=data[key];
                 }
-            }
-            db.select(`select * from carlist where name like '%${cname}%'`,function(rows){
+            }           
+            db.select(`select * from carlist where name ='${cname}' and zhuohao='${zhuohao}'`,function(rows){
                 if(rows.length>0){
                     var number = rows[0].number+1;
                     var idd = rows[0].id;
@@ -107,7 +109,7 @@ module.exports = {
                     return false;
                 }else {
                     aa = string.substring(0,string.length-1);
-                    db.insert(`insert into carlist (name,img,price,number,type,decorations,status) values (${aa})`,function(result){
+                    db.insert(`insert into carlist (name,img,price,number,type,decorations,status,zhuohao,renshu) values (${aa})`,function(result){
                             response.send(result);
                         })
                 }
@@ -136,6 +138,7 @@ module.exports = {
                 response.send(rows);
             })  
         })
+
         app.get('/my_select', function(request, response){
             db.select('select * from ai', function(rows){
                 response.send(rows);
@@ -176,7 +179,9 @@ module.exports = {
                             response.send(result);
                         })
                 }
+
             })            
         })        
     }
+
 }

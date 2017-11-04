@@ -12,7 +12,7 @@
 						<span>{{zhuohao}}</span>
 					</li>
 					<li><span>{{diancai}}</span></li>
-					<input type="text" v-model="message" />
+					<input type="text" v-model="message" style="border-radius:20px;"/>
 					<li><i class="ci-3" @click="serach"></i></li>
 				</ul> 
 			</div>
@@ -58,7 +58,7 @@
 				message:'',
 				showw:true,
 				show:false,
-				 serachnumber:[]
+				serachnumber:[]
 			}
 		},
 		created: function () {

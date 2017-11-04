@@ -19,6 +19,7 @@
     >h3{text-align:center; width:251px; line-height:40px; position:relative; cursor:pointer;
         >span{background-color:#fc5000; position:absolute; top:0px; right:0px; cursor:pointer; display:none;font-size:12px;height:20px;line-height:20px;}
     }
+    .fl_first{background: #fc5000;}
 }
 .bill{
     overflow-y:auto;height:600px;
@@ -26,7 +27,7 @@
 }
 .menu{padding:0 50px; background:#000; float:left; height:600px;opacity:0.8;
     li{line-height:50px; border-radius:5px 5px; width:100px; text-align:center; float:none;background:orange;
-        &:first-child{background:#fff;}
+        .active{background:#fff;}
         >a{border-radius:5px 5px; color:#000;}
         p{height:0px; background:skyblue; display:none;
             &:hover{background:#fff; border-radius:5px 5px;}
@@ -48,17 +49,19 @@
     }
 }
 .Adm{float:left;width:100%;
-    table{ 
-        th{padding:0 10px;height:40px;font-size:20px;text-align:center;background:#727d8a;color:#fff;}
-        tbody{
-            tr{
-                td{padding:10px 10px; text-align:center; vertical-align:middle;
-                    >button{margin-bottom:10px;}
-                }
+    table{margin-top:20px;}
+    th{padding:0 10px;height:40px;font-size:20px;text-align:center;background:#727d8a;color:#fff;}
+    tbody{
+        tr{
+            td{padding:10px 10px; text-align:center; vertical-align:middle;
+                >button{margin-bottom:10px;}
             }
         }
     }
     img{width:100px; height:100px;}
 }
-.btn-del{margin-right:20px;}
-.fl_first{background: #fc5000;}
+.fl_search{text-align:right;
+    input{border:1px solid #ccc;margin-top:20px;margin-right:10px;border-radius:10px;
+        &:first-child{width:200px;}
+    }
+}

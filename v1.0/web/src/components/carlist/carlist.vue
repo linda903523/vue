@@ -24,21 +24,13 @@
                 </li>
             </ul>
         </div>        
-        <footer class="car_footer">
-            <div>
-                <ul class="list-ul">
-                    <li><span @click="qian">加菜</span></li>
-                    <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
-                    <li><span @click="cmoney">确认下单</span></li>
-                </ul>
-            </div>
-            <ul class="home-c">
-                <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
-                <li class="active"><i class="ci-5"></i><span>购物车</span></li>
-                <li @click="list"><i class="ci-6"></i><span>订单</span></li>
-                <li @click="my"><i class="ci-7"></i><span>我的</span></li>
+        <div>
+            <ul class="list-ul">
+                <li><span @click="qian">加菜</span></li>
+                <li v-if="show"><span class="list-money">{{zongjia}}元<span>{{zongshu}}件</span></span></li>
+                <li><span @click="cmoney">确认下单</span></li>
             </ul>
-        </footer>
+        </div>
     </div>
 </template>
 <script type="text/javascript">

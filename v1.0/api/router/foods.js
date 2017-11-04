@@ -99,8 +99,8 @@ module.exports = {
             }
             db.select(`select * from carlist where name like '%${cname}%'`,function(rows){
                 if(rows.length>0){
-                     var number = rows[0].number+1;
-                     var idd = rows[0].id;
+                    var number = rows[0].number+1;
+                    var idd = rows[0].id;
                     db.insert(`update carlist set number= ${number} where id=${idd}`,function(result){
                         response.send(result);
                     })
@@ -156,7 +156,7 @@ module.exports = {
             var data = JSON.parse(request.body.cu);
             var str = '';
             var cname = '';
-            var id='';
+            var id = '';
             for(var key in data){
                 if(key!=='id' && key!='addTime'){
                     str+='"'+data[key]+'"'+','
@@ -176,9 +176,39 @@ module.exports = {
                             response.send(result);
                         })
                 }
+            })            
+        })  
+        app.post("/insert",urlencode,function(request, response){
+            var data = request.body.datalist;
+            var string = '';
+            var cname = '';
+            var id='';
+            for(var key in data){
+                if(key!=='id' && key!='addTime'){
+                    string+='"'+data[key]+'"'+','
+                }
+                if(key=='name'){
+                    cname=data[key];
+                }if(key=='id'){
+                    id=data[key];
+                }
+            }
+            db.select(`select * from foods where name like '%${cname}%'`,function(rows){
+                if(rows.length>0){
+                    var number = rows[0].number+1;
+                    var idd = rows[0].id;
+                    db.insert(`update foods set number= ${number} where id=${idd}`,function(result){
+                        response.send(result);
+                    })
+                    return false;
+                }else {
+                    aa = string.substring(0,string.length-1);
+                    db.insert(`insert into foods (name,img,price,number,type,decorations) values (${aa})`,function(result){
+                            response.send(result);
+                        })
+                }
             })
-            
-        })    
-        
+            return false;
+        })        
     }
 }

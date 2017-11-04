@@ -8,7 +8,7 @@
         </header>
         <div class="body">
             <ul v-for="(obj,index) in carlist" class="carlist-ul" v-if="show">
-                <li>
+                <li class="carlistli">
                     <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
                         <span>{{obj.name}}</span>
@@ -61,7 +61,7 @@
                             ccc:ccc
                         }
                 }).then(res => {
-                   console.log(res);
+                   // console.log(res);
                 })
                this.zongjia=this.zongjia-this.carlist[index].price;
                this.zongshu=this.zongshu-1;
@@ -78,17 +78,12 @@
                    // console.log(res);
                 })
                 this.zongjia=this.zongjia+this.carlist[index].price;
-               this.zongshu=this.zongshu+1;
+                this.zongshu=this.zongshu+1;
             },
-             cmoney:function(){
+            cmoney:function(){
                 var res = parseInt(Math.random()*1000000000);
                 this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
-            },
-            tanchuang:function(){
-                this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
-                  dangerouslyUseHTMLString: true
-                })
             },
             qian:function(){
                 router.push({name:'foodslist'})
@@ -112,6 +107,9 @@
                 }).then(res => {
                     //console.log(res)
                 })
+                this.zongjia = this.zongjia-this.carlist[index].price*this.carlist[index].number;
+                this.zongshu = this.zongshu-this.carlist[index].number;
+                $('.carlistli')[index].remove();
             }, 
             cmy:function(){
                 this.show=true;
@@ -140,14 +138,6 @@
                 }
             })
             this.show=true;           
-        },
-        updated:function(){
-            var self = this;
-            http.get({
-                url: 'carlist'
-            }).then(res => {
-                self.carlist = res.data
-            })
         }
     }
 </script>

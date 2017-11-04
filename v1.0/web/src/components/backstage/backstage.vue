@@ -28,6 +28,7 @@
     import Vue from 'vue';
     import VueRouter from 'vue-router'
     import router from '../../router'
+    import http from '../../utils/httpClient.js'
     import backstage_Ord from './backstage_Ord.vue'
     import backstage_Add from './backstage_Add.vue'
     import backstage_Adm from './backstage_Adm.vue'

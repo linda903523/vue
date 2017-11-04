@@ -84,6 +84,14 @@
                 self.dataset = res.data
             })
         },
+        updated: function(){
+            var self = this;
+            http.get({
+                url: 'carlist'
+            }).then(res => {
+                self.dataset = res.data
+            })
+        },
         methods: {
             wait: function(e){
                 var idx=e

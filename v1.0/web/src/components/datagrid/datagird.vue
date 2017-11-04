@@ -39,14 +39,13 @@
 			jiaru:function(index){
 				var cc =JSON.stringify(this.dataset[index]);
 				var self = this;
-				console.log(self.aa);
 				http.post({
 					url:self.aa,
 					params:{
 						cc:cc
 					}
 				}).then(res=>{
-					console.log(res);
+					// console.log(res);
 				})
 			},
 			ai:function(index){

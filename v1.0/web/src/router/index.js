@@ -99,11 +99,7 @@ var router = new VueRouter({
 				path: '/AdmFood',
 				name: 'AdmFood',
 				component:Backstage_AdmFood
-			},{
-                path:'serach',
-                name:'serach',
-                component:SerachComponent
-            }]
+			}]
 		}
 	]
 })

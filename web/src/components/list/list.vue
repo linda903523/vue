@@ -49,6 +49,7 @@
             $('.socke').eq(data[1]).next('i').css({display:'none'})
         }
     });
+    
     export default {
         state: {
             name:'home',

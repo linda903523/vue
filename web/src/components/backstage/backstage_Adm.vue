@@ -64,7 +64,6 @@
     import http from '../../utils/httpClient.js'
     import loading from '../loading/loading.vue'
     import serach from '../serach/serach.vue'
-
   
     export default {
         data: function(){
@@ -127,4 +126,3 @@
         }
     }
 </script>
-

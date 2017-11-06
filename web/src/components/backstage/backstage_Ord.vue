@@ -30,6 +30,7 @@
         $('.c_caidan ul li').eq(data).find('input').eq(0).nextAll().css({display:'none'})
         $('.c_caidan ul li').eq(data).find('input').eq(0).val('已退单')
     });
+    
     export default {
         data: function(){
             return {

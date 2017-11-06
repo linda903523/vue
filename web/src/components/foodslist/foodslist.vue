@@ -4,6 +4,7 @@
 <script type="text/javascript">
 	import datagrid from '../datagrid/datagird.vue'
     import router from '../../router'
+    
     export default {
 		components: {
 			datagrid

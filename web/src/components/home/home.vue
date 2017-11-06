@@ -47,6 +47,7 @@
 	import foodslist from '../foodslist/foodslist.vue'
 	import http from '../../utils/httpClient.js'
 	import $ from 'jquery'
+	
 	export default {
 		data(){
 			return {

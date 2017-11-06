@@ -105,7 +105,6 @@
                     var socket = io("ws://localhost:8818");
                         socket.emit('pay',this.suiji);
                 })
-                $('.carlist-ul').remove();
             },
             qian:function(){
                 router.push({name:'foodslist'})
@@ -121,6 +120,7 @@
 
             },
             car_delete:function(index){
+                $('.carlistli').eq(index).remove();
                 var cc = JSON.stringify(this.carlist[index]);
                 http.post({
                     url: 'car_delete',
@@ -131,7 +131,6 @@
                 })
                 this.zongjia = this.zongjia-this.carlist[index].price*this.carlist[index].number;
                 this.zongshu = this.zongshu-this.carlist[index].number;
-                $('.carlistli')[index].remove();
             }
         },
         created: function () {

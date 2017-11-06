@@ -4,7 +4,7 @@
             <li v-for="(value,index) in listNum">{{value}}</li>
         </ul>
         <div class="bill_6">
-            <h3 v-for="(value,index) in zhuohao" @click="cai(value,index)"> 桌号:{{value}}</h3>
+            <h3 v-for="(value,index) in zhuohao" @click="cai(value,index)" class="bill_h3"> 桌号:{{value}}</h3>
         </div>    
         <div class="c_caidan">
             <ul>
@@ -120,6 +120,7 @@
                 })
             },
             cai:function(value,index){
+                var idx = index;
                 http.post({
                     url: 'carlist_serach',
                     params:{
@@ -128,6 +129,7 @@
                 }).then(res => {
                   this.numbercai=res.data;
                 })
+                $('.bill_h3').eq(index).css({backgroundColor:'#fc5000'}).siblings().css({backgroundColor:'#fff'})
             }
         }
     }

@@ -13,9 +13,9 @@
                     <p>菜名: {{obj.name}}{{obj.state}}</p>
                     <p>数量: {{obj.number}}</p>
                     <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input type="button" value="已下单" class="btn-danger"/>
-                    <input type="button" value="准备" @click="plan(obj.name)" class="btn-warning"/>
-                    <input type="button" value="完成" @click="complete(obj.name)" class="btn-success"/>
+                    <input type="button" value="已下单" class="btn-danger" v-if="obj.status==1"/>
+                    <input type="button" value="准备" @click="plan(obj.name)" class="btn-warning" v-if="obj.status==2"/>
+                    <input type="button" value="完成" @click="complete(obj.name)" class="btn-success" v-if="obj.status==3"/>
                 </li>
             </ul>
         </div>

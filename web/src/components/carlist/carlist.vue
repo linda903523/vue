@@ -22,8 +22,8 @@
                         <i class="carlist-i3" @click="car_delete(index)"></i>
                     </div>
                 </li>
-            </ul>
-        </div>     
+            </ul>      
+        </div>
         <div>
             <ul class="list-ul">
                 <li><span @click="qian">加菜</span></li>
@@ -101,13 +101,24 @@
                 res+=b;
                 this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
-                this.ws.send('您有新的订单:' + this.suiji);
+                $(()=>{
+                    var socket = io("ws://localhost:8818");
+                        socket.emit('pay',this.suiji);
+                })
+                $('.carlist-ul').remove();
             },
             qian:function(){
                 router.push({name:'foodslist'})
             },
             list:function(){
                 router.push({name: 'list'})              
+            },
+            my:function(){
+                router.push({name:'my'})              
+            },
+            foodslist:function(){
+                router.push({name:'foodslist'})
+
             },
             car_delete:function(index){
                 var cc = JSON.stringify(this.carlist[index]);
@@ -142,11 +153,7 @@
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
                 }
             })
-            this.show=true;
-            this.ws = new WebSocket("ws://10.3.131.10:888");
-            this.ws.onmessage = function(_msg){
-                // console.log(_msg.data);
-            }       
+            this.show=true;      
         }
     }
 </script>

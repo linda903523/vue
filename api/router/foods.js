@@ -144,7 +144,6 @@ module.exports = {
                 response.send(rows);
             })  
         })
-
         app.get('/my_select', function(request, response){
             db.select('select * from ai', function(rows){
                 response.send(rows);
@@ -185,9 +184,7 @@ module.exports = {
                             response.send(result);
                         })
                 }
-
             })            
         })        
     }
-
 }

@@ -22,7 +22,6 @@ module.exports = {
         user.User(app);
         food.Food(app);
         backstage.Backstage(app);
-
         app.listen(88);
     }
 }

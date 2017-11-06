@@ -66,6 +66,19 @@
 						alert('亲，该商品已收藏了');
 					}
 				})
+			},
+			ai:function(index){
+				var cu =JSON.stringify(this.dataset[index]);
+				http.post({
+					url:'ai_insert',
+					params:{
+						cu:cu
+					}
+				}).then(res=>{
+					if(res.data==false){
+						alert('亲，该商品已收藏了');
+					}
+				})
 			}
 		},
 		mounted:function(){

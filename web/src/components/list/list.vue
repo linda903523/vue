@@ -14,9 +14,11 @@
                         <p>菜名：<span>{{obj.name}}</span></p>
                         <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
                         <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
-                        <p>状态：<span v-if="obj.status==1" class="btn-danger">已下单</span>
-                            <span v-if="obj.status==2" class="btn-warning">准备</span>
-                            <span v-if="obj.status==3" class="btn-success">完成</span>
+                        <p>状态：<span v-if="obj.status==1" class="btn-danger socke">已下单</span>
+                        <i v-if="obj.status==1" class="btn-danger" @click="socke_i(obj.name,index)">退单</i>
+                            <span v-if="obj.status==2" class="btn-warning socke">准备中</span>
+                            <span v-if="obj.status==3" class="btn-success socke">完成</span>
+                            <span v-if="obj.status==4" class="btn-danger socke">已退单</span>
                         </p>
                     </div>
                 </li>
@@ -36,6 +38,17 @@
     import router from '../../router'
     import './list.scss'
     import http from '../../utils/httpClient.js'
+    var socket = io("ws://localhost:8818");
+    socket.on('oks',function(data){
+        if(data[0]==3){
+            $('.socke').eq(data[1]).html('完成').attr({class:"btn-success socke"})
+            $('.socke').eq(data[1]).next('i').css({display:'none'})
+        }
+        if(data[0]==2){
+            $('.socke').eq(data[1]).html('准备中').attr({class:"btn-warning socke"})
+            $('.socke').eq(data[1]).next('i').css({display:'none'})
+        }
+    });
     export default {
         state: {
             name:'home',
@@ -79,6 +92,24 @@
             },
             my:function(){
                 router.push({name:'my'})
+            },
+            socke_i:function(name,dx){
+                var dx=dx
+                $(()=>{
+                    var socket = io("ws://localhost:8818");
+                    socket.emit('socke_i',dx);
+                    $('.socke').eq(dx).css({display:'none'})
+                })
+                var idx=name
+                 http.post({
+                    url: 'back_update',
+                    params:{
+                        myname:idx,
+                        dd:4
+                    }
+                }).then(res => {
+                    self.dataset = res.data
+                }) 
             }
         },
         mounted:function(index){
@@ -89,13 +120,5 @@
                 self.fl_list = res.data
             })
         }
-        // , updated:function(){
-        //     var self = this;
-        //     http.get({
-        //         url: 'carlist'
-        //     }).then(res => {
-        //         self.fl_list = res.data
-        //     })
-        // }
     }
 </script>

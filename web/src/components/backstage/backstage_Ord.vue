@@ -10,8 +10,9 @@
             <ul>
                 <li  v-for="(obj, index) in numbercai">
                     <img :src="obj.img"  alt="" />
-                    <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
-                    <p>备注:<i>{{obj.decorations}}{{obj.status}}</i></p>
+                    <p>菜名: {{obj.name}}{{obj.state}}</p>
+                    <p>数量: {{obj.number}}</p>
+                    <p>备注:{{obj.decorations}}</p>
                     <input type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1" class="btn-danger"/>
                     <input type="button" value="准备" @click="plan(obj.name,index)" v-if="obj.status<=2" class="btn-warning"/>
                     <input type="button" value="完成" @click="complete(obj.name,index)"  v-if="obj.status<=3" class="btn-success"/>

@@ -10,22 +10,12 @@
 </template>
 <script type="text/javascript">
     import http from '../../utils/httpClient.js'
+    
     export default {
         data(){
             return {
-                love:[],
-                tools: {
-                    add: {
-                        text: '添加',
-                        event: function(){
-                            router.push({name: 'foodsform'})
-                        }
-                    }
-                }
+                love:[]
             }
-        },
-        methods:{
-
         },
         mounted:function(){
             var self = this;
@@ -33,9 +23,7 @@
                 url: 'my_select'
             }).then(res => {
                 self.love = res.data
-                console.log(self.love);
-            })
-            
+            })            
         }
     }
 </script>

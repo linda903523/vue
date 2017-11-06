@@ -20,6 +20,7 @@
 	import loading from '../loading/loading.vue'
 	import './datagird.scss'
 	import $ from 'jquery'
+	
 	export default {
 		data(){
 			var colsArray = this.cols ? this.cols.split(',') : [];
@@ -29,7 +30,7 @@
 				colsArray
 			}
 		},
-		props: ['api', 'cols','toolbar','tools','aa','my'],
+		props: ['api', 'cols','toolbar','tools','aa','my','bb'],
 		methods:{
 			tianjia:function(index){
 				var bb = this.dataset[index];

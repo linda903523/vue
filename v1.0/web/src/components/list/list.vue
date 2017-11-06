@@ -7,7 +7,7 @@
             <p class="c-my">我的订单</p>
         </header>
        <div class="body">
-            <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
+            <div class="dingdan"><span>单号：</span>{{$route.params.number.substring(0,9)}}</div>
             <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
                 <li>
                     <div class="carlist-div1 ">

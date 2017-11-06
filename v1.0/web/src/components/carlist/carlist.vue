@@ -38,6 +38,7 @@
     import './carlist.scss'
     import router from '../../router'
     import $ from 'jquery'
+    
     export default {
         data:function(){
             return {
@@ -82,16 +83,23 @@
             },
              cmoney:function(){
                 var res =JSON.stringify(parseInt(Math.random()*1000000000));
-                var a = this.carlist[0].zhuohao;
-                if(a<10){
-                    a='00'+a;
-                    res=res+a;
-                    this.suiji=res;
-                }if(9<a<100){
-                    a='0'+a;
-                    res=res+a;
-                    this.suiji=res;
+                var a=[];
+                for(var i=0;i<this.carlist.length;i++){
+                    var b = this.carlist[i].zhuohao;
+                    if(b<10){
+                        b = '00'+b+',';
+                    }else if(9<b<100){
+                        b='0'+b+',';
+                    }
+                    a.push(b);
                 }
+                $.unique(a.sort());
+                var b='';
+                $(a).each(function(i){
+                   b+=a[i];
+                })
+                res+=b;
+                this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
                 this.ws.send('您有新的订单:' + this.suiji);
             },
@@ -119,8 +127,6 @@
                 router.push({name:'my'})
             }
         },
-        components: {
-        },
         created: function () {
             var now = new Date();
             var hour = now.getHours();
@@ -140,7 +146,7 @@
                     this.zongjia+=this.carlist[i].number*this.carlist[i].price;
                 }
             })
-            this.show=true;    
+            this.show=true;
             this.ws = new WebSocket("ws://10.3.131.10:888");
             this.ws.onmessage = function(_msg){
                 // console.log(_msg.data);

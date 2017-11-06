@@ -3,11 +3,9 @@ import VueRouter from 'vue-router'
 import LoginComponent from '../components/login/login.vue'
 import HomeComponent from '../components/home/home.vue'
 import FoodsListComponent from '../components/foodslist/foodslist.vue'
-import FoodsFormComponent from '../components/foodsform/foodsform.vue'
 import CarListComponent from '../components/carlist/carlist.vue'
 import BackstageComponent from '../components/backstage/backstage.vue'
 import Backstage_OrdFood from '../components/backstage/backstage_Ord.vue'
-import Backstage_AddFood from '../components/backstage/backstage_Add.vue'
 import Backstage_AdmFood from '../components/backstage/backstage_Adm.vue'
 import SerachComponent from '../components/serach/serach.vue'
 import MyComponent from '../components/my/my.vue'
@@ -53,11 +51,6 @@ var router = new VueRouter({
                 component:SerachComponent
             }]
 		},
-        {
-            path: '/foodsform',
-            name: 'foodsform',
-            component: FoodsFormComponent
-        },
 		{
 			path: '/',
 			name: 'login',
@@ -91,10 +84,6 @@ var router = new VueRouter({
 				path: '/OrdFood',
 				name: 'OrdFood',
 				component:Backstage_OrdFood
-			},{
-				path: '/AddFood',
-				name: 'AddFood',
-				component:Backstage_AddFood
 			},{
 				path: '/AdmFood',
 				name: 'AdmFood',

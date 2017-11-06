@@ -62,7 +62,6 @@
 </template>
 <script type="text/javascript">
     import http from '../../utils/httpClient.js'
-    import loading from '../loading/loading.vue'
   
     export default {
         data: function(){
@@ -122,9 +121,6 @@
                     self.dataset=res.data;
                 })
             }
-        },
-        components: {          
-            loading
         }
     }
 </script>

@@ -122,6 +122,12 @@ module.exports = {
                 response.send(rows);
             })  
         })
+        app.post('/carlist_serach', urlencode,function(request, response){
+            var cname = request.body.zhuohao;
+             db.select(`select * from carlist where zhuohao = '${cname}'`,function(rows){
+                response.send(rows);
+            })  
+        })
         app.post("/car_delete",urlencode,function(request, response){
             var data = JSON.parse(request.body.cc);
             db.delete(`delete from carlist where id=${data.id}`,function(result){
@@ -175,7 +181,7 @@ module.exports = {
                     response.send('false');
                 }else{
                     aa = str.substring(0,str.length-1);
-                    db.insert(`insert into ai (name,img,price,number,type,decorations) values (${aa})`,function(result){
+                    db.insert(`insert into ai (name,img,price,number,type,decorations,status) values (${aa})`,function(result){
                             response.send(result);
                         })
                 }

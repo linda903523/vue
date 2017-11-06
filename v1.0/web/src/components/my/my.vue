@@ -38,7 +38,7 @@
 <script type="text/javascript">
     import http from '../../utils/httpClient.js'
     import router from '../../router'
-    import shoucang from '../shoucang/shoucang.vue'
+    import shoucang from './shoucang.vue'
     import pinglun from './pinglun.vue'
     import pingfen from './pingfen.vue'
     import './my.scss'

@@ -18,6 +18,7 @@ import YingpingComponent from '../components/foodstype/yingping.vue'
 import ListComponent from '../components/list/list.vue'
 
 Vue.use(VueRouter)
+
 var router = new VueRouter({
 	routes: [
 		{
@@ -64,6 +65,11 @@ var router = new VueRouter({
 			component: LoginComponent
 		},
         {
+            path:'/li/:number',
+            name:'li',
+            component:ListComponent    
+        },
+        {
             path:'/list',
             name:'list',
             component:ListComponent  
@@ -94,7 +100,11 @@ var router = new VueRouter({
 				path: '/AdmFood',
 				name: 'AdmFood',
 				component:Backstage_AdmFood
-			}]
+			},{
+                path:'serach',
+                name:'serach',
+                component:SerachComponent
+            }]
 		}
 	]
 })

@@ -3,11 +3,10 @@
 .foodlist-c li{
     position:relative;width:100%;padding:0 10px;float:none;
     >span{font-size:25px;}
-    img{width:100%;height:500px;}
+    img{width:100%;height:500px;border-radius:50px;}
 }
 .tianjia-c{width: 45px;height: 68px;background-image: url("../../img/1.png");background-size:1500px;position:absolute;background-position:1500px 212px;bottom:37px;right: 37px;}
 .jiage-c{color:#F76D2F;font-weight:bold;}
 .fl-toolbar{ background: #fff;text-align:right;}
 .btn-goback{background-color: #e6674a;border-color: #e6674a}
 .form-horizontal{margin-top:10px;}
-

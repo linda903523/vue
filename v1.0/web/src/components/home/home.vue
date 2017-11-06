@@ -12,7 +12,7 @@
 						<span>{{zhuohao}}</span>
 					</li>
 					<li><span>{{diancai}}</span></li>
-					<input type="text" v-model="message" />
+					<input type="text" v-model="message" style="border-radius:20px;"/>
 					<li><i class="ci-3" @click="serach"></i></li>
 				</ul> 
 			</div>
@@ -40,7 +40,6 @@
 	</div>
 </template>
 <script type="text/javascript">
-	//$children
 	import Vue from 'vue'
 	import './home.scss'
 	import router from '../../router'
@@ -59,7 +58,7 @@
 				message:'',
 				showw:true,
 				show:false,
-				 serachnumber:[]
+				serachnumber:[]
 			}
 		},
 		created: function () {
@@ -74,7 +73,6 @@
 			carlist:function(){
 				router.push({name:'carlist'})				
 			},
-
 			list:function(){
 				router.push({name:'list'})				
 			},

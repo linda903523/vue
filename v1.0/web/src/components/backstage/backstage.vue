@@ -7,14 +7,14 @@
             <div class="menu">
                 <ul>
                     <li @click="ord">
-                        <router-link to="/OrdFood">顾客点餐</router-link> 
+                        <router-link to="/OrdFood">菜单列表</router-link> 
                     </li>
                     <li @click="add">
                         <router-link to="/AddFood">添加菜单</router-link> 
                         
                     </li>
                     <li @click="adm">
-                        <router-link to="/AdmFood">管理菜单</router-link>
+                        <router-link to="/AdmFood">管理菜谱</router-link>
                     </li>
                 </ul>
             </div>
@@ -43,15 +43,15 @@
         methods: {
             ord: function(e){
                 $(e.target).css({background:'#fff'})
-                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+                $(e.target).parent('li').siblings('li').find('a').css({background:'orange'})
             },
             add: function(e){
                 $(e.target).css({background:'#fff'})
-                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+                $(e.target).parent('li').siblings('li').find('a').css({background:'orange'})
             },
             adm: function(e){
                 $(e.target).css({background:'#fff'})
-                $(e.target).parent('li').siblings('li').find('a').css({background:''})
+                $(e.target).parent('li').siblings('li').find('a').css({background:'orange'})
             }
         }
     }

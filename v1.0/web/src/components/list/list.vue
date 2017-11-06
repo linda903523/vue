@@ -6,27 +6,24 @@
             <i class="list-qian"  @click="qian"></i>
             <p class="c-my">我的订单</p>
         </header>
-        <div class="body">
-            <div>
-                <h3>桌号：<input type="text" v-model="tableNum"></h3>
-                <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
-                    <li>
-                        <img :src="obj.img" class="img-carlist"/>
-                        <div class="carlist-div1 ">
-                            <p>菜名：<span>{{obj.name}}</span></p>
-                            <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
-                            <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
-                            <p>状态：<span v-on:dk="span_list" class="cssa" v-if="obj.dd==1">等待</span>
-                                <span v-on:dk="span_list" class="cssa" v-if="obj.dd==1">退单</span>
-                                <span v-on:dk="span_list" class="cssa" v-if="obj.dd==2">准备</span>
-                                <span v-on:dk="span_list" class="cssa" v-if="obj.dd==3">完成</span>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+       <div class="body">
+            <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
+            <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
+                <li>
+                    <div class="carlist-div1 ">
+                        <p>菜名：<span>{{obj.name}}</span></p>
+                        <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
+                        <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
+                        <p>状态：
+                            <span v-if="obj.status==1">已下单</span>
+                            <span v-if="obj.status==2">准备</span>
+                            <span v-if="obj.status==3">完成</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>          
         </div>
-        <input type="submit" value="提交订单">
+        <input type="submit" value="提交订单" style="backgroundColor:green;color:#fff;">
         <footer class="list_footer">
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
@@ -40,8 +37,16 @@
 <script type="text/javascript">
     import router from '../../router'
     import './list.scss'
+    import './list.js'
     import http from '../../utils/httpClient.js'
-    
+    $(()=>{
+        var socket = io("ws://localhost:8818");
+        
+        socket.on('ok', function(data){
+            console.log(data)
+        })
+        
+    })
     export default {
         state: {
             name:'home',
@@ -58,6 +63,7 @@
             return {
                 time:'',
                 fl_list:[],
+                hao:'',
                 tableNum:''
             }
         },
@@ -84,15 +90,6 @@
             },
             my:function(){
                 router.push({name:'my'})
-            },
-            span_list: function(htm){
-                var self = this;
-                http.get({
-                    url: 'carlist'
-                }).then(res => {
-                    self.fl_list = res.data
-                })
-            
             }
         },
         components:{
@@ -104,6 +101,14 @@
             }).then(res => {
                 self.fl_list = res.data
             })
-        }
+        },
+        // updated:function(){
+        //     var self = this;
+        //     http.get({
+        //         url: 'carlist'
+        //     }).then(res => {
+        //         self.fl_list = res.data
+        //     })
+        // }
     }
 </script>

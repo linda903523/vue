@@ -45,7 +45,7 @@
                     }
                 }).then(res => {
                 	if(res.data.status){
-                    	router.push({name:'home'})
+                    	router.push({name:'backstage'})
                     	alert('登录成功');            		
                 	}else{
                 		alert('登录出错');

@@ -81,7 +81,7 @@
                 this.zongjia=this.zongjia+this.carlist[index].price;
                 this.zongshu=this.zongshu+1;
             },
-             cmoney:function(){
+            cmoney:function(){
                 var res =JSON.stringify(parseInt(Math.random()*1000000000));
                 var a=[];
                 for(var i=0;i<this.carlist.length;i++){
@@ -121,10 +121,6 @@
                 this.zongjia = this.zongjia-this.carlist[index].price*this.carlist[index].number;
                 this.zongshu = this.zongshu-this.carlist[index].number;
                 $('.carlistli')[index].remove();
-            }, 
-            cmy:function(){
-                this.show=true;
-                router.push({name:'my'})
             }
         },
         created: function () {

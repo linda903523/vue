@@ -21,12 +21,8 @@
     </div>
 </template>
 <script type="text/javascript">
-    import Vue from 'vue';
-    import VueRouter from 'vue-router'
     import router from '../../router'
     import http from '../../utils/httpClient.js'
-    import backstage_Ord from './backstage_Ord.vue'
-    import backstage_Adm from './backstage_Adm.vue'
     import './backstage.js';
     import './backstage.scss';
     

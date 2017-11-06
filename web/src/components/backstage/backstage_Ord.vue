@@ -4,7 +4,7 @@
             <li v-for="(value,index) in listNum">{{value}}</li>
         </ul>
         <div class="bill_6">
-            <h3 class="bill_h3"  v-for="(value,index) in zhuohao" @click="cai(value)"> 桌号:{{value}}</h3>  
+            <h3 class="bill_h3"  v-for="(value,index) in zhuohao" @click="cai(value,index)"> 桌号:{{value}}</h3>
         </div>    
         <div class="c_caidan">
             <ul>
@@ -13,9 +13,9 @@
                     <p>菜名: {{obj.name}}{{obj.state}}</p>
                     <p>数量: {{obj.number}}</p>
                     <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status=1" class="btn-danger"/>
-                    <input type="button" value="准备" @click="plan(obj.name)" v-if="obj.status<=2" class="btn-warning"/>
-                    <input type="button" value="完成" @click="complete(obj.name)"  v-if="obj.status<=3" class="btn-success"/>
+                    <input type="button" value="已下单" class="btn-danger"/>
+                    <input type="button" value="准备" @click="plan(obj.name)" class="btn-warning"/>
+                    <input type="button" value="完成" @click="complete(obj.name)" class="btn-success"/>
                 </li>
             </ul>
         </div>       
@@ -23,11 +23,11 @@
 </template>
 <script type="text/javascript">
     import http from '../../utils/httpClient.js'
+    import $ from 'jquery'
     
     export default {
         data: function(){
             return {
-                dataset: [],
                 loadingShow: false,
                 name:[],
                 price:[],
@@ -35,7 +35,8 @@
                 decorations:[],
                 listNum:[],
                 zhuohao:[],
-                numbercai:[]
+                numbercai:[],
+                ws:''
             }
         },
         mounted: function(){
@@ -43,10 +44,10 @@
             http.get({
                 url: 'carlist'
             }).then(res => {
-                self.dataset = res.data
+                self.numbercai = res.data
             })
-            var ws = new WebSocket("ws://localhost:888");
-            ws.onmessage = function(_msg){
+            this.ws = new WebSocket("ws://localhost:888");
+            this.ws.onmessage = function(_msg){
                 var data = _msg.data;
                 var data1 = data.substring(0, 17);
                 var a = data.substring(17);
@@ -60,23 +61,9 @@
                })
                 self.zhuohao = b;
                 self.listNum.push(data1);
-            }
-            
+            }            
         },
         methods: {
-            wait: function(e){
-                var idx=e
-                var self = this;
-                http.post({
-                    url: 'back_update',
-                    params:{
-                        myname:idx,
-                        dd:1
-                    }
-                }).then(res => {
-                    self.dataset = res.data
-                })              
-            },
             plan: function(e){
                 var idx=e
                 var self = this;
@@ -87,7 +74,7 @@
                         dd:2
                     }
                 }).then(res => {
-                    self.dataset = res.data
+                    self.numbercai = res.data
                 })
             },
             complete: function(e){
@@ -100,10 +87,10 @@
                         dd:3
                     }
                 }).then(res => {
-                    self.dataset = res.data
+                    self.numbercai = res.data
                 })
             },
-            cai:function(value,e){
+            cai:function(value,index){
                 http.post({
                     url: 'carlist_serach',
                     params:{

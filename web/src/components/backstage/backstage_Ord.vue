@@ -4,7 +4,7 @@
             <li v-for="(value,index) in listNum">{{value}}</li>
         </ul>
         <div class="bill_6">
-            <h3 class="bill_h3"  v-for="(value,index) in zhuohao" @click="cai(value,index)"> 桌号:{{value}}</h3>
+            <h3 v-for="(value,index) in zhuohao" @click="cai(value,index)"> 桌号:{{value}}</h3>
         </div>    
         <div class="c_caidan">
             <ul>
@@ -18,12 +18,11 @@
                     <input type="button" value="完成" @click="complete(obj.name)" class="btn-success"/>
                 </li>
             </ul>
-        </div>       
+        </div>
     </div>
 </template>
 <script type="text/javascript">
     import http from '../../utils/httpClient.js'
-    import $ from 'jquery'
     
     export default {
         data: function(){

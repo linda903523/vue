@@ -1,6 +1,5 @@
 #app{height:100%;}
-.container{font-size:40px;}
-.container{height:100%;display:flex;flex-direction:column;width:100%;}
+.container{font-size:40px;height:100%;display:flex;flex-direction:column;width:100%;}
 .container header{width:100%;height:200px;background-color:#F76D2F;border-sizing:border-box;color:#ffffff;}
 .container header input{width:300px;color:#000000;}
 .container .body{flex:1;width:100%; overflow-y:auto;}
@@ -92,5 +91,5 @@
 }
 .fixed{position:fixed;top:190px;left:0;z-index:999;background: #fff;width:100%;}
 .fl-toolbar{width: 100%;height: 50px;padding: 10px 20px;border-bottom: solid 1px #ccc;}
-
-.container .zhuohao{width:40px;}
+.container .zhuohao{width:50px;height:50px;border:1px solid #ccc;border-radius:10px;}
+.container .zhuohao:focus{border-color:#000;}

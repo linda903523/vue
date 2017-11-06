@@ -141,7 +141,7 @@
                 }
             })
             this.show=true;    
-            this.ws = new WebSocket("ws://10.3.131.7:888");
+            this.ws = new WebSocket("ws://10.3.131.10:888");
             this.ws.onmessage = function(_msg){
                 // console.log(_msg.data);
             }       

@@ -81,8 +81,6 @@
                 router.push({name:'my'})
             }
         },
-        components:{
-        },
         mounted:function(index){
             var self = this;
             http.get({

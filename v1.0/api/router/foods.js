@@ -116,9 +116,51 @@ module.exports = {
             })
             return false;
         })
+        app.post("/carr_insert",urlencode,function(request, response){
+                var data = JSON.parse(request.body.cc);
+                var string = '';
+                var cname = '';
+                var id='';
+                var zhuohao=''
+                for(var key in data){
+                    if(key!=='id' && key!='addTime'){
+                        string+='"'+data[key]+'"'+','
+                    }
+                    if(key=='name'){
+                        cname=data[key];
+                    }if(key=='id'){
+                        id=data[key];
+                    }if(key=='zhuohao'){
+                        zhuohao=data[key];
+                    }
+                }           
+                db.select(`select * from carlist1 where name ='${cname}' and zhuohao='${zhuohao}'`,function(rows){
+                    if(rows.length>0){
+                        var number = rows[0].number+1;
+                        var idd = rows[0].id;
+                        db.insert(`update carlist1 set number= ${number} where id=${idd}`,function(result){
+                            response.send(result);
+                        })
+                        return false;
+                    }else {
+                        aa = string.substring(0,string.length-1);
+                        db.insert(`insert into carlist1 (name,img,price,number,type,decorations,status,zhuohao,renshu) values (${aa})`,function(result){
+                                response.send(result);
+                            })
+                    }
+                })
+                return false;
+        })
+        
         app.post('/serach', urlencode,function(request, response){
             var cname = request.body.name;
              db.select(`select * from foods where name like '%${cname}%'`,function(rows){
+                response.send(rows);
+            })  
+        })
+        app.post('/carlist_serach', urlencode,function(request, response){
+            var cname = request.body.zhuohao;
+             db.select(`select * from carlist where zhuohao = '${cname}'`,function(rows){
                 response.send(rows);
             })  
         })

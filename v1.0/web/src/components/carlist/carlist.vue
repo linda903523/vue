@@ -82,20 +82,28 @@
             },
              cmoney:function(){
                 var res =JSON.stringify(parseInt(Math.random()*1000000000));
-                var a='';
+                console.log()
+                var a=[];
                 for(var i=0;i<this.carlist.length;i++){
                     var b = this.carlist[i].zhuohao;
                     if(b<10){
-                        b = '00'+b;
-                    }if(9<b<100){
-                        b='0'+b;
+                        b = '00'+b+',';
+                    }else if(9<b<100){
+                        b='0'+b+',';
                     }
-                   a+=b;
+                 a.push(b);
                 }
-                res+=a;
+                 $.unique(a.sort());
+                 console.log(a);
+                 var b='';
+                $(a).each(function(i){
+                   b+=a[i];
+                })
+                res+=b;
                 this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
                 this.ws.send('您有新的订单:' + this.suiji);
+                $('.carlist-ul').remove();
             },
             qian:function(){
                 router.push({name:'foodslist'})
@@ -143,7 +151,7 @@
                 }
             })
             this.show=true;    
-            this.ws = new WebSocket("ws://10.3.131.7:888");
+            this.ws = new WebSocket("ws://10.3.131.28:888");
             this.ws.onmessage = function(_msg){
                 // console.log(_msg.data);
             }       

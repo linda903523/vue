@@ -6,8 +6,8 @@
             <i class="list-qian"  @click="qian"></i>
             <p class="c-my">我的订单</p>
         </header>
-       <div class="body">
-            <div class="dingdan"><span>单号：</span>{{$route.params.number}}</div>
+       <div class="body" v-if="show">
+            <div class="dingdan"><span>单号：</span>{{$route.params.number.substring(0,9)}}</div>
             <ul v-for="(obj,index) in fl_list" class="carlist-ul list_ul">
                 <li>
                     <div class="carlist-div1 ">
@@ -53,7 +53,8 @@
                 time:'',
                 fl_list:[],
                 hao:'',
-                tableNum:''
+                tableNum:'',
+                show:false
             }
         },
         created: function () {
@@ -90,14 +91,15 @@
             }).then(res => {
                 self.fl_list = res.data
             })
+            this.show=true;
         },
-        updated:function(){
-            var self = this;
-            http.get({
-                url: 'carlist'
-            }).then(res => {
-                self.fl_list = res.data
-            })
-        }
+        // updated:function(){
+        //     var self = this;
+        //     http.get({
+        //         url: 'carlist'
+        //     }).then(res => {
+        //         self.fl_list = res.data
+        //     })
+        // }
     }
 </script>

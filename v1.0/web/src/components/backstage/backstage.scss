@@ -7,7 +7,7 @@
 }
 #fl_list{
     float:right;height: 100%;
-    li{border:1px solid #0bf80f;color:#0bf80f;width:208px;height:50px;line-height: 50px;text-align:center;border-radius:20px;}   
+    li{border:1px solid #0bf80f;color:#0bf80f;width:250px;height:50px;line-height: 50px;text-align:center;border-radius:20px;}   
 }
 #main{width:100%;height:600px;border-bottom:2px solid #ccc;}
 .bill_6{
@@ -74,3 +74,7 @@
         p{line-height:30px;}
     }       
 }
+.c_caidan{overflow:hidden;width:600px;position:relative;padding-top:50px;}
+.c_caidan img{width:100px;height:100px;float:left;margin-right:35px;}
+.c_caidan ul{width:300px;margin:0 auto;border:1px solid #ccc;}
+.c_caidan li{overflow:hidden;}

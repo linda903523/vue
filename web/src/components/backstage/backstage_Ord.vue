@@ -26,8 +26,8 @@
     import loading from '../loading/loading.vue'
     var socket = io("ws://localhost:8818");
     socket.on('ok_i',function(data){
-        $('.bill_6 ul li').eq(data).find('input').eq(0).nextAll().css({display:'none'})
-        $('.bill_6 ul li').eq(data).find('input').eq(0).val('已退单')
+        $('.c_caidan ul li').eq(data).find('input').eq(0).nextAll().css({display:'none'})
+        $('.c_caidan ul li').eq(data).find('input').eq(0).val('已退单')
     });
     export default {
         data: function(){

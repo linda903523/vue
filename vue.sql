@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-06 10:46:59
+Date: 2017-11-06 20:43:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,24 +59,18 @@ CREATE TABLE `carlist` (
   `renshu` varchar(255) DEFAULT NULL COMMENT '人数',
   `addTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of carlist
 -- ----------------------------
-INSERT INTO `carlist` VALUES ('0000000057', '酱鸡腿套餐', './src/img/timg3.jpg', '12.00', '好再来-热菜', '1', '7', '1', '10', '1', '2017-11-06 10:14:39');
-INSERT INTO `carlist` VALUES ('0000000055', '糖醋带鱼套餐', './src/img/timg.jpg', '12.00', '好再来-热菜', '1', '14', '1', '3', '3', '2017-11-06 09:58:35');
-INSERT INTO `carlist` VALUES ('0000000056', '土豆肚片套餐', './src/img/timg2.jpg', '13.00', '好再来-热菜', '1', '2', '1', '5', '5', '2017-11-06 09:58:23');
-INSERT INTO `carlist` VALUES ('0000000054', '酱汁鸡腿套餐', './src/img/timg4.jpg', '10.00', '好再来-热菜', '1', '7', '1', '7', '7', '2017-11-06 09:56:39');
-INSERT INTO `carlist` VALUES ('0000000053', '香酥鸡腿套餐', './src/img/timg2.jpg', '10.00', '好再来-热菜', '1', '2', '1', '2', '2', '2017-11-06 09:40:56');
-INSERT INTO `carlist` VALUES ('0000000052', '大份鸡腿套餐', './src/img/timg5.jpg', '12.00', '好再来-热菜', '1', '11', '1', '1', '1', '2017-11-06 09:40:38');
-INSERT INTO `carlist` VALUES ('0000000058', '糖醋带鱼套餐', './src/img/timg.jpg', '12.00', '好再来-热菜', '1', '13', '1', '11', '1', '2017-11-06 10:04:58');
-INSERT INTO `carlist` VALUES ('0000000059', '小份鸡腿套餐', './src/img/timg1.jpg', '10.00', '好再来-热菜', '1', '10', '1', '12', '4', '2017-11-06 10:13:42');
-INSERT INTO `carlist` VALUES ('0000000060', '香酥鸡腿套餐', './src/img/timg2.jpg', '10.00', '好再来-热菜', '1', '2', '1', '12', '4', '2017-11-06 10:09:43');
-INSERT INTO `carlist` VALUES ('0000000061', '酱鸡腿套餐', './src/img/timg3.jpg', '12.00', '好再来-热菜', '1', '1', '1', '12', '4', '2017-11-06 10:09:45');
-INSERT INTO `carlist` VALUES ('0000000062', '酱鸡腿套餐', './src/img/timg3.jpg', '12.00', '好再来-热菜', '1', '1', '1', '55', '5', '2017-11-06 10:32:57');
-INSERT INTO `carlist` VALUES ('0000000063', '酱汁鸡腿套餐', './src/img/timg4.jpg', '10.00', '好再来-热菜', '1', '1', '1', '55', '5', '2017-11-06 10:32:58');
-INSERT INTO `carlist` VALUES ('0000000064', '糖醋带鱼套餐', './src/img/timg.jpg', '12.00', '好再来-热菜', '1', '12', '1', '55', '5', '2017-11-06 10:32:59');
+INSERT INTO `carlist` VALUES ('0000000124', '糖醋排骨套餐', './src/img/timg4.jpg', '13.00', '好再来-热菜', '1', '1', '1', '3', '3', '2017-11-06 20:43:40');
+INSERT INTO `carlist` VALUES ('0000000125', '酸菜肥肠套餐', './src/img/timg5.jpg', '13.00', '好再来-热菜', '1', '1', '1', '3', '3', '2017-11-06 20:12:51');
+INSERT INTO `carlist` VALUES ('0000000123', '红烧排骨套餐', './src/img/timg3.jpg', '13.00', '好再来-热菜', '1', '1', '1', '3', '3', '2017-11-06 20:12:47');
+INSERT INTO `carlist` VALUES ('0000000119', '小份鸡腿套餐', './src/img/timg1.jpg', '10.00', '好再来-热菜', '1', '8', '1', '1', '1', '2017-11-06 20:09:37');
+INSERT INTO `carlist` VALUES ('0000000120', '香酥鸡腿套餐', './src/img/timg2.jpg', '10.00', '好再来-热菜', '1', '2', '1', '1', '1', '2017-11-06 20:10:13');
+INSERT INTO `carlist` VALUES ('0000000121', '湘味鲍鱼套餐', './src/img/timg2.jpg', '14.00', '好再来-热菜', '1', '1', '1', '2', '2', '2017-11-06 20:11:58');
+INSERT INTO `carlist` VALUES ('0000000122', '豆豉小黄鱼套餐', './src/img/timg4.jpg', '12.00', '好再来-热菜', '1', '1', '1', '2', '2', '2017-11-06 20:12:00');
 
 -- ----------------------------
 -- Table structure for foods
@@ -180,7 +174,7 @@ CREATE TABLE `review` (
   `star` varchar(255) DEFAULT NULL COMMENT '评分',
   `addTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of review
@@ -210,6 +204,16 @@ INSERT INTO `review` VALUES ('0000000022', '很好', '1', '2017-11-03 11:06:34')
 INSERT INTO `review` VALUES ('0000000023', '888', '1', '2017-11-03 11:08:09');
 INSERT INTO `review` VALUES ('0000000024', '999', '1', '2017-11-03 11:08:21');
 INSERT INTO `review` VALUES ('0000000025', '很好', '1', '2017-11-03 11:08:34');
+INSERT INTO `review` VALUES ('0000000026', '222', '1', '2017-11-06 20:24:19');
+INSERT INTO `review` VALUES ('0000000027', '222', '1', '2017-11-06 20:26:19');
+INSERT INTO `review` VALUES ('0000000028', '222', '1', '2017-11-06 20:28:19');
+INSERT INTO `review` VALUES ('0000000029', '222', '1', '2017-11-06 20:30:19');
+INSERT INTO `review` VALUES ('0000000030', '222', '1', '2017-11-06 20:32:19');
+INSERT INTO `review` VALUES ('0000000031', '222', '1', '2017-11-06 20:34:19');
+INSERT INTO `review` VALUES ('0000000032', '222', '1', '2017-11-06 20:36:19');
+INSERT INTO `review` VALUES ('0000000033', '222', '1', '2017-11-06 20:38:19');
+INSERT INTO `review` VALUES ('0000000034', '222', '1', '2017-11-06 20:40:19');
+INSERT INTO `review` VALUES ('0000000035', '222', '1', '2017-11-06 20:42:19');
 
 -- ----------------------------
 -- Table structure for users

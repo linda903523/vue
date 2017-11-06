@@ -120,7 +120,6 @@
                 })
             },
             cai:function(value,index){
-                var idx = index;
                 http.post({
                     url: 'carlist_serach',
                     params:{

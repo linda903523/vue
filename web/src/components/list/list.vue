@@ -15,7 +15,7 @@
                         <p>价格：<span class="carlist-money">{{obj.price}}</span>元</p>
                         <p>数量：<span class="cc-span">{{obj.number}}</span>件</p>
                         <p>状态：<span v-if="obj.status==1" class="btn-danger socke">已下单</span>
-                        <i v-if="obj.status==1" class="btn-danger" @click="socke_i(obj.name,index)">退单</i>
+                        <i v-if="obj.status==1" class="btn-primary" @click="socke_i(obj.name,index)">退单</i>
                             <span v-if="obj.status==2" class="btn-warning socke">准备中</span>
                             <span v-if="obj.status==3" class="btn-success socke">完成</span>
                             <span v-if="obj.status==4" class="btn-danger socke">已退单</span>

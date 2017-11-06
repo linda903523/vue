@@ -1,57 +1,33 @@
 <template>
     <div>
-        <div class="bill_6">
-            <h3 class="bill_h3"> 桌号22<span class="bill_span">关闭</span></h3>
-            <ul>
+        <ul id="fl_list">
+            <li v-for="(value,index) in listNum">{{value}}</li>
+        </ul>
+        <div class="bill_6" v-for="(value,index) in zhuohao">
+            <h3 class="bill_h3" @click="cai(value)"> 桌号:{{value}}</h3>
+           <ul>
                 <li  v-for="(obj, index) in dataset">
                     <img :src="obj.img"  alt="" />
                     <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
                     <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input class="fl_first" type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1"/>
-                    <input type="button" value="准备" @click="plan(obj.name)" v-if="obj.status<=2"/>
-                    <input type="button" value="完成" @click="complete(obj.name)"  v-if="obj.status<=3"/>
+                    <input type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1" class="btn-danger"/>
+                    <input type="button" value="准备" @click="plan(obj.name,index)" v-if="obj.status<=2" class="btn-warning"/>
+                    <input type="button" value="完成" @click="complete(obj.name,index)"  v-if="obj.status<=3" class="btn-success"/>
+                    <input type="button" value="已退单" v-if="obj.status==4" class="btn-danger"/>
                 </li>
                 <h2 class="bill_h2">收起</h2>
             </ul>
         </div>
-        <div class="bill_6">
-            <h3 class="bill_h3"> 桌号23<span class="bill_span">关闭</span></h3>
-            <ul>
-                <li  v-for="(obj, index) in dataset">
+        <div class="c_caidan">
+              <ul>
+                <li  v-for="(obj, index) in numbercai">
                     <img :src="obj.img"  alt="" />
                     <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
-                    <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input class="fl_first" type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1"/>
-                    <input type="button" value="准备" @click="plan(obj.name)" v-if="obj.status<=2"/>
-                    <input type="button" value="完成" @click="complete(obj.name)"  v-if="obj.status<=3"/>
-                </li>
-                <h2 class="bill_h2">收起</h2>
-            </ul>
-        </div>
-        <div class="bill_6">
-            <h3 class="bill_h3"> 桌号24<span class="bill_span">关闭</span></h3>
-            <ul>
-                <li  v-for="(obj, index) in dataset">
-                    <img :src="obj.img"  alt="" />
-                    <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
-                    <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input class="fl_first" type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1"/>
-                    <input type="button" value="准备" @click="plan(obj.name)" v-if="obj.status<=2"/>
-                    <input type="button" value="完成" @click="complete(obj.name)"  v-if="obj.status<=3"/>
-                </li>
-                <h2 class="bill_h2">收起</h2>
-            </ul>
-        </div>
-        <div class="bill_6">
-            <h3 class="bill_h3"> 桌号25<span class="bill_span">关闭</span></h3>
-            <ul>
-                <li  v-for="(obj, index) in dataset">
-                    <img :src="obj.img"  alt="" />
-                    <span>菜名: {{obj.name}}{{obj.state}}   <span>数量: {{obj.number}}</span></span>
-                    <p>备注:<i>{{obj.decorations}}</i></p>
-                    <input class="fl_first" type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1"/>
-                    <input type="button" value="准备" @click="plan(obj.name)" v-if="obj.status<=2"/>
-                    <input type="button" value="完成" @click="complete(obj.name)"  v-if="obj.status<=3"/>
+                    <p>备注:<i>{{obj.decorations}}{{obj.status}}</i></p>
+                    <input type="button" value="已退单" v-if="obj.status<=4" class="btn-danger"/>
+                    <input type="button" value="已下单" @click="wait(obj.name)" v-if="obj.status<=1" class="btn-danger"/>
+                    <input type="button" value="准备" @click="plan(obj.name,index)" v-if="obj.status<=2" class="btn-warning"/>
+                    <input type="button" value="完成" @click="complete(obj.name,index)"  v-if="obj.status<=3" class="btn-success"/>
                 </li>
                 <h2 class="bill_h2">收起</h2>
             </ul>
@@ -61,29 +37,25 @@
 <script type="text/javascript">
     import http from '../../utils/httpClient.js'
     import loading from '../loading/loading.vue'
-    $(()=>{
-        var socket = io("ws://localhost:8818");
-        socket.on('finish', function(data){
-            console.log(data)
-        })
-        $('#but').click(function(){
-            socket.emit('pay',$('#mon').html());
-        })
-    })
+    var socket = io("ws://localhost:8818");
+    socket.on('ok_i',function(data){
+        $('.bill_6 ul li').eq(data).find('input').eq(0).nextAll().css({display:'none'})
+        $('.bill_6 ul li').eq(data).find('input').eq(0).val('已退单')
+    });
     export default {
         data: function(){
-            var colsArray = this.cols ? this.cols.split(',') : [];
             return {
                 dataset: [],
                 loadingShow: false,
-                colsArray,
                 name:[],
                 price:[],
                 img:[],
                 decorations:[],
+                listNum:[],
+                zhuohao:[],
+                numbercai:[]
             }
         },
-        props: ['api', 'cols'],
         mounted: function(){
             var self = this;
             http.get({
@@ -91,6 +63,40 @@
             }).then(res => {
                 self.dataset = res.data
             })
+            $(()=>{
+                var socket = io("ws://localhost:8818");
+                    socket.on('ok',function(data){
+                        var data1 = data.substring(0, 17);
+                        var a = data.substring(17);
+                        a = a.substring(0,a.length-2);
+                        a = a.split(",");
+                        var b=[];
+                       $(a).each(function(i){
+                           var str = $(a)[i];
+                           var Num = Number(str);
+                          b.push(Num);
+                       })
+                        self.zhuohao = b;
+                        self.listNum.push(data1);
+                });
+            })
+            // var ws = new WebSocket("ws://localhost:888");
+            // ws.onmessage = function(_msg){
+            //     var data = _msg.data;
+            //     var data1 = data.substring(0, 17);
+            //     var a = data.substring(17);
+            //     a = a.substring(0,a.length-2);
+            //     a = a.split(",");
+            //     var b=[];
+            //    $(a).each(function(i){
+            //        var str = $(a)[i];
+            //        var Num = Number(str);
+            //       b.push(Num);
+            //    })
+            //     self.zhuohao = b;
+            //     self.listNum.push(data1);
+            // }
+            
         },
         methods: {
             wait: function(e){
@@ -107,7 +113,12 @@
                     self.dataset = res.data
                 })              
             },
-            plan: function(e){
+            plan: function(e,dx){
+                var dx=dx
+                $(()=>{
+                    var socket = io("ws://localhost:8818");
+                        socket.emit('pal',['2',dx]);
+                })
                 var idx=e
                 var self = this;
                 http.post({
@@ -120,10 +131,11 @@
                     self.dataset = res.data
                 })
             },
-            complete: function(e){
+            complete: function(e,dx){
+                var dx=dx
                 $(()=>{
                     var socket = io("ws://localhost:8818");
-                        socket.emit('pay',3);
+                        socket.emit('pal',['3',dx]);
                 })
                 var idx=e
                 var self = this;
@@ -136,6 +148,15 @@
                 }).then(res => {
                     console.log(222)
                     self.dataset = res.data
+                })
+            },cai:function(value,e){
+                http.post({
+                    url: 'carlist_serach',
+                    params:{
+                        zhuohao:value
+                    }
+                }).then(res => {
+                  this.numbercai=res.data;
                 })
             }
         },

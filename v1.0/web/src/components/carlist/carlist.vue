@@ -8,7 +8,7 @@
         </header>
         <div class="body">
             <ul v-for="(obj,index) in carlist" class="carlist-ul" v-if="show">
-                <li>
+                <li class="carlistli">
                     <img :src="obj.img" class="img-carlist"/>
                     <div class="carlist-div1 ">
                         <span>{{obj.name}}</span>
@@ -22,8 +22,8 @@
                         <i class="carlist-i3" @click="car_delete(index)"></i>
                     </div>
                 </li>
-            </ul>
-        </div>        
+            </ul>      
+        </div>
         <div>
             <ul class="list-ul">
                 <li><span @click="qian">加菜</span></li>
@@ -38,7 +38,6 @@
     import './carlist.scss'
     import router from '../../router'
     import $ from 'jquery'
-    
     export default {
         data:function(){
             return {
@@ -48,7 +47,9 @@
                 zongshu:0,
                 zongjia:0,
                 show:false,
-                suiji:''
+                suiji:'',
+                ws:'',
+                delect:false
             }
         },
         methods:{
@@ -61,7 +62,7 @@
                             ccc:ccc
                         }
                 }).then(res => {
-                   console.log(res);
+                   // console.log(res);
                 })
                this.zongjia=this.zongjia-this.carlist[index].price;
                this.zongshu=this.zongshu-1;
@@ -75,20 +76,38 @@
                             cccc:cccc
                         }
                 }).then(res => {
-                   // console.log(res);
                 })
                 this.zongjia=this.zongjia+this.carlist[index].price;
-               this.zongshu=this.zongshu+1;
+                this.zongshu=this.zongshu+1;
             },
              cmoney:function(){
-                var res = parseInt(Math.random()*1000000000);
+                var res =JSON.stringify(parseInt(Math.random()*1000000000));
+                console.log()
+                var a=[];
+                for(var i=0;i<this.carlist.length;i++){
+                    var b = this.carlist[i].zhuohao;
+                    if(b<10){
+                        b = '00'+b+',';
+                    }else if(9<b<100){
+                        b='0'+b+',';
+                    }
+                 a.push(b);
+                }
+                 $.unique(a.sort());
+                 var b='';
+                $(a).each(function(i){
+                   b+=a[i];
+                })
+                res+=b;
                 this.suiji=res;
                 router.push({name: 'li', params: {number: this.suiji}});
-            },
-            tanchuang:function(){
-                this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
-                  dangerouslyUseHTMLString: true
+                // this.ws = new WebSocket("ws://10.3.131.18:888");
+                // this.ws.send('您有新的订单:' + this.suiji);
+                $(()=>{
+                    var socket = io("ws://localhost:8818");
+                        socket.emit('pay',this.suiji);
                 })
+                $('.carlist-ul').remove();
             },
             qian:function(){
                 router.push({name:'foodslist'})
@@ -101,6 +120,7 @@
             },
             foodslist:function(){
                 router.push({name:'foodslist'})
+
             },
             car_delete:function(index){
                 var cc = JSON.stringify(this.carlist[index]);
@@ -109,9 +129,11 @@
                     params:{
                         cc:cc
                     }
-                }).then(res => {
-                    //console.log(res)
+                }).then(res => {  
                 })
+                this.zongjia = this.zongjia-this.carlist[index].price*this.carlist[index].number;
+                this.zongshu = this.zongshu-this.carlist[index].number;
+                $('.carlistli')[index].remove();
             }, 
             cmy:function(){
                 this.show=true;
@@ -141,13 +163,18 @@
             })
             this.show=true;           
         },
-        updated:function(){
-            var self = this;
-            http.get({
-                url: 'carlist'
-            }).then(res => {
-                self.carlist = res.data
-            })
-        }
+        // updated:function(){
+        //     var self = this;
+        //     http.get({
+        //         url: 'carlist'
+        //     }).then(res => {
+        //         self.carlist = res.data
+        //     })
+        //     this.show=true;    
+        //     this.ws = new WebSocket("ws://10.3.131.18:888");
+        //     this.ws.onmessage = function(_msg){
+        //         // console.log(_msg.data);
+        //     }       
+        // }
     }
 </script>

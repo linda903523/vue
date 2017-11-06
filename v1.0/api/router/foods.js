@@ -1,7 +1,6 @@
 var db = require('../db.js');
 var bodyparser = require('body-parser');
 var urlencode = bodyparser.urlencoded({extended: false});
-
 module.exports = {
     Food:function(app){
         app.get('/select', function(request, response){
@@ -87,6 +86,7 @@ module.exports = {
             var string = '';
             var cname = '';
             var id='';
+            var zhuohao=''
             for(var key in data){
                 if(key!=='id' && key!='addTime'){
                     string+='"'+data[key]+'"'+','
@@ -95,28 +95,72 @@ module.exports = {
                     cname=data[key];
                 }if(key=='id'){
                     id=data[key];
+                }if(key=='zhuohao'){
+                    zhuohao=data[key];
                 }
-            }
-            db.select(`select * from carlist where name like '%${cname}%'`,function(rows){
+            }           
+            db.select(`select * from carlist where name ='${cname}' and zhuohao='${zhuohao}'`,function(rows){
                 if(rows.length>0){
-                     var number = rows[0].number+1;
-                     var idd = rows[0].id;
+                    var number = rows[0].number+1;
+                    var idd = rows[0].id;
                     db.insert(`update carlist set number= ${number} where id=${idd}`,function(result){
                         response.send(result);
                     })
                     return false;
                 }else {
                     aa = string.substring(0,string.length-1);
-                    db.insert(`insert into carlist (name,img,price,number,type,decorations,status) values (${aa})`,function(result){
+                    db.insert(`insert into carlist (name,img,price,number,type,decorations,status,zhuohao,renshu) values (${aa})`,function(result){
                             response.send(result);
                         })
                 }
             })
             return false;
         })
+        app.post("/carr_insert",urlencode,function(request, response){
+                var data = JSON.parse(request.body.cc);
+                var string = '';
+                var cname = '';
+                var id='';
+                var zhuohao=''
+                for(var key in data){
+                    if(key!=='id' && key!='addTime'){
+                        string+='"'+data[key]+'"'+','
+                    }
+                    if(key=='name'){
+                        cname=data[key];
+                    }if(key=='id'){
+                        id=data[key];
+                    }if(key=='zhuohao'){
+                        zhuohao=data[key];
+                    }
+                }           
+                db.select(`select * from carlist1 where name ='${cname}' and zhuohao='${zhuohao}'`,function(rows){
+                    if(rows.length>0){
+                        var number = rows[0].number+1;
+                        var idd = rows[0].id;
+                        db.insert(`update carlist1 set number= ${number} where id=${idd}`,function(result){
+                            response.send(result);
+                        })
+                        return false;
+                    }else {
+                        aa = string.substring(0,string.length-1);
+                        db.insert(`insert into carlist1 (name,img,price,number,type,decorations,status,zhuohao,renshu) values (${aa})`,function(result){
+                                response.send(result);
+                            })
+                    }
+                })
+                return false;
+        })
+        
         app.post('/serach', urlencode,function(request, response){
             var cname = request.body.name;
              db.select(`select * from foods where name like '%${cname}%'`,function(rows){
+                response.send(rows);
+            })  
+        })
+        app.post('/carlist_serach', urlencode,function(request, response){
+            var cname = request.body.zhuohao;
+             db.select(`select * from carlist where zhuohao = '${cname}'`,function(rows){
                 response.send(rows);
             })  
         })
@@ -156,7 +200,7 @@ module.exports = {
             var data = JSON.parse(request.body.cu);
             var str = '';
             var cname = '';
-            var id='';
+            var id = '';
             for(var key in data){
                 if(key!=='id' && key!='addTime'){
                     str+='"'+data[key]+'"'+','
@@ -176,9 +220,9 @@ module.exports = {
                             response.send(result);
                         })
                 }
-            })
-            
-        })    
-        
+
+            })            
+        })        
     }
+
 }

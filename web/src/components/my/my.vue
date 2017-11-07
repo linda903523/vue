@@ -29,7 +29,7 @@
             <ul class="home-c">
                 <li @click="foodslist"><i class="ci-4"></i><span>点菜</span></li>
                 <li @click="carlist"><i class="ci-5"></i><span>购物车</span></li>
-                <li @click="list"><i class="ci-6"></i><span>订单</span></li>
+                <li><i class="ci-6"></i><span>订单</span></li>
                 <li class="active"><i class="ci-7"></i><span>我的</span></li>
             </ul>
         </footer>
@@ -63,10 +63,6 @@
         methods:{
             foodslist:function(){
                 router.push({name:'foodslist'})
-            },
-            list:function(){
-                this.show=true;
-                router.push({name:'list'})              
             },
             carlist:function(){
                 router.push({name:'carlist'})  

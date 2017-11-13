@@ -1,4 +1,4 @@
-var db = require('../db.js');
+var db = require('../db/DBHerlper.js').mysql;
 var bodyparser = require('body-parser');
 var urlencode = bodyparser.urlencoded({extended: false});
 module.exports = {

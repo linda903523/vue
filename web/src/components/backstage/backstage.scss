@@ -1,0 +1,70 @@
+#header{
+    background:#000 ; background-size:100%;height:80px;opacity:0.8;
+    h1{color:red; text-align:center;line-height: 80px;}
+    >span{float:right;
+        i{padding:0 20px; cursor:pointer; font-size:none;}
+    }
+}
+#fl_list{
+    float:right;height: 100%;
+    li{border:1px solid #0bf80f;color:#0bf80f;width:250px;height:50px;line-height: 50px;text-align:center;border-radius:20px;}   
+}
+#main{width:100%;height:600px;border-bottom:2px solid #ccc;}
+.bill_6{
+    overflow:hidden;
+    h3{text-align:center; width:250px; line-height:40px;cursor:pointer; border:2px solid #ccc; float:left; margin-left:50px;margin-top:20px;}
+}
+.bill{overflow-y:auto;height:600px;}
+.menu{padding:0 50px; background:#000; float:left; height:600px;opacity:0.8;
+    li{line-height:50px; border-radius:5px 5px; width:100px; text-align:center; float:none;background:orange;
+        .active{background:#fff;}
+        &:first-child{background:#fff;}
+        >a{border-radius:5px 5px; color:#000;}
+        p{height:0px; background:skyblue; display:none;
+            &:hover{background:#fff; border-radius:5px 5px;}
+        }
+        &:hover{background:#fff;}   
+    }
+    .menu_p{background:#fff;}
+}
+.form_row{
+    float:left;width:100%;
+    button{margin:30px 0 0 95px;}
+    .row{padding-top:30px;width:100%;
+        .col-xs-2{width:400px;
+            >span{display:inline-block; font-size:16px;padding:0 20px 0 40px;}
+            >input{display:inline-block; width:50%; }
+            >select{display:inline-block; width:50%;}
+            >i{color:red;}
+        }
+    }
+}
+.Adm{float:left;width:100%;
+    table{margin-top:20px;}
+    th{padding:0 10px;height:40px;font-size:20px;text-align:center;background:#727d8a;color:#fff;}
+    tbody{
+        tr{
+            td{padding:10px 10px; text-align:center; vertical-align:middle;
+                >button{margin-bottom:10px;}
+            }
+        }
+    }
+    img{width:100px; height:100px;}
+}
+.fl_search{text-align:right;
+    input{border:1px solid #ccc;margin-top:20px;margin-right:10px;border-radius:10px;width:200px;height:32px;
+    }
+    button{border-radius:10px;margin-right:20px;}
+}
+.modal-lg{
+    background:#fff;
+    .modal-body{
+        img{float:left;margin-right:30px;}
+        p{line-height:30px;}
+    }       
+}
+.c_caidan{overflow:hidden;margin-top:60px;width:933px;}
+.c_caidan img{width:100px;height:100px;float:left;margin-right:35px;}
+.c_caidan ul{width:305px;margin:0px auto;}
+.c_caidan li{overflow:hidden;border:1px solid #ccc;padding:10px;}
+.c_caidan p{line-height:25px;}

@@ -1,1 +1,8 @@
 组员：袁守明（组长）、付玲、徐翠
+环境安装： npm install就行；
+数据库：导入vue.sql文件；
+路径修改：utils》httpClient内的baseUrl。（端口88）
+	router.js内的端口（88）；
+前台开启：npm run dev；
+后台需要开启：数据库 node server；
+		socket监听 node socket ；
